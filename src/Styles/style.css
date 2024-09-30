@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#root {
+    text-align: center;
+}
+
+.headText {
+    text-decoration: underline;
+    text-underline-offset: 13px;
+}
+
+.fullNameContainer {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+.emailContainer {
+    padding-bottom: 30px;
+}
+
+label {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+input, textarea {
+    min-width: 500px;
+    height: 50px;
+    font-size: 1.3rem;
+    padding-left: 10px;
+}
+
+::placeholder {
+    font-size: 1.3rem;
+
+}
+
+button {
+    margin: 15px 0;
+    border-radius: 8px;
+    /* border: 1px solid transparent; */
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: inherit;
+    /* background-color: #1a1a1a; */
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.userContactDisplay {
+    padding-top: 50px;
+}
+
+.userContactDisplay span {
+    font-weight: 700;
+}
+
+p {
+       font-size: 1.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 30px;
+}

@@ -5,13 +5,20 @@ function DisplayUserContact({userContact, className}) {
         
 
 return (
-<div className={className} >
-    <p> Name: {userContact.PersonName} </p>
-<p>Email: {userContact.Email} </p>
-<p> Mobile Number: {userContact.MobileNumber} </p>
-    
-     </div>
-)
+  <div className={className}>
+    <p>
+      {" "}
+      <span>Name:</span> {userContact.PersonName}{" "}
+    </p>
+    <p>
+      <span>Email:</span> {userContact.Email}{" "}
+    </p>
+    <p>
+      {" "}
+      <span>Mobile Number:</span> {userContact.MobileNumber}{" "}
+    </p>
+  </div>
+);
 }
 
 export default DisplayUserContact

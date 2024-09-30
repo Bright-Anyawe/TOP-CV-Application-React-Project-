@@ -16,7 +16,6 @@ export function UserContactForm() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [valueDisplay, setValueDisplay] = useState(false);
 
-
   function handleUserName(e) {
     const updateUserName = e.target.value;
     setuserName(updateUserName);
@@ -45,19 +44,17 @@ export function UserContactForm() {
     setUserContact(personContact);
   }
 
-
   function hideInputContainer() {
     const inputElContainer = document.querySelector(".inputContainer");
     inputElContainer.style.display = "none";
     // handleContactDisplay();
     // resetInputField();
-    setIsSubmit(true)
+    setIsSubmit(true);
 
-        handleValueDisplay();
+    handleValueDisplay();
 
     // handleEditButton();
   }
-  
 
   // function handleContactDisplay() {
   //   const contactDisplay = document.querySelector(".contactDisplay");
@@ -67,24 +64,22 @@ export function UserContactForm() {
   function handleEditBtn() {
     setIsSubmit(false);
     setValueDisplay(false);
-
-
   }
 
   function handleValueDisplay() {
-    setValueDisplay(true)
+    setValueDisplay(true);
   }
 
-function handleUserContactDisplayForEdit() {
-  const inputElContainer = document.querySelector(".inputContainer");
-  inputElContainer.style.display = "block";
+  function handleUserContactDisplayForEdit() {
+    const inputElContainer = document.querySelector(".inputContainer");
+    inputElContainer.style.display = "block";
 
-  const userContactDisplayer = document.querySelector(".contactDisplay");
-  userContactDisplayer.style.display = "none";
+    const userContactDisplayer = document.querySelector(".userContactDisplay");
+    userContactDisplayer.style.display = "none";
 
-  //   <UserContactForm />;
-  handleEditBtn();
-}
+    //   <UserContactForm />;
+    handleEditBtn();
+  }
 
   return (
     <>
@@ -94,59 +89,65 @@ function handleUserContactDisplayForEdit() {
           className="userContactInputEl"
         >
           <div className="inputContainer">
-            <label htmlFor="userName" className="userContactInputEl">
-              Full_Name
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your fullName"
-              className="userContactInputEl"
-              id="userName"
-              value={userName}
-              onChange={handleUserName}
-            />
+            <div className="fullNameContainer">
+              <label htmlFor="userName" className="userNameLabel">
+                Full_Name
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your fullName"
+                className="userNameInputEl"
+                id="userName"
+                value={userName}
+                onChange={handleUserName}
+              />
+            </div>
 
-            <label htmlFor="email" className="userContactInputEl">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter your Email"
-              className="userContactInputEl"
-              id="email"
-              value={email}
-              onChange={handleEmail}
-            />
+            <div className="emailContainer">
+              <label htmlFor="email" className="emailLabel">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Enter your Email"
+                className="emailInputEl"
+                id="email"
+                value={email}
+                onChange={handleEmail}
+              />
+            </div>
 
-            <label htmlFor="mobileNumber" className="userContactInputEl">
-              Mobile_Number
-            </label>
-            <input
-              type="number"
-              placeholder="Enter your mobile number"
-              className="userContactInputEl"
-              id="mobileNumber"
-              value={mobileNumber}
-              onChange={handleMobileNumber}
-            />
+            <div className="mobileNumberContainer">
+              <label htmlFor="mobileNumber" className="mobileNumberLabel">
+                Mobile_Number
+              </label>
+              <input
+                type="number"
+                placeholder="Enter your mobile number"
+                className="mobileNumberInputEl"
+                id="mobileNumber"
+                value={mobileNumber}
+                onChange={handleMobileNumber}
+              />
+            </div>
           </div>
 
           {valueDisplay ? (
             <DisplayUserContact
               userContact={userContact}
-              className="contactDisplay"
+              className="userContactDisplay"
             />
           ) : null}
 
           {!isSubmit ? (
             <Submit
               type="submit"
-              className="submit"
+              className="userContactSubmit"
               hideInputContainer={hideInputContainer}
             />
           ) : (
             <Edit
-              className="contactDisplay"
+              className="userContactEditComponent"
               handleUserContactDisplayForEdit={handleUserContactDisplayForEdit}
               // handleEditBtn={handleEditBtn}
             />

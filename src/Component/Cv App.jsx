@@ -5,11 +5,12 @@ import { PracticalExperienceForm } from "./PracticalExperienceForm.jsx";
 
 function CvApp() {
   return (
-    <div>
+    <>
+      <h1 className="headText">Fill out your Cv Form</h1>
       <UserContactForm />
       <EducationExperienceForm />
       <PracticalExperienceForm />
-    </div>
+    </>
   );
 }
 
