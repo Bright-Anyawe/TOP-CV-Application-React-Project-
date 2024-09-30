@@ -1,16 +1,21 @@
 import { useState } from "react";
 import DisplayUserContact from "./DisplayUserInfo.jsx";
+import { Edit } from "./EditButton.jsx";
+import { Submit } from "./SubmitBtn.jsx";
 
 export function UserContactForm() {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setmobileNumber] = useState("");
+
   const [userContact, setUserContact] = useState({
     PersonName: userName,
     Email: email,
     MobileNumber: mobileNumber,
   });
-  console.log(userContact);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [valueDisplay, setValueDisplay] = useState(false);
+
 
   function handleUserName(e) {
     const updateUserName = e.target.value;
@@ -40,75 +45,112 @@ export function UserContactForm() {
     setUserContact(personContact);
   }
 
-  function resetInputField() {
-    setuserName("");
-    setEmail("");
-    setmobileNumber("");
-  }
 
-  function handleDelete() {
+  function hideInputContainer() {
     const inputElContainer = document.querySelector(".inputContainer");
     inputElContainer.style.display = "none";
-    handleContactDisplay();
-    resetInputField();
+    // handleContactDisplay();
+    // resetInputField();
+    setIsSubmit(true)
+
+        handleValueDisplay();
+
+    // handleEditButton();
+  }
+  
+
+  // function handleContactDisplay() {
+  //   const contactDisplay = document.querySelector(".contactDisplay");
+  //   contactDisplay.style.display = "block";
+  // }
+
+  function handleEditBtn() {
+    setIsSubmit(false);
+    setValueDisplay(false);
+
+
   }
 
-  function handleContactDisplay() {
-    const contactDisplay = document.querySelector(".contactDisplay");
-    contactDisplay.style.display = "block";
+  function handleValueDisplay() {
+    setValueDisplay(true)
   }
+
+function handleUserContactDisplayForEdit() {
+  const inputElContainer = document.querySelector(".inputContainer");
+  inputElContainer.style.display = "block";
+
+  const userContactDisplayer = document.querySelector(".contactDisplay");
+  userContactDisplayer.style.display = "none";
+
+  //   <UserContactForm />;
+  handleEditBtn();
+}
 
   return (
     <>
       <section className="userContact">
-        <DisplayUserContact
-          userContact={userContact}
-          className="contactDisplay"
-        />
-
         <form
           onSubmit={(e) => e.preventDefault()}
           className="userContactInputEl"
         >
           <div className="inputContainer">
             <label htmlFor="userName" className="userContactInputEl">
-              Enter your fullName
+              Full_Name
             </label>
             <input
               type="text"
+              placeholder="Enter your fullName"
               className="userContactInputEl"
               id="userName"
               value={userName}
               onChange={handleUserName}
             />
-            {/* {displayElement ? userContactInputEl : pTag} */}
-
-            {/* <p className="newValue">{userName}</p> */}
 
             <label htmlFor="email" className="userContactInputEl">
-              Enter your Email
+              Email
             </label>
             <input
               type="email"
+              placeholder="Enter your Email"
               className="userContactInputEl"
               id="email"
               value={email}
               onChange={handleEmail}
             />
+
             <label htmlFor="mobileNumber" className="userContactInputEl">
-              Enter your mobile number
+              Mobile_Number
             </label>
             <input
               type="number"
+              placeholder="Enter your mobile number"
               className="userContactInputEl"
               id="mobileNumber"
               value={mobileNumber}
               onChange={handleMobileNumber}
             />
           </div>
-          <button type="submit" className="submit" onClick={handleDelete}>
-            Submit
-          </button>
+
+          {valueDisplay ? (
+            <DisplayUserContact
+              userContact={userContact}
+              className="contactDisplay"
+            />
+          ) : null}
+
+          {!isSubmit ? (
+            <Submit
+              type="submit"
+              className="submit"
+              hideInputContainer={hideInputContainer}
+            />
+          ) : (
+            <Edit
+              className="contactDisplay"
+              handleUserContactDisplayForEdit={handleUserContactDisplayForEdit}
+              // handleEditBtn={handleEditBtn}
+            />
+          )}
         </form>
       </section>
     </>
