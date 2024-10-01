@@ -1,4 +1,6 @@
-function DisplayUserContact({userContact, className}) {
+
+
+function DisplayUserContact({ userContact, className }) {
 
     //     const contactDisplay = document.querySelector(`.${className}`);
     // contactDisplay.style.display = "none";
@@ -11,7 +13,7 @@ return (
       <span> User Name:</span> {userContact.PersonName}{" "}
     </p>
     <p>
-      <span>Email Address:</span> {userContact.Email}{" "}
+      <span>Email:</span> {userContact.Email}{" "}
     </p>
     <p>
       {" "}

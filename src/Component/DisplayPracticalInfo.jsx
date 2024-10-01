@@ -1,10 +1,6 @@
-
-
-
+import { GetDate } from "./GetDate";
 
 function DisplayPracticalExperience({ practicalExperience, className }) {
- 
-
   return (
     <div className={className}>
       <p>
@@ -20,11 +16,12 @@ function DisplayPracticalExperience({ practicalExperience, className }) {
       </p>
       <p>
         {" "}
-        <span>Job Entry Date</span>: {practicalExperience.JobEntryDate}{" "}
+        <span>Job Entry Date</span>: {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
       </p>
       <p>
         {" "}
-        <span>Job Exit Date</span>: {practicalExperience.JobExitDate}{" "}
+        <span>Job Exit Date</span>:
+        {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
       </p>
     </div>
   );

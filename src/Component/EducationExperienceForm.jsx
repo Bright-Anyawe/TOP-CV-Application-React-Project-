@@ -34,7 +34,11 @@ export function EducationExperienceForm() {
   function handleStudiesDate(e) {
     const updateStudiesDate = e.target.value;
     setStudiesDate(updateStudiesDate);
-    handleEducationExperience(schoolName, studiesTitle, updateStudiesDate);
+    handleEducationExperience(
+      schoolName,
+      studiesTitle,
+updateStudiesDate    );
+
   }
 
   function handleEducationExperience(
@@ -82,14 +86,14 @@ export function EducationExperienceForm() {
     );
     inputElContainer.style.display = "block";
 
-    const userContactDisplayer = document.querySelector(
+    const educationExperienceDisplayer = document.querySelector(
       ".educationExperienceEl"
     );
-    console.log(userContactDisplayer);
+    console.log(educationExperienceDisplayer);
 
-    userContactDisplayer.style.display === "block"
-      ? (userContactDisplayer.style.display = "none")
-      : (userContactDisplayer.style.display = "block");
+    educationExperienceDisplayer.style.display === "block"
+      ? (educationExperienceDisplayer.style.display = "none")
+      : (educationExperienceDisplayer.style.display = "block");
 
     handleEditBtn();
   }
@@ -105,6 +109,12 @@ export function EducationExperienceForm() {
     <>
       <section className="educationExperience">
         <form onSubmit={(e) => e.preventDefault()}>
+          {valueDisplay ? 
+          <DisplayEducationExperience
+            educationExperience={educationExperience}
+            className="educationExperienceEl"
+          />
+           : null}
           <div className="educationExperienceInputContainer">
             <div className="schoolNameContainer">
               <label htmlFor="schoolName">School Name</label>
@@ -130,7 +140,7 @@ export function EducationExperienceForm() {
                 id="studiesTitle"
               />
             </div>
-
+           
             <label htmlFor="date">Select date of studies</label>
             <input
               type="date"
@@ -142,12 +152,6 @@ export function EducationExperienceForm() {
             />
           </div>
 
-          {/* {valueDisplay ? ( */}
-            <DisplayEducationExperience
-              educationExperience={educationExperience}
-              className="educationExperienceEl"
-            />
-          {/* ) : null} */}
           {!isSubmit ? (
             <Submit
               type="submit"

@@ -1,4 +1,4 @@
-
+import { GetDate } from "./GetDate";
 function DisplayEducationExperience({ educationExperience, className }) {
   //     const contactDisplay = document.querySelector(`.${className}`);
   // contactDisplay.style.display = "none";
@@ -14,7 +14,7 @@ function DisplayEducationExperience({ educationExperience, className }) {
       </p>
       <p>
         {" "}
-        <span>Studies Title:</span> {educationExperience.StudiesDate}{" "}
+        <span>Studies Title:</span> {<GetDate updateStudiesDate={educationExperience.StudiesDate} />}{" "}
       </p>
     </div>
   );

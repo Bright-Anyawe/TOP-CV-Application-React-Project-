@@ -3,7 +3,6 @@ import DisplayPracticalExperience from "./DisplayPracticalInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 
-
 export function PracticalExperienceForm() {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -21,7 +20,6 @@ export function PracticalExperienceForm() {
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [valueDisplay, setValueDisplay] = useState(false);
-
 
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
@@ -106,14 +104,13 @@ export function PracticalExperienceForm() {
     );
     inputElContainer.style.display = "none";
 
-    
     // handleEducationExperienceDisplay();
     // resetInputField();
     setIsSubmit(true);
     handleValueDisplay();
     // handleEditButton();
   }
- 
+
   function handleEditBtn() {
     setIsSubmit(false);
     setValueDisplay(false);
@@ -123,24 +120,23 @@ export function PracticalExperienceForm() {
     setValueDisplay(true);
   }
 
-   function handlePracticalExperienceDisplayForEdit() {
-     const inputElContainer = document.querySelector(
-       ".practicalExperienceInputContainer"
-     );
-     inputElContainer.style.display = "block";
+  function handlePracticalExperienceDisplayForEdit() {
+    const inputElContainer = document.querySelector(
+      ".practicalExperienceInputContainer"
+    );
+    inputElContainer.style.display = "block";
 
-     const userContactDisplayer = document.querySelector(
-       ".practicalExperienceEl"
-     );
-     console.log(userContactDisplayer);
+    const userContactDisplayer = document.querySelector(
+      ".practicalExperienceEl"
+    );
+    console.log(userContactDisplayer);
 
-     userContactDisplayer.style.display === "block"
-       ? (userContactDisplayer.style.display = "none")
-       : (userContactDisplayer.style.display = "block");
+    userContactDisplayer.style.display === "block"
+      ? (userContactDisplayer.style.display = "none")
+      : (userContactDisplayer.style.display = "block");
 
-     handleEditBtn();
-   }
-
+    handleEditBtn();
+  }
 
   return (
     <>
@@ -209,12 +205,12 @@ export function PracticalExperienceForm() {
             </div>
           </div>
 
-          {/* {valueDisplay ? ( */}
+          {valueDisplay ? (
             <DisplayPracticalExperience
               practicalExperience={practicalExperience}
               className="practicalExperienceEl"
             />
-          {/* ) : null} */}
+          ) : null}
           {!isSubmit ? (
             <Submit
               type="submit"
