@@ -32,10 +32,37 @@ body {
     padding-top: 15px;
     text-decoration: underline;
     text-underline-offset: 13px;
+    animation: slide-in 1000ms linear;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
 }
 
 .userContact form, .educationExperience form {
     padding-bottom: 45px;
+    animation: grow-and-shrink 2000ms ease-in-out;
+    ;
+
+
+}
+
+@keyframes grow-and-shrink {
+    0% {
+        transform: scale(1);
+    }
+
+    
+
+    100% {
+        transform: scale(1;2);
+    }
 }
 
 .fullNameContainer {
@@ -67,6 +94,23 @@ input, textarea {
     padding: 0 10px;
     border-radius: 8px;
     border: none;
+    /* cursor: click; */
+    transition: border-color 0.25s ease-in-out;
+}
+
+input:focus-visible {
+    /* outline: 1px solid #3ce041; */
+    border: 1px solid #f913f9;
+}
+
+input:valid {
+    /* outline: 2px solid #f7733f; */
+    border: 1px solid #13f91e;
+}
+
+input:invalid {
+    outline: 2px solid #f7733f;
+    border: 1px solid #f93513;
 }
 
 ::placeholder {
@@ -95,9 +139,10 @@ button {
     font-weight: 700;
 }
 
-.asterisk  {
+.asterisk {
     color: red;
 }
+
 p {
     font-size: 1.7rem;
     text-align: center;
