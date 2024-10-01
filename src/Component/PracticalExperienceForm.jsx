@@ -18,7 +18,6 @@ export function PracticalExperienceForm() {
     JobEntryDate: jobEntryDate,
     JobExitDate: jobExitDate,
   });
-  console.log(practicalExperience);
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [valueDisplay, setValueDisplay] = useState(false);
@@ -148,61 +147,74 @@ export function PracticalExperienceForm() {
       <section className="practicalExperience">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="practicalExperienceInputContainer">
-            <label htmlFor="NameOfCompany">Enter The Company&apos;s Name</label>
-            <input
-              type="text"
-              placeholder="Enter your Company Name"
-              value={companyName}
-              className="companyName"
-              onChange={handleCompanyName}
-              id="NameOfCompany"
-            />
+            <div className="NameOfCompanyContainer">
+              <label htmlFor="NameOfCompany">
+                Enter The Company&apos;s Name
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your Company Name"
+                value={companyName}
+                className="companyName"
+                onChange={handleCompanyName}
+                id="NameOfCompany"
+              />
+            </div>
 
-            <label htmlFor="PosInJob"> Position_Title</label>
-            <input
-              type="text"
-              placeholder="Enter Position Title"
-              value={jobPosition}
-              onChange={handleJobPositon}
-              id="PosInJob"
-            />
+            <div className="PosInJobContainer">
+              <label htmlFor="PosInJob"> Position Title</label>
+              <input
+                type="text"
+                placeholder="Enter Position Title"
+                value={jobPosition}
+                onChange={handleJobPositon}
+                id="PosInJob"
+              />
+            </div>
 
-            <label htmlFor="Job_responsibilities">
-              Main_Responsibilities_At_Work
-            </label>
-            <textarea
-              type="text"
-              placeholder="Enter Main responsibilities of the Jobs"
-              value={jobResponsibilities}
-              onChange={handleJobResponsibility}
-              id="Job_responsibilities"
-            />
+            <div className="JobResponsibilitiesContainer">
+              {" "}
+              <label htmlFor="Job_responsibilities">
+                Main_Responsibilities At Work
+              </label>
+              <textarea
+                type="text"
+                placeholder="Enter Main responsibilities of the Jobs"
+                value={jobResponsibilities}
+                onChange={handleJobResponsibility}
+                id="Job_responsibilities"
+              />
+            </div>
 
-            <label htmlFor="jobEntryDate">Date for job commercement</label>
-            <input
-              type="date"
-              placeholder="Enter the date you started work with the company"
-              value={jobEntryDate}
-              onChange={handleJobEntryDate}
-              id="jobEntryDate"
-            />
+            <div className="jobEntryDateContainer">
+              <label htmlFor="jobEntryDate">Date for job commercement</label>
+              <input
+                type="date"
+                placeholder="Enter the date you started work with the company"
+                value={jobEntryDate}
+                onChange={handleJobEntryDate}
+                id="jobEntryDate"
+              />
+            </div>
 
-            <label htmlFor="jobExitDate">Date for job exit</label>
-            <input
-              type="date"
-              placeholder="Enter the date you started work with the company"
-              value={jobExitDate}
-              onChange={handleJobExitDate}
-              id="jobExitDate"
-            />
+            <div className="jobExitDateContainer">
+              <label htmlFor="jobExitDate">Date for job exit</label>
+              <input
+                type="date"
+                placeholder="Enter the date you started work with the company"
+                value={jobExitDate}
+                onChange={handleJobExitDate}
+                id="jobExitDate"
+              />
+            </div>
           </div>
 
-          {valueDisplay ? (
+          {/* {valueDisplay ? ( */}
             <DisplayPracticalExperience
               practicalExperience={practicalExperience}
               className="practicalExperienceEl"
             />
-          ) : null}
+          {/* ) : null} */}
           {!isSubmit ? (
             <Submit
               type="submit"

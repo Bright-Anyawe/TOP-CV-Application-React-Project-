@@ -106,25 +106,30 @@ export function EducationExperienceForm() {
       <section className="educationExperience">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="educationExperienceInputContainer">
-            <label htmlFor="schoolName">School_Name</label>
-            <input
-              type="text"
-              placeholder="Enter your School Name"
-              value={schoolName}
-              className="SchoolName"
-              id="schoolName"
-              onChange={handleSchoolName}
-            />
+            <div className="schoolNameContainer">
+              <label htmlFor="schoolName">School Name</label>
+              <input
+                type="text"
+                placeholder="Enter your School Name"
+                value={schoolName}
+                className="SchoolName"
+                id="schoolName"
+                onChange={handleSchoolName}
+              />
+            </div>
 
-            <label htmlFor="studiesTitle">Studies_Title</label>
-            <input
-              type="text"
-              placeholder="Enter studies title"
-              value={studiesTitle}
-              onChange={handleStudiesTitle}
-              className="studiesTitle"
-              id="studiesTitle"
-            />
+            <div className="studiesTitleContainer">
+              {" "}
+              <label htmlFor="studiesTitle">Studies Title</label>
+              <input
+                type="text"
+                placeholder="Enter studies title"
+                value={studiesTitle}
+                onChange={handleStudiesTitle}
+                className="studiesTitle"
+                id="studiesTitle"
+              />
+            </div>
 
             <label htmlFor="date">Select date of studies</label>
             <input
@@ -137,12 +142,12 @@ export function EducationExperienceForm() {
             />
           </div>
 
-          {valueDisplay ? (
+          {/* {valueDisplay ? ( */}
             <DisplayEducationExperience
               educationExperience={educationExperience}
               className="educationExperienceEl"
             />
-          ) : null}
+          {/* ) : null} */}
           {!isSubmit ? (
             <Submit
               type="submit"

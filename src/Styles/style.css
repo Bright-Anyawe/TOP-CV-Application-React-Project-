@@ -16,6 +16,12 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
+    background-color: #dbdbdb;
+    /* background-image: url('./public/white-colors.webp');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; */
+
 }
 
 #root {
@@ -23,34 +29,44 @@ body {
 }
 
 .headText {
+    padding-top: 15px;
     text-decoration: underline;
     text-underline-offset: 13px;
 }
 
+.userContact form, .educationExperience form {
+    padding-bottom: 45px;
+}
+
 .fullNameContainer {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
 
     padding-top: 60px;
     padding-bottom: 30px;
 }
 
-.emailContainer {
-    padding-bottom: 30px;
+.emailContainer, .schoolNameContainer, .studiesTitleContainer,
+.NameOfCompanyContainer, .PosInJobContainer, .JobResponsibilitiesContainer, .jobEntryDateContainer {
+    padding-bottom: 35px;
 }
 
 label {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    font-weight: 600;
     display: flex;
     justify-content: start;
     align-items: center;
+
 }
 
 input, textarea {
-    min-width: 500px;
+    min-width: 600px;
     height: 50px;
     font-size: 1.3rem;
-    padding-left: 10px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: none;
 }
 
 ::placeholder {
@@ -63,7 +79,7 @@ button {
     border-radius: 8px;
     /* border: 1px solid transparent; */
     padding: 0.6em 1.2em;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 600;
     font-family: inherit;
     /* background-color: #1a1a1a; */
@@ -75,15 +91,31 @@ button {
     padding-top: 50px;
 }
 
-.userContactDisplay span {
+.userContactDisplay span, .practicalExperienceEl span {
     font-weight: 700;
 }
 
+.asterisk  {
+    color: red;
+}
 p {
-       font-size: 1.5rem;
+    font-size: 1.7rem;
     text-align: center;
     display: flex;
     justify-content: start;
     align-items: start;
     gap: 30px;
+    line-height: 55px;
+}
+
+.educationExperienceEl span {
+    font-weight: 700;
+}
+
+.JobResponsibilitiesContainer {}
+
+
+#Job_responsibilities {
+    min-height: 180px;
+    max-height: 180px;
 }

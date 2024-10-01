@@ -44,22 +44,23 @@ export function UserContactForm() {
     setUserContact(personContact);
   }
 
-  function hideInputContainer() {
-    const inputElContainer = document.querySelector(".inputContainer");
-    inputElContainer.style.display = "none";
-    // handleContactDisplay();
-    // resetInputField();
-    setIsSubmit(true);
+        function hideInputContainer(e) {
+          const inputElContainer = document.querySelector(".inputContainer");
+          inputElContainer.style.display = "none";
+          setIsSubmit(true);
+          
+          // handleContactDisplay();
+          // resetInputField();
+          
+          handleValueDisplay();
 
-    handleValueDisplay();
+          // handleEditButton();
+        }
 
-    // handleEditButton();
+  function handleContactDisplay() {
+    const contactDisplay = document.querySelector(".userContactDisplay");
+    contactDisplay.style.display = "block";
   }
-
-  // function handleContactDisplay() {
-  //   const contactDisplay = document.querySelector(".contactDisplay");
-  //   contactDisplay.style.display = "block";
-  // }
 
   function handleEditBtn() {
     setIsSubmit(false);
@@ -75,23 +76,49 @@ export function UserContactForm() {
     inputElContainer.style.display = "block";
 
     const userContactDisplayer = document.querySelector(".userContactDisplay");
-    userContactDisplayer.style.display = "none";
+    userContactDisplayer.style.display = "block";
 
     //   <UserContactForm />;
     handleEditBtn();
   }
 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    if (!userName.match(/^[A-Za-z][A-Za-z0-9_ ]{7,29}$/)) {
+  //  userName.setCustomValidity("Please enter a valid name");
+
+   alert("Please enter a valid name");
+   return;
+ } else if (!email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)) {
+   alert("Please enter a valid email address(i.e thomas@gmail.com)");
+   return;
+ } 
+    if (mobileNumber && mobileNumber.length !== 10) {
+      alert(`You entered ${mobileNumber}, please check your value and try again`);
+      return
+ }
+ else if (!mobileNumber.match(/^\d{10}$/)) {
+   alert("Please enter a valid phone number.(i.e 0254361689)");
+   return;
+ }
+ hideInputContainer(); 
+  }
+
+
   return (
     <>
       <section className="userContact">
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="userContactInputEl"
-        >
+        <form onSubmit={handleFormSubmit} className="userContactInputEl">
+          {/* {!valueDisplay ? ( */}
+          <DisplayUserContact
+            userContact={userContact}
+            className="userContactDisplay"
+          />
+          {/* ) : null} */}
           <div className="inputContainer">
             <div className="fullNameContainer">
               <label htmlFor="userName" className="userNameLabel">
-                Full_Name
+                Full Name<span className="asterisk"> *</span>
               </label>
               <input
                 type="text"
@@ -100,12 +127,13 @@ export function UserContactForm() {
                 id="userName"
                 value={userName}
                 onChange={handleUserName}
+                required
               />
             </div>
 
             <div className="emailContainer">
               <label htmlFor="email" className="emailLabel">
-                Email
+                Email<span className="asterisk"> *</span>
               </label>
               <input
                 type="email"
@@ -114,12 +142,15 @@ export function UserContactForm() {
                 id="email"
                 value={email}
                 onChange={handleEmail}
+                pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/
+"
+                required
               />
             </div>
 
             <div className="mobileNumberContainer">
               <label htmlFor="mobileNumber" className="mobileNumberLabel">
-                Mobile_Number
+                Mobile Number<span className="asterisk"> *</span>
               </label>
               <input
                 type="number"
@@ -128,22 +159,16 @@ export function UserContactForm() {
                 id="mobileNumber"
                 value={mobileNumber}
                 onChange={handleMobileNumber}
+                required
               />
             </div>
           </div>
-
-          {valueDisplay ? (
-            <DisplayUserContact
-              userContact={userContact}
-              className="userContactDisplay"
-            />
-          ) : null}
 
           {!isSubmit ? (
             <Submit
               type="submit"
               className="userContactSubmit"
-              hideInputContainer={hideInputContainer}
+              hideInputContainer={handleFormSubmit}
             />
           ) : (
             <Edit

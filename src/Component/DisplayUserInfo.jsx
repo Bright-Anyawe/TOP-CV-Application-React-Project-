@@ -8,14 +8,14 @@ return (
   <div className={className}>
     <p>
       {" "}
-      <span>Name:</span> {userContact.PersonName}{" "}
+      <span> User Name:</span> {userContact.PersonName}{" "}
     </p>
     <p>
-      <span>Email:</span> {userContact.Email}{" "}
+      <span>Email Address:</span> {userContact.Email}{" "}
     </p>
     <p>
       {" "}
-      <span>Mobile Number:</span> {userContact.MobileNumber}{" "}
+      <span>Phone Number:</span> {userContact.MobileNumber}{" "}
     </p>
   </div>
 );
