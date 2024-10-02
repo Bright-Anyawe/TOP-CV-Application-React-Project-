@@ -44,23 +44,23 @@ export function UserContactForm() {
     setUserContact(personContact);
   }
 
-        function hideInputContainer(e) {
-          const inputElContainer = document.querySelector(".inputContainer");
-          inputElContainer.style.display = "none";
-          setIsSubmit(true);
-          
-          handleValueDisplay();
-          handleUserContactDisplay();
-          // resetInputField();
-          // handleFormSubmit()
+  function hideInputContainer(e) {
+    // handleFormSubmit(e)
+    const inputElContainer = document.querySelector(".inputContainer");
+    inputElContainer.style.display = "none";
+    setIsSubmit(true);
 
-          // handleEditButton();
-        }
 
-  function handleUserContactDisplay() {
+    DisplayValueOnPage();
+    DisplayUserContactOnPage()
+    
+    
+
+  }
+
+  function DisplayUserContactOnPage() {
     const userContactDisplayer = document.querySelector(".userContactDisplay");
     console.log(userContactDisplayer);
-    
 
     userContactDisplayer.style.display === "block"
       ? (userContactDisplayer.style.display = "none")
@@ -72,46 +72,59 @@ export function UserContactForm() {
     setValueDisplay(false);
   }
 
-  function handleValueDisplay() {
+  function DisplayValueOnPage() {
     setValueDisplay(true);
   }
 
   function handleUserContactDisplayForEdit() {
     const inputElContainer = document.querySelector(".inputContainer");
     inputElContainer.style.display = "block";
-// handleUserContactDisplay()
+    // handleUserContactDisplay()
     handleEditBtn();
 
     //   <UserContactForm />;
   }
 
-//   function handleFormSubmit(e) {
-//     e.preventDefault();
-//     if (!userName.match(/^[A-Za-z][A-Za-z0-9_ ]{7,29}$/)) {
-//   //  userName.setCustomValidity("Please enter a valid name");
+  function handleFormSubmit(e) {
+      // const userNameInput = document.querySelector(".userNameInputEl");
+      e.preventDefault();
 
-//    alert("Please enter a valid name");
-//    return;
-//  } else if (!email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)) {
-//    alert("Please enter a valid email address(i.e thomas@gmail.com)");
-//    return;
-//  } 
-//     if (mobileNumber && mobileNumber.length !== 10) {
-//       alert(`You entered ${mobileNumber.length} digits, the value should be 10 digits. try again`);
-//       return
-//  }
-//  else if (!mobileNumber.match(/^\d{10}$/)) {
-//    alert("Please enter a valid phone number.(i.e 0254361689)");
-//    return;
-//  }
-//   }
+    if (userName === '') {
+         return alert("Please enter a valid name");
 
+
+    }
+  else if (!userName.match(/^[A-Za-z][A-Za-z0-9_ ]{7,29}$/)) {
+    //  userNameInput.setCustomValidity("Please enter a valid name");
+
+     alert("Please enter a valid name");
+     return;
+    }
+   
+    if (!email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)) {
+     alert("Please enter a valid email address(i.e thomas@gmail.com)");
+     return;
+   }
+      if (mobileNumber && mobileNumber.length !== 10) {
+        alert(`You entered ${mobileNumber.length} digits, the value should be 10 digits. try again`);
+        return
+   }
+   else if (!mobileNumber.match(/^\d{10}$/)) {
+     alert("Please enter a valid phone number.(i.e 0254361689)");
+     return;
+    }
+    
+    hideInputContainer()
+    }
 
   return (
     <>
       <section className="userContact">
-        <form onSubmit={(e)=> e.preventDefault()} className="userContactInputEl">
-          {!valueDisplay ? (
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="userContactInputEl"
+        >
+          {valueDisplay ? (
             <DisplayUserContact
               userContact={userContact}
               className="userContactDisplay"
@@ -170,7 +183,7 @@ export function UserContactForm() {
             <Submit
               type="submit"
               className="userContactSubmit"
-              hideInputContainer={hideInputContainer}
+              handleFormSubmit={handleFormSubmit}
             />
           ) : (
             <Edit
