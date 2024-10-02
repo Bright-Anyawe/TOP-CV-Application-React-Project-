@@ -236,7 +236,7 @@
 
 
         100% {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
     }
 
@@ -412,7 +412,7 @@ body {
 
 
     100% {
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 }
 
@@ -508,7 +508,6 @@ p {
     font-weight: 700;
 }
 
-.JobResponsibilitiesContainer {}
 
 
 #Job_responsibilities {

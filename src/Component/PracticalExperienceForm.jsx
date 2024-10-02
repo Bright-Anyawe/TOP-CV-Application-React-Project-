@@ -7,8 +7,8 @@ export function PracticalExperienceForm() {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [jobResponsibilities, setJobResponsibilities] = useState("");
-  const [jobEntryDate, setJobEntryDate] = useState("2020_09_02");
-  const [jobExitDate, setJobExitDate] = useState("2023_10_02");
+  const [jobEntryDate, setJobEntryDate] = useState("");
+  const [jobExitDate, setJobExitDate] = useState("");
 
   const [practicalExperience, setPracticalExperience] = useState({
     CompanyName: companyName,
@@ -87,6 +87,8 @@ export function PracticalExperienceForm() {
     updateJobEntryDate,
     updateJobExitDate
   ) {
+
+
     const practicalExperienceDetail = {
       ...practicalExperience,
       CompanyName: updateCompanyName,
@@ -142,6 +144,14 @@ export function PracticalExperienceForm() {
     <>
       <section className="practicalExperience">
         <form onSubmit={(e) => e.preventDefault()}>
+
+          
+          {valueDisplay ? (
+            <DisplayPracticalExperience
+              practicalExperience={practicalExperience}
+              className="practicalExperienceEl"
+            />
+          ) : null}
           <div className="practicalExperienceInputContainer">
             <div className="NameOfCompanyContainer">
               <label htmlFor="NameOfCompany">
@@ -205,12 +215,6 @@ export function PracticalExperienceForm() {
             </div>
           </div>
 
-          {valueDisplay ? (
-            <DisplayPracticalExperience
-              practicalExperience={practicalExperience}
-              className="practicalExperienceEl"
-            />
-          ) : null}
           {!isSubmit ? (
             <Submit
               type="submit"

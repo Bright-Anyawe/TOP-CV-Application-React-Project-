@@ -16,7 +16,7 @@ function DisplayPracticalExperience({ practicalExperience, className }) {
       </p>
       <p>
         {" "}
-        <span>Job Entry Date</span>: {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
+        <span>Job Entry Date</span>: {<GetDate updateJobEntrytDate={practicalExperience.JobEntryDate} />}{" "}
       </p>
       <p>
         {" "}

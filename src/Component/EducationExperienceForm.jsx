@@ -3,6 +3,7 @@ import DisplayEducationExperience from "./DisplayEducationInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 
+
 export function EducationExperienceForm() {
   const [schoolName, setSchoolName] = useState("");
   const [studiesTitle, setStudiesTitle] = useState("");
@@ -97,24 +98,17 @@ updateStudiesDate    );
 
     handleEditBtn();
   }
-
-  // function handleEducationExperienceDisplay() {
-  //   const educationExperience = document.querySelector(
-  //     ".educationExperienceInputContainer"
-  //   );
-  //   educationExperience.style.display = "none";
-  // }
-
+  
   return (
     <>
       <section className="educationExperience">
         <form onSubmit={(e) => e.preventDefault()}>
-          {valueDisplay ? 
-          <DisplayEducationExperience
-            educationExperience={educationExperience}
-            className="educationExperienceEl"
-          />
-           : null}
+          {valueDisplay ? (
+            <DisplayEducationExperience
+              educationExperience={educationExperience}
+              className="educationExperienceEl"
+            />
+          ) : null}
           <div className="educationExperienceInputContainer">
             <div className="schoolNameContainer">
               <label htmlFor="schoolName">School Name</label>
@@ -140,7 +134,6 @@ updateStudiesDate    );
                 id="studiesTitle"
               />
             </div>
-           
             <label htmlFor="date">Select date of studies</label>
             <input
               type="date"

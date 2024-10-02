@@ -14,7 +14,7 @@ function DisplayEducationExperience({ educationExperience, className }) {
       </p>
       <p>
         {" "}
-        <span>Studies Title:</span> {<GetDate updateStudiesDate={educationExperience.StudiesDate} />}{" "}
+        <span>Studies Date:</span> {<GetDate updateStudiesDate={educationExperience.StudiesDate} />}{" "}
       </p>
     </div>
   );
