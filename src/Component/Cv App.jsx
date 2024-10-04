@@ -8,7 +8,7 @@ import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 function CvApp() {
   const {renderEducationExperience, schoolName, studiesTitle, studiesDate} = useEducationExperienceForm()
   const {contactFormRender, userName, email, mobileNumber} = useUserContactForm()
-  const [title, setTitle] = useState('Please fill your Cv form😒😒😒🤦‍♂️')
+  const [title, setTitle] = useState('Please fill your Cv form🤗')
 
 
   function handleTitleDisplay() {

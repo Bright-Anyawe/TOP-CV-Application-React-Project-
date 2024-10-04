@@ -357,7 +357,7 @@ header {
 
 .headText {
     padding-top: 15px;
-    text-decoration: underline;
+    text-decoration: none;
     text-underline-offset: 13px;
     animation: slide-in 1000ms linear;
     max-width: 400px;
@@ -413,6 +413,8 @@ input, textarea {
     padding: 0 10px;
     border-radius: 8px;
     border: none;
+        outline: 2px solid red;
+
     /* cursor: click; */
     transition: border-color 0.25s ease-in-out;
 }
@@ -422,7 +424,7 @@ input:focus-visible {
     border: 1px solid #f913f9;
 }
 
-input:valid {
+input:valid, textarea:valid {
     /* outline: 2px solid #f7733f; */
     border: 1px solid #13f91e;
 }

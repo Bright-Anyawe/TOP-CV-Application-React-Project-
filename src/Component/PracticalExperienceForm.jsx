@@ -32,33 +32,18 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
       jobEntryDate,
       jobExitDate
     );
-    console.log(schoolName, studiesTitle, studiesDate)
-    
     if(!schoolName || !studiesTitle || !studiesDate) {
               return alert("Please finish filling the  previous input before you continue😒🤦‍♂️")
 
-    } else if(!userName || !email || mobileNumber) {
+    } 
+    console.log(userName,email, mobileNumber)
+     if(!userName || !email || mobileNumber) {
                     return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }
     setCompanyName(updateCompanyName);
 
-    // {
-    //   SchoolName: schoolName,
-    //   StudiesTitle: studiesTitle,
-    //   StudiesDate: studiesDate,
-    // 
-
-    // console.log(educationExperience)
-    // if(educationExperience) {
-    //   Object.keys(educationExperience).map((value) => {if(value === null || value === '')
-    //     return alert("Enter the previous value before you continue")
- 
-    //  })
-    // }
-    // else {
-    //   return alert("Enter the previous value before you continue")
-    // }
+    
   }
 
   function handleJobPositon(e) {
@@ -68,7 +53,9 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     if(!schoolName || !studiesTitle || !studiesDate) {
               return alert("Please finish filling the  previous input before you continue")
 
-    }else if(!userName || !email || mobileNumber) {
+    }
+    console.log(userName, email)
+     if(!userName || !email || !mobileNumber) {
                     return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }
@@ -91,7 +78,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
               return alert("Please finish filling the  previous input before you continue")
 
     }
-    else if(!userName || !email || mobileNumber) {
+     if(!userName || !email || !mobileNumber) {
                     return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }
@@ -113,6 +100,11 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
               return alert("Please finish filling the  previous input before you continue")
 
     }
+
+    if(!userName || !email || !mobileNumber) {
+                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
+
+    }
     setJobEntryDate(updateJobEntryDate);
     handlePracticalExperience(
       companyName,
@@ -131,7 +123,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
               return alert("Please finish filling the  previous input before you continue")
 
     }
-    else if(!userName || !email || mobileNumber) {
+     if(!userName || !email || !mobileNumber) {
                     return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }

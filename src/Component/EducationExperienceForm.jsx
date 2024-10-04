@@ -107,13 +107,7 @@ updateStudiesDate    );
     handleEditBtn();
   }
 
-  // function dontRenderPracticalComp() {
-  //   console.log(educationExperience)
-
-
-    // console.log(educationExperience)
-
-  // }
+  
   
   return {
     schoolName, studiesTitle, studiesDate,
