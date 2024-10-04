@@ -2,8 +2,9 @@ import { useState } from "react";
 import DisplayPracticalExperience from "./DisplayPracticalInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
+import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
-export function PracticalExperienceForm() {
+export function PracticalExperienceForm({handleTitleDisplay}) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [jobResponsibilities, setJobResponsibilities] = useState("");
@@ -110,6 +111,7 @@ export function PracticalExperienceForm() {
     // resetInputField();
     setIsSubmit(true);
     handleValueDisplay();
+    handleTitleDisplay()
     // handleEditButton();
   }
 
@@ -140,8 +142,11 @@ export function PracticalExperienceForm() {
     handleEditBtn();
   }
 
+ 
+
   return (
     <>
+
       <section className="practicalExperience">
         <form onSubmit={(e) => e.preventDefault()}>
 
