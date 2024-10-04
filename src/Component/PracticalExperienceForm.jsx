@@ -37,10 +37,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
     } 
     console.log(userName,email, mobileNumber)
-     if(!userName || !email || mobileNumber) {
-                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
-
-    }
+   
     setCompanyName(updateCompanyName);
 
     
@@ -55,10 +52,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
     }
     console.log(userName, email)
-     if(!userName || !email || !mobileNumber) {
-                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
-
-    }
+     
     handlePracticalExperience(
       companyName,
       updateJobPosition,
@@ -78,10 +72,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
               return alert("Please finish filling the  previous input before you continue")
 
     }
-     if(!userName || !email || !mobileNumber) {
-                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
-
-    }
+    
     handlePracticalExperience(
       companyName,
       jobPosition,
@@ -101,10 +92,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
     }
 
-    if(!userName || !email || !mobileNumber) {
-                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
-    }
     setJobEntryDate(updateJobEntryDate);
     handlePracticalExperience(
       companyName,
@@ -123,10 +111,10 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
               return alert("Please finish filling the  previous input before you continue")
 
     }
-     if(!userName || !email || !mobileNumber) {
-                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
+    //  if(!userName || !email || !mobileNumber) {
+    //                 return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
-    }
+    // }
     setJobExitDate(updateJobExitDate);
     handlePracticalExperience(
       companyName,
