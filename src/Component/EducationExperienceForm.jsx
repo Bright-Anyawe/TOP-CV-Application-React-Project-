@@ -117,7 +117,7 @@ updateStudiesDate    );
   
   return {
     schoolName, studiesTitle, studiesDate,
-    render: (
+    renderEducationExperience: (
     <>
       <section className="educationExperience">
         <form onSubmit={(e) => e.preventDefault()}>

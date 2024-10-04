@@ -3,7 +3,7 @@ import DisplayUserContact from "./DisplayUserInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 
-export function UserContactForm() {
+export function useUserContactForm() {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setmobileNumber] = useState("");
@@ -84,7 +84,7 @@ export function UserContactForm() {
     //   <UserContactForm />;
   }
 
-  function handleFormSubmit(e) {
+  function handleFormValidation(e) {
       // const userNameInput = document.querySelector(".userNameInputEl");
       e.preventDefault();
 
@@ -116,7 +116,10 @@ export function UserContactForm() {
     hideInputContainer()
     }
 
-  return (
+  return {
+    userName, email, mobileNumber,
+
+    contactFormRender: (
     <>
       <section className="userContact">
         <form
@@ -182,7 +185,7 @@ export function UserContactForm() {
             <Submit
               type="submit"
               className="userContactSubmit"
-              handleFormSubmit={handleFormSubmit}
+              hideInputContainer={handleFormValidation}
             />
           ) : (
             <Edit
@@ -194,5 +197,5 @@ export function UserContactForm() {
         </form>
       </section>
     </>
-  );
+  )};
 }

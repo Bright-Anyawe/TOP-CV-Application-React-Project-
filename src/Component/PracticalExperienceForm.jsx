@@ -4,7 +4,7 @@ import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
-export function PracticalExperienceForm({handleTitleDisplay, schoolName, studiesTitle, studiesDate}) {
+export function PracticalExperienceForm({handleTitleDisplay, schoolName, studiesTitle, studiesDate, userName, email, mobileNumber}) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [jobResponsibilities, setJobResponsibilities] = useState("");
@@ -35,7 +35,10 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     console.log(schoolName, studiesTitle, studiesDate)
     
     if(!schoolName || !studiesTitle || !studiesDate) {
-              return alert("Please finish filling the  previous input before you continue")
+              return alert("Please finish filling the  previous input before you continue😒🤦‍♂️")
+
+    } else if(!userName || !email || mobileNumber) {
+                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }
     setCompanyName(updateCompanyName);
@@ -65,6 +68,9 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     if(!schoolName || !studiesTitle || !studiesDate) {
               return alert("Please finish filling the  previous input before you continue")
 
+    }else if(!userName || !email || mobileNumber) {
+                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
+
     }
     handlePracticalExperience(
       companyName,
@@ -83,6 +89,10 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     
     if(!schoolName || !studiesTitle || !studiesDate) {
               return alert("Please finish filling the  previous input before you continue")
+
+    }
+    else if(!userName || !email || mobileNumber) {
+                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }
     handlePracticalExperience(
@@ -119,6 +129,10 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     
     if(!schoolName || !studiesTitle || !studiesDate) {
               return alert("Please finish filling the  previous input before you continue")
+
+    }
+    else if(!userName || !email || mobileNumber) {
+                    return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
 
     }
     setJobExitDate(updateJobExitDate);
