@@ -45,7 +45,6 @@ export function UserContactForm() {
   }
 
   function hideInputContainer(e) {
-    // handleFormSubmit(e)
     const inputElContainer = document.querySelector(".inputContainer");
     inputElContainer.style.display = "none";
     setIsSubmit(true);
@@ -101,7 +100,7 @@ export function UserContactForm() {
      return;
     }
    
-    if (!email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)) {
+    if (!email.match(/^[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+(\.[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+)*@[a-zA-Z0-9_][\-a-zA-Z0-9_]*(\.[\-a-zA-Z0-9_]+)*\.[cC][oO][mM](:[0-9]{1,5})?$/)) {
      alert("Please enter a valid email address(i.e thomas@gmail.com)");
      return;
    }
@@ -157,8 +156,8 @@ export function UserContactForm() {
                 id="email"
                 value={email}
                 onChange={handleEmail}
-                pattern="/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/
-"
+                pattern="[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+(\.[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+)*@[a-zA-Z0-9_][\-a-zA-Z0-9_]*(\.[\-a-zA-Z0-9_]+)*\.[cC][oO][mM](:[0-9]{1,5})?"
+
                 required
               />
             </div>

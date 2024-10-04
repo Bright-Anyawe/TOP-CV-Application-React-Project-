@@ -4,15 +4,15 @@ import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 
 
-export function EducationExperienceForm() {
+export function useEducationExperienceForm() {
   const [schoolName, setSchoolName] = useState("");
   const [studiesTitle, setStudiesTitle] = useState("");
   const [studiesDate, setStudiesDate] = useState("");
 
   const [educationExperience, setEducationExperience] = useState({
-    SchoolName: schoolName,
-    StudiesTitle: studiesTitle,
-    StudiesDate: studiesDate,
+    SchoolName: schoolName || '',
+    StudiesTitle: studiesTitle || '',
+    StudiesDate: studiesDate || '',
   });
 
 
@@ -47,12 +47,19 @@ updateStudiesDate    );
     updateStudiesTitle,
     updateStudiesDate
   ) {
+
+
+    console.log(updateSchoolName)
+    console.log(updateStudiesTitle)
+    console.log(updateStudiesDate)
+
     const educationExperienceDetail = {
       ...educationExperience,
       SchoolName: updateSchoolName,
       StudiesTitle: updateStudiesTitle,
       StudiesDate: updateStudiesDate,
     };
+    
     setEducationExperience(educationExperienceDetail);
   }
   
@@ -67,6 +74,7 @@ updateStudiesDate    );
     // resetInputField();
     setIsSubmit(true);
         handleValueDisplay();
+  //  dontRenderPracticalComp()
 
     // handleEditButton();
   }
@@ -98,8 +106,18 @@ updateStudiesDate    );
 
     handleEditBtn();
   }
+
+  // function dontRenderPracticalComp() {
+  //   console.log(educationExperience)
+
+
+    // console.log(educationExperience)
+
+  // }
   
-  return (
+  return {
+    schoolName, studiesTitle, studiesDate,
+    render: (
     <>
       <section className="educationExperience">
         <form onSubmit={(e) => e.preventDefault()}>
@@ -144,6 +162,7 @@ updateStudiesDate    );
               id="date"
             />
           </div>
+          
 
           {!isSubmit ? (
             <Submit
@@ -160,7 +179,8 @@ updateStudiesDate    );
             />
           )}
         </form>
+    
       </section>
     </>
-  );
+  )};
 }

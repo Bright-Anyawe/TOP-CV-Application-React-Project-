@@ -4,7 +4,7 @@ import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
-export function PracticalExperienceForm({handleTitleDisplay}) {
+export function PracticalExperienceForm({handleTitleDisplay, schoolName, studiesTitle, studiesDate}) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [jobResponsibilities, setJobResponsibilities] = useState("");
@@ -24,7 +24,7 @@ export function PracticalExperienceForm({handleTitleDisplay}) {
 
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
-    setCompanyName(updateCompanyName);
+    
     handlePracticalExperience(
       updateCompanyName,
       jobPosition,
@@ -32,11 +32,40 @@ export function PracticalExperienceForm({handleTitleDisplay}) {
       jobEntryDate,
       jobExitDate
     );
+    console.log(schoolName, studiesTitle, studiesDate)
+    
+    if(!schoolName || !studiesTitle || !studiesDate) {
+              return alert("Please finish filling the  previous input before you continue")
+
+    }
+    setCompanyName(updateCompanyName);
+
+    // {
+    //   SchoolName: schoolName,
+    //   StudiesTitle: studiesTitle,
+    //   StudiesDate: studiesDate,
+    // 
+
+    // console.log(educationExperience)
+    // if(educationExperience) {
+    //   Object.keys(educationExperience).map((value) => {if(value === null || value === '')
+    //     return alert("Enter the previous value before you continue")
+ 
+    //  })
+    // }
+    // else {
+    //   return alert("Enter the previous value before you continue")
+    // }
   }
 
   function handleJobPositon(e) {
     const updateJobPosition = e.target.value;
-    setJobPosition(updateJobPosition);
+
+
+    if(!schoolName || !studiesTitle || !studiesDate) {
+              return alert("Please finish filling the  previous input before you continue")
+
+    }
     handlePracticalExperience(
       companyName,
       updateJobPosition,
@@ -44,11 +73,18 @@ export function PracticalExperienceForm({handleTitleDisplay}) {
       jobEntryDate,
       jobExitDate
     );
+        setJobPosition(updateJobPosition);
+
   }
 
   function handleJobResponsibility(e) {
     const updateJobResponsibilities = e.target.value;
-    setJobResponsibilities(updateJobResponsibilities);
+
+    
+    if(!schoolName || !studiesTitle || !studiesDate) {
+              return alert("Please finish filling the  previous input before you continue")
+
+    }
     handlePracticalExperience(
       companyName,
       jobPosition,
@@ -56,10 +92,17 @@ export function PracticalExperienceForm({handleTitleDisplay}) {
       jobEntryDate,
       jobExitDate
     );
+    setJobResponsibilities(updateJobResponsibilities);
   }
 
   function handleJobEntryDate(e) {
     const updateJobEntryDate = e.target.value;
+
+    
+    if(!schoolName || !studiesTitle || !studiesDate) {
+              return alert("Please finish filling the  previous input before you continue")
+
+    }
     setJobEntryDate(updateJobEntryDate);
     handlePracticalExperience(
       companyName,
@@ -72,6 +115,12 @@ export function PracticalExperienceForm({handleTitleDisplay}) {
 
   function handleJobExitDate(e) {
     const updateJobExitDate = e.target.value;
+
+    
+    if(!schoolName || !studiesTitle || !studiesDate) {
+              return alert("Please finish filling the  previous input before you continue")
+
+    }
     setJobExitDate(updateJobExitDate);
     handlePracticalExperience(
       companyName,
@@ -186,11 +235,11 @@ export function PracticalExperienceForm({handleTitleDisplay}) {
             <div className="JobResponsibilitiesContainer">
               {" "}
               <label htmlFor="Job_responsibilities">
-                Main_Responsibilities At Work
+                Main responsibilities at work
               </label>
               <textarea
                 type="text"
-                placeholder="Enter Main responsibilities of the Jobs"
+                placeholder="Enter your main responsibilities in the job"
                 value={jobResponsibilities}
                 onChange={handleJobResponsibility}
                 id="Job_responsibilities"
