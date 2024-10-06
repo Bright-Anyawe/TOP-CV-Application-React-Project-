@@ -21,10 +21,17 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [valueDisplay, setValueDisplay] = useState(false);
+  const [companyNameError, setCompanyNameError] = useState('')
+  const [jobPositionError, setJobPositionError] = useState('')
+  const [jobResponsibilitiesError,setJobResponsibilitiesError] = useState('')
+  const [jobEntryDateError,setJobEntryDateError] = useState('')
+  const [jobExitDateError,setJobExitDateError] = useState('')
+
+
 
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
-    
+    setCompanyNameError('')
     handlePracticalExperience(
       updateCompanyName,
       jobPosition,
@@ -33,8 +40,13 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
       jobExitDate
     );
     if(!schoolName || !studiesTitle || !studiesDate) {
-              return alert("Please finish filling the  previous input before you continue😒🤦‍♂️")
 
+      setCompanyNameError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
+
+    } 
+    else if(schoolName || studiesTitle || studiesDate) {
+
+      setCompanyNameError('')
     } 
     console.log(userName,email, mobileNumber)
    
@@ -48,9 +60,13 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
 
     if(!schoolName || !studiesTitle || !studiesDate) {
-              return alert("Please finish filling the  previous input before you continue")
+      setJobResponsibilitiesError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
 
     }
+    else if(schoolName || studiesTitle || studiesDate) {
+
+      setJobEntryDateError('')
+    } 
     console.log(userName, email)
      
     handlePracticalExperience(
@@ -69,9 +85,13 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
     
     if(!schoolName || !studiesTitle || !studiesDate) {
-              return alert("Please finish filling the  previous input before you continue")
+      setJobPositionError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
 
     }
+    else if(schoolName || studiesTitle || studiesDate) {
+
+      setJobResponsibilitiesError('')
+    } 
     
     handlePracticalExperience(
       companyName,
@@ -88,9 +108,13 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
     
     if(!schoolName || !studiesTitle || !studiesDate) {
-              return alert("Please finish filling the  previous input before you continue")
+      setJobEntryDateError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
 
     }
+    else if(schoolName || studiesTitle || studiesDate) {
+
+      setJobEntryDateError('')
+    } 
 
 
     setJobEntryDate(updateJobEntryDate);
@@ -108,13 +132,14 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
 
     
     if(!schoolName || !studiesTitle || !studiesDate) {
-              return alert("Please finish filling the  previous input before you continue")
+      setJobExitDateError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
 
-    }
-    //  if(!userName || !email || !mobileNumber) {
-    //                 return alert("Please finish filling the  user contact section before you continue😒😒🤦‍♂️")
+    } else
 
-    // }
+    if(schoolName || studiesTitle || studiesDate) {
+
+      setJobExitDateError('')
+    } 
     setJobExitDate(updateJobExitDate);
     handlePracticalExperience(
       companyName,
@@ -145,10 +170,22 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
   }
 
   function hideInputContainer() {
+
+    if(!schoolName || !studiesTitle || !studiesDate) {
+    return  setJobExitDateError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
+
+    } else
+
+    if(schoolName || studiesTitle || studiesDate) {
+
+     return setJobExitDateError('')
+    } 
     const inputElContainer = document.querySelector(
       ".practicalExperienceInputContainer"
     );
     inputElContainer.style.display = "none";
+
+    
 
     // handleEducationExperienceDisplay();
     // resetInputField();
@@ -213,6 +250,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleCompanyName}
                 id="NameOfCompany"
               />
+              <span className="companyNameError"> {companyNameError} </span>
             </div>
 
             <div className="PosInJobContainer">
@@ -224,6 +262,8 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobPositon}
                 id="PosInJob"
               />
+                            <span className="jobPositionError"> {jobPositionError} </span>
+
             </div>
 
             <div className="JobResponsibilitiesContainer">
@@ -238,6 +278,8 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobResponsibility}
                 id="Job_responsibilities"
               />
+                            <span className="jobResponsibilitiesError"> {jobResponsibilitiesError} </span>
+
             </div>
 
             <div className="jobEntryDateContainer">
@@ -249,6 +291,8 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobEntryDate}
                 id="jobEntryDate"
               />
+                            <span className="jobEntryDateError"> {jobEntryDateError} </span>
+
             </div>
 
             <div className="jobExitDateContainer">
@@ -260,6 +304,8 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobExitDate}
                 id="jobExitDate"
               />
+                            <span className="jobExitDateError"> {jobExitDateError} </span>
+
             </div>
           </div>
 

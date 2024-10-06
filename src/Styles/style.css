@@ -258,16 +258,9 @@
         /* outline: 1px solid #3ce041; */
         border: 1px solid #f913f9;
     }
+   
 
-    input:valid {
-        /* outline: 2px solid #f7733f; */
-        border: 1px solid #13f91e;
-    }
-
-    input:invalid {
-        outline: 2px solid #f7733f;
-        border: 1px solid #f93513;
-    }
+ 
 
     main ::placeholder {
         font-size: 1.1rem;
@@ -374,7 +367,9 @@ header {
         transform: translateX(0%);
     }
 }
- .userNameError, .emailError, .phoneNumberError {
+ .userNameError, .emailError, .phoneNumberError, 
+ .companyNameError, .jobPositionError,
+  .jobResponsibilitiesError, .jobEntryDateError, .jobExitDateError {
         display: block;
         background-color:red;
         font-weight: 600;
@@ -420,7 +415,6 @@ input, textarea {
     padding: 0 10px;
     border-radius: 8px;
     border: none;
-        outline: 2px solid red;
 
     /* cursor: click; */
     transition: border-color 0.25s ease-in-out;
@@ -431,17 +425,10 @@ input:focus-visible {
     border: 1px solid #f913f9;
 }
 
-input:valid, textarea:valid {
-    /* outline: 2px solid #f7733f; */
-    border: 1px solid #13f91e;
-}
-
-input:invalid, textarea:invalid {
-    outline: 2px solid red;
-}
-
 ::placeholder {
     font-size: 1.3rem;
+    padding-top: 20px;
+    color: rgb(180, 173, 173);
 
 }
 
