@@ -55,6 +55,8 @@
     }
 
   
+
+  
     div.fullNameContainer {
         /* display: flex; */
         /* flex-direction: column; */
@@ -372,6 +374,11 @@ header {
         transform: translateX(0%);
     }
 }
+ .userNameError, .emailError, .phoneNumberError {
+        display: block;
+        background-color:red;
+        font-weight: 600;
+    }
 
 .userContact form, .educationExperience form {
     padding-bottom: 45px;

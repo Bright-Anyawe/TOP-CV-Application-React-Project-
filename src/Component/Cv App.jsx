@@ -17,11 +17,11 @@ function CvApp() {
 
   return (
 
-    <>
+    <>  
       {/* <h1 className="headText">Fill out your Cv Form</h1> */}
       <HandleHeaderInfo title={title} />
-{      contactFormRender
-}      {renderEducationExperience }
+      {contactFormRender}
+     {renderEducationExperience }
       <PracticalExperienceForm handleTitleDisplay={handleTitleDisplay} {...{schoolName, studiesTitle, studiesDate, userName, email, mobileNumber}} />
     </>
   );

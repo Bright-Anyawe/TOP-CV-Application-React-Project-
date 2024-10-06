@@ -7,6 +7,10 @@ export function useUserContactForm() {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setmobileNumber] = useState("");
+  const [error, setError] = useState('')
+  const [emailError, SetEmailError] = useState('')
+  const [phoneNumberError, setPhoneNumberError] = useState('')
+
 
   const [userContact, setUserContact] = useState({
     PersonName: userName,
@@ -19,18 +23,21 @@ export function useUserContactForm() {
   function handleUserName(e) {
     const updateUserName = e.target.value;
     setuserName(updateUserName);
+    setError('')
     handleUserContact(updateUserName, email, mobileNumber);
   }
 
   function handleEmail(e) {
     const updateEmail = e.target.value;
     setEmail(updateEmail);
+    SetEmailError('')
     handleUserContact(userName, updateEmail, mobileNumber);
   }
 
   function handleMobileNumber(e) {
     const updateMobileNumber = e.target.value;
     setmobileNumber(updateMobileNumber);
+    setPhoneNumberError('')
     handleUserContact(userName, email, updateMobileNumber);
   }
 
@@ -89,23 +96,24 @@ export function useUserContactForm() {
       e.preventDefault();
 
     if (userName === '') {
-         return alert("Please enter a valid name");
 
+        return  setError(`Please enter a valid name!`)
 
     }
-  else if (!userName.match(/^[A-Za-z][A-Za-z0-9_ ]{7,29}$/)) {
-    //  userNameInput.setCustomValidity("Please enter a valid name");
-
-     alert("Please enter a valid name");
-     return;
+  else if (!userName.match(/^[A-Za-z][A-Za-z0-9_ ]{3,29}$/)) {
+        return  setError(`Please enter a valid name, you've entered *${userName}*, enter your full name`)
+     
     }
    
     if (!email.match(/^[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+(\.[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+)*@[a-zA-Z0-9_][\-a-zA-Z0-9_]*(\.[\-a-zA-Z0-9_]+)*\.[cC][oO][mM](:[0-9]{1,5})?$/)) {
-     alert("Please enter a valid email address(i.e thomas@gmail.com)");
+   
+      SetEmailError("Please enter a valid email address(i.e thomas@gmail.com)")
      return;
    }
       if (mobileNumber && mobileNumber.length !== 10) {
-        alert(`You entered ${mobileNumber.length} digits, the value should be 10 digits. try again`);
+
+        setPhoneNumberError( `You entered ${mobileNumber.length} digits, the value should be 10 digits. try again` )
+
         return
    }
    else if (!mobileNumber.match(/^\d{10}$/)) {
@@ -146,6 +154,8 @@ export function useUserContactForm() {
                 onChange={handleUserName}
                 required
               />
+                            <span className="userNameError">{error}</span>
+
             </div>
 
             <div className="emailContainer">
@@ -163,6 +173,8 @@ export function useUserContactForm() {
 
                 required
               />
+                                          <span className="emailError">{emailError}</span>
+
             </div>
 
             <div className="mobileNumberContainer">
@@ -178,6 +190,7 @@ export function useUserContactForm() {
                 onChange={handleMobileNumber}
                 required
               />
+              <span className="phoneNumberError">{phoneNumberError}</span>
             </div>
           </div>
 
