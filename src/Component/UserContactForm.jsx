@@ -48,6 +48,8 @@ export function useUserContactForm() {
       Email: updateEmail,
       MobileNumber: updateMobileNumber,
     };
+  localStorage.setItem("userContact", JSON.stringify(personContact));
+
     setUserContact(personContact);
   }
 

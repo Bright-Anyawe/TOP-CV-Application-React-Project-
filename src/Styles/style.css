@@ -70,6 +70,16 @@
         padding-bottom: 30px;
     }
 
+    span.userNameError, span.emailError, span.phoneNumberError, 
+ span.companyNameError, span.jobPositionError,
+  span.jobResponsibilitiesError, span.jobEntryDateError, span.jobExitDateError {
+        display: block;
+        background-color:red;
+        font-weight: 600;
+        max-width: 317px;
+    }
+
+
     div label {
         font-size: 1.1rem;
         font-weight: 600;
@@ -102,12 +112,12 @@
 
     input:valid {
         /* outline: 2px solid #f7733f; */
-        border: 1px solid #13f91e;
+        border: 1px solid white;
     }
 
     input:invalid {
-        outline: 2px solid #f7733f;
-        border: 1px solid #f93513;
+        outline: 2px solid white;
+        border: 1px solid white;
     }
 
     main ::placeholder {
