@@ -3,22 +3,35 @@ import DisplayEducationExperience from "./DisplayEducationInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 
-
 export function useEducationExperienceForm() {
   const [schoolName, setSchoolName] = useState("");
   const [studiesTitle, setStudiesTitle] = useState("");
   const [studiesDate, setStudiesDate] = useState("");
 
   const [educationExperience, setEducationExperience] = useState({
-    SchoolName: schoolName || '',
-    StudiesTitle: studiesTitle || '',
-    StudiesDate: studiesDate || '',
+    SchoolName: schoolName || "",
+    StudiesTitle: studiesTitle || "",
+    StudiesDate: studiesDate || "",
   });
-
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [valueDisplay, setValueDisplay] = useState(false);
 
+      window.onload = () => {
+       if(Object.keys(personContact).length !== 0) {
+     
+      setIsSubmit(true)
+      setValueDisplay(true)
+      hideInputContainer()
+
+
+     } else {
+setIsSubmit(true);
+setValueDisplay(true);
+     }
+
+     return; 
+      };
 
   function handleSchoolName(e) {
     const updateSchoolName = e.target.value;
@@ -35,11 +48,7 @@ export function useEducationExperienceForm() {
   function handleStudiesDate(e) {
     const updateStudiesDate = e.target.value;
     setStudiesDate(updateStudiesDate);
-    handleEducationExperience(
-      schoolName,
-      studiesTitle,
-updateStudiesDate    );
-
+    handleEducationExperience(schoolName, studiesTitle, updateStudiesDate);
   }
 
   function handleEducationExperience(
@@ -47,11 +56,9 @@ updateStudiesDate    );
     updateStudiesTitle,
     updateStudiesDate
   ) {
-
-
-    console.log(updateSchoolName)
-    console.log(updateStudiesTitle)
-    console.log(updateStudiesDate)
+    console.log(updateSchoolName);
+    console.log(updateStudiesTitle);
+    console.log(updateStudiesDate);
 
     const educationExperienceDetail = {
       ...educationExperience,
@@ -59,27 +66,25 @@ updateStudiesDate    );
       StudiesTitle: updateStudiesTitle,
       StudiesDate: updateStudiesDate,
     };
-    
+
     setEducationExperience(educationExperienceDetail);
   }
-  
+
   function hideInputContainer() {
     const inputElContainer = document.querySelector(
       ".educationExperienceInputContainer"
     );
     inputElContainer.style.display = "none";
 
-  
-  // handleEducationExperienceDisplay();
+    // handleEducationExperienceDisplay();
     // resetInputField();
     setIsSubmit(true);
-        handleValueDisplay();
-  //  dontRenderPracticalComp()
+    handleValueDisplay();
+    //  dontRenderPracticalComp()
 
     // handleEditButton();
   }
 
-    
   function handleEditBtn() {
     setIsSubmit(false);
     setValueDisplay(false);
@@ -107,74 +112,73 @@ updateStudiesDate    );
     handleEditBtn();
   }
 
-  
-  
   return {
-    schoolName, studiesTitle, studiesDate,
+    schoolName,
+    studiesTitle,
+    studiesDate,
     renderEducationExperience: (
-    <>
-      <section className="educationExperience">
-        <form onSubmit={(e) => e.preventDefault()}>
-          {valueDisplay ? (
-            <DisplayEducationExperience
-              educationExperience={educationExperience}
-              className="educationExperienceEl"
-            />
-          ) : null}
-          <div className="educationExperienceInputContainer">
-            <div className="schoolNameContainer">
-              <label htmlFor="schoolName">School Name</label>
+      <>
+        <section className="educationExperience">
+          <form onSubmit={(e) => e.preventDefault()}>
+            {valueDisplay ? (
+              <DisplayEducationExperience
+                educationExperience={educationExperience}
+                className="educationExperienceEl"
+              />
+            ) : null}
+            <div className="educationExperienceInputContainer">
+              <div className="schoolNameContainer">
+                <label htmlFor="schoolName">School Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your School Name"
+                  value={schoolName}
+                  className="SchoolName"
+                  id="schoolName"
+                  onChange={handleSchoolName}
+                />
+              </div>
+
+              <div className="studiesTitleContainer">
+                {" "}
+                <label htmlFor="studiesTitle">Studies Title</label>
+                <input
+                  type="text"
+                  placeholder="Enter studies title"
+                  value={studiesTitle}
+                  onChange={handleStudiesTitle}
+                  className="studiesTitle"
+                  id="studiesTitle"
+                />
+              </div>
+              <label htmlFor="date">Select date of studies</label>
               <input
-                type="text"
-                placeholder="Enter your School Name"
-                value={schoolName}
-                className="SchoolName"
-                id="schoolName"
-                onChange={handleSchoolName}
+                type="date"
+                placeholder="Select date of studies"
+                value={studiesDate}
+                onChange={handleStudiesDate}
+                className="date"
+                id="date"
               />
             </div>
 
-            <div className="studiesTitleContainer">
-              {" "}
-              <label htmlFor="studiesTitle">Studies Title</label>
-              <input
-                type="text"
-                placeholder="Enter studies title"
-                value={studiesTitle}
-                onChange={handleStudiesTitle}
-                className="studiesTitle"
-                id="studiesTitle"
+            {!isSubmit ? (
+              <Submit
+                type="submit"
+                className="submit"
+                hideInputContainer={hideInputContainer}
               />
-            </div>
-            <label htmlFor="date">Select date of studies</label>
-            <input
-              type="date"
-              placeholder="Select date of studies"
-              value={studiesDate}
-              onChange={handleStudiesDate}
-              className="date"
-              id="date"
-            />
-          </div>
-          
-
-          {!isSubmit ? (
-            <Submit
-              type="submit"
-              className="submit"
-              hideInputContainer={hideInputContainer}
-            />
-          ) : (
-            <Edit
-              className="contactDisplay"
-              handleUserContactDisplayForEdit={
-                handleEducationExperienceDisplayForEdit
-              }
-            />
-          )}
-        </form>
-    
-      </section>
-    </>
-  )};
+            ) : (
+              <Edit
+                className="contactDisplay"
+                handleUserContactDisplayForEdit={
+                  handleEducationExperienceDisplayForEdit
+                }
+              />
+            )}
+          </form>
+        </section>
+      </>
+    ),
+  };
 }

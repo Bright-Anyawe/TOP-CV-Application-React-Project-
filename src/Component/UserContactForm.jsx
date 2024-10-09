@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DisplayUserContact from "./DisplayUserInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
@@ -20,6 +20,27 @@ export function useUserContactForm() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [valueDisplay, setValueDisplay] = useState(false);
 
+  //  useEffect(() => {
+            let personContact = JSON.parse(localStorage.getItem('userContact')) 
+            console.log(personContact)
+    // This function will run when the component is first loaded
+
+     window.onload = () => {
+       if(Object.keys(personContact).length !== 0) {
+     
+      setIsSubmit(true)
+      setValueDisplay(true)
+      hideInputContainer()
+
+
+     } else {
+setIsSubmit(true);
+setValueDisplay(true);
+     }
+
+     return; 
+      };
+ 
   function handleUserName(e) {
     const updateUserName = e.target.value;
     setuserName(updateUserName);
@@ -60,13 +81,13 @@ export function useUserContactForm() {
 
 
     DisplayValueOnPage();
-    DisplayUserContactOnPage()
+    displayUserContactOnPage()
     
     
 
   }
 
-  function DisplayUserContactOnPage() {
+  function displayUserContactOnPage() {
     const userContactDisplayer = document.querySelector(".userContactDisplay");
     console.log(userContactDisplayer);
 
