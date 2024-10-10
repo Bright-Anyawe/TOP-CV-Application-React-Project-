@@ -1,6 +1,10 @@
 import { GetDate } from "./GetDate";
 
-function DisplayPracticalExperience({ practicalExperience, className }) {
+function DisplayPracticalExperience({ className }) {
+let practicalExperience = JSON.parse(
+  localStorage.getItem("practicalExperience")
+);
+
   return (
     <div className={className}>
       <p>

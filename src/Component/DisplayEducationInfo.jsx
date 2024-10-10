@@ -1,20 +1,22 @@
 import { GetDate } from "./GetDate";
-function DisplayEducationExperience({ educationExperience, className }) {
-  //     const contactDisplay = document.querySelector(`.${className}`);
-  // contactDisplay.style.display = "none";
+function DisplayEducationExperience({ className }) {
+  let personEducationExperience = JSON.parse(
+    localStorage.getItem("educationExperience")
+  );
 
   return (
     <div className={className}>
       <p>
         {" "}
-        <span>School Name:</span> {educationExperience.SchoolName}{" "}
+        <span>School Name:</span> {personEducationExperience.SchoolName}{" "}
       </p>
       <p>
-        <span>Studies Title:</span> {educationExperience.StudiesTitle}{" "}
+        <span>Studies Title:</span> {personEducationExperience.StudiesTitle}{" "}
       </p>
       <p>
         {" "}
-        <span>Studies Date:</span> {<GetDate updateStudiesDate={educationExperience.StudiesDate} />}{" "}
+        <span>Studies Date:</span>{" "}
+        {<GetDate updateStudiesDate={personEducationExperience.StudiesDate} />}{" "}
       </p>
     </div>
   );

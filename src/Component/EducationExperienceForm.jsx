@@ -4,6 +4,7 @@ import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 
 export function useEducationExperienceForm() {
+  
   const [schoolName, setSchoolName] = useState("");
   const [studiesTitle, setStudiesTitle] = useState("");
   const [studiesDate, setStudiesDate] = useState("");
@@ -14,24 +15,8 @@ export function useEducationExperienceForm() {
     StudiesDate: studiesDate || "",
   });
 
-  const [isSubmit, setIsSubmit] = useState(false);
-  const [valueDisplay, setValueDisplay] = useState(false);
-
-      window.onload = () => {
-       if(Object.keys(personContact).length !== 0) {
-     
-      setIsSubmit(true)
-      setValueDisplay(true)
-      hideInputContainer()
-
-
-     } else {
-setIsSubmit(true);
-setValueDisplay(true);
-     }
-
-     return; 
-      };
+  const [isSubmitForEdu, setIsSubmitForEdu] = useState(false);
+  const [eduValueDisplay, setEduValueDisplay] = useState(false);
 
   function handleSchoolName(e) {
     const updateSchoolName = e.target.value;
@@ -67,31 +52,32 @@ setValueDisplay(true);
       StudiesDate: updateStudiesDate,
     };
 
+    localStorage.setItem(
+      "educationExperience",
+      JSON.stringify(educationExperienceDetail)
+    );
     setEducationExperience(educationExperienceDetail);
   }
 
-  function hideInputContainer() {
+  function hideInputContainerForEdu() {
     const inputElContainer = document.querySelector(
       ".educationExperienceInputContainer"
     );
+    console.log(inputElContainer);
+
     inputElContainer.style.display = "none";
 
-    // handleEducationExperienceDisplay();
-    // resetInputField();
-    setIsSubmit(true);
+    setIsSubmitForEdu(true);
     handleValueDisplay();
-    //  dontRenderPracticalComp()
-
-    // handleEditButton();
   }
 
   function handleEditBtn() {
-    setIsSubmit(false);
-    setValueDisplay(false);
+    setIsSubmitForEdu(false);
+    setEduValueDisplay(false);
   }
 
   function handleValueDisplay() {
-    setValueDisplay(true);
+    setEduValueDisplay(true);
   }
 
   function handleEducationExperienceDisplayForEdit() {
@@ -100,15 +86,6 @@ setValueDisplay(true);
     );
     inputElContainer.style.display = "block";
 
-    const educationExperienceDisplayer = document.querySelector(
-      ".educationExperienceEl"
-    );
-    console.log(educationExperienceDisplayer);
-
-    educationExperienceDisplayer.style.display === "block"
-      ? (educationExperienceDisplayer.style.display = "none")
-      : (educationExperienceDisplayer.style.display = "block");
-
     handleEditBtn();
   }
 
@@ -116,11 +93,14 @@ setValueDisplay(true);
     schoolName,
     studiesTitle,
     studiesDate,
+    setIsSubmitForEdu,
+    setEduValueDisplay,
+    hideInputContainerForEdu,
     renderEducationExperience: (
       <>
         <section className="educationExperience">
           <form onSubmit={(e) => e.preventDefault()}>
-            {valueDisplay ? (
+            {eduValueDisplay ? (
               <DisplayEducationExperience
                 educationExperience={educationExperience}
                 className="educationExperienceEl"
@@ -162,11 +142,11 @@ setValueDisplay(true);
               />
             </div>
 
-            {!isSubmit ? (
+            {!isSubmitForEdu ? (
               <Submit
                 type="submit"
                 className="submit"
-                hideInputContainer={hideInputContainer}
+                hideInputContainer={hideInputContainerForEdu}
               />
             ) : (
               <Edit

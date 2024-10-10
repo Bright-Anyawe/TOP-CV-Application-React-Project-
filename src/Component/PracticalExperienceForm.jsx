@@ -4,7 +4,19 @@ import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
 import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
-export function PracticalExperienceForm({handleTitleDisplay, schoolName, studiesTitle, studiesDate, userName, email, mobileNumber}) {
+export function PracticalExperienceForm({
+  handleTitleDisplay,
+  schoolName,
+  studiesTitle,
+  studiesDate,
+  userName,
+  email,
+  mobileNumber,
+  isSubmitForPractical,
+  valueDisplayForPractical,
+  setIsSubmitForPractical,
+  setValueDisplayForPractical,
+}) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [jobResponsibilities, setJobResponsibilities] = useState("");
@@ -19,19 +31,15 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     JobExitDate: jobExitDate,
   });
 
-  const [isSubmit, setIsSubmit] = useState(false);
-  const [valueDisplay, setValueDisplay] = useState(false);
-  const [companyNameError, setCompanyNameError] = useState('')
-  const [jobPositionError, setJobPositionError] = useState('')
-  const [jobResponsibilitiesError,setJobResponsibilitiesError] = useState('')
-  const [jobEntryDateError,setJobEntryDateError] = useState('')
-  const [jobExitDateError,setJobExitDateError] = useState('')
-
-
+  const [companyNameError, setCompanyNameError] = useState("");
+  const [jobPositionError, setJobPositionError] = useState("");
+  const [jobResponsibilitiesError, setJobResponsibilitiesError] = useState("");
+  const [jobEntryDateError, setJobEntryDateError] = useState("");
+  const [jobExitDateError, setJobExitDateError] = useState("");
 
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
-    setCompanyNameError('')
+    setCompanyNameError("");
     handlePracticalExperience(
       updateCompanyName,
       jobPosition,
@@ -39,36 +47,30 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
       jobEntryDate,
       jobExitDate
     );
-    if(!schoolName || !studiesTitle || !studiesDate) {
+    // if (!schoolName || !studiesTitle || !studiesDate) {
+    //   setCompanyNameError(
+    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
+    //   );
+    // } else if (schoolName || studiesTitle || studiesDate) {
+    //   setCompanyNameError("");
+    // }
+    console.log(userName, email, mobileNumber);
 
-      setCompanyNameError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
-
-    } 
-    else if(schoolName || studiesTitle || studiesDate) {
-
-      setCompanyNameError('')
-    } 
-    console.log(userName,email, mobileNumber)
-   
     setCompanyName(updateCompanyName);
-
-    
   }
 
   function handleJobPositon(e) {
     const updateJobPosition = e.target.value;
 
+    // if (!schoolName || !studiesTitle || !studiesDate) {
+    //   setJobResponsibilitiesError(
+    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
+    //   );
+    // } else if (schoolName || studiesTitle || studiesDate) {
+    //   setJobEntryDateError("");
+    // }
+    // console.log(userName, email);
 
-    if(!schoolName || !studiesTitle || !studiesDate) {
-      setJobResponsibilitiesError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
-
-    }
-    else if(schoolName || studiesTitle || studiesDate) {
-
-      setJobEntryDateError('')
-    } 
-    console.log(userName, email)
-     
     handlePracticalExperience(
       companyName,
       updateJobPosition,
@@ -76,23 +78,20 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
       jobEntryDate,
       jobExitDate
     );
-        setJobPosition(updateJobPosition);
-
+    setJobPosition(updateJobPosition);
   }
 
   function handleJobResponsibility(e) {
     const updateJobResponsibilities = e.target.value;
 
-    
-    if(!schoolName || !studiesTitle || !studiesDate) {
-      setJobPositionError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
+    // if (!schoolName || !studiesTitle || !studiesDate) {
+    //   setJobPositionError(
+    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
+    //   );
+    // } else if (schoolName || studiesTitle || studiesDate) {
+    //   setJobResponsibilitiesError("");
+    // }
 
-    }
-    else if(schoolName || studiesTitle || studiesDate) {
-
-      setJobResponsibilitiesError('')
-    } 
-    
     handlePracticalExperience(
       companyName,
       jobPosition,
@@ -106,16 +105,13 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
   function handleJobEntryDate(e) {
     const updateJobEntryDate = e.target.value;
 
-    
-    if(!schoolName || !studiesTitle || !studiesDate) {
-      setJobEntryDateError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
-
-    }
-    else if(schoolName || studiesTitle || studiesDate) {
-
-      setJobEntryDateError('')
-    } 
-
+    // if (!schoolName || !studiesTitle || !studiesDate) {
+    //   setJobEntryDateError(
+    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
+    //   );
+    // } else if (schoolName || studiesTitle || studiesDate) {
+    //   setJobEntryDateError("");
+    // }
 
     setJobEntryDate(updateJobEntryDate);
     handlePracticalExperience(
@@ -130,16 +126,13 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
   function handleJobExitDate(e) {
     const updateJobExitDate = e.target.value;
 
-    
-    if(!schoolName || !studiesTitle || !studiesDate) {
-      setJobExitDateError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
-
-    } else
-
-    if(schoolName || studiesTitle || studiesDate) {
-
-      setJobExitDateError('')
-    } 
+    // if (!schoolName || !studiesTitle || !studiesDate) {
+    //   setJobExitDateError(
+    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
+    //   );
+    // } else if (schoolName || studiesTitle || studiesDate) {
+    //   setJobExitDateError("");
+    // }
     setJobExitDate(updateJobExitDate);
     handlePracticalExperience(
       companyName,
@@ -149,6 +142,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
       updateJobExitDate
     );
   }
+
   function handlePracticalExperience(
     updateCompanyName,
     updateJobPosition,
@@ -156,8 +150,6 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     updateJobEntryDate,
     updateJobExitDate
   ) {
-
-
     const practicalExperienceDetail = {
       ...practicalExperience,
       CompanyName: updateCompanyName,
@@ -166,42 +158,42 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
       JobEntryDate: updateJobEntryDate,
       JobExitDate: updateJobExitDate,
     };
+
+    localStorage.setItem(
+      "practicalExperience",
+      JSON.stringify(practicalExperienceDetail)
+    );
     setPracticalExperience(practicalExperienceDetail);
   }
 
   function hideInputContainer() {
-
-    if(!schoolName || !studiesTitle || !studiesDate) {
-    return  setJobExitDateError(`Please finish filling the  previous input before you continue😒🤦‍♂️`)
-
-    } else
-
-    if(schoolName || studiesTitle || studiesDate) {
-
-     return setJobExitDateError('')
-    } 
+    // if (!schoolName || !studiesTitle || !studiesDate) {
+    //   return setJobExitDateError(
+    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
+    //   );
+    // } else if (schoolName || studiesTitle || studiesDate) {
+    //   return setJobExitDateError("");
+    // }
     const inputElContainer = document.querySelector(
       ".practicalExperienceInputContainer"
     );
     inputElContainer.style.display = "none";
 
-    
-
     // handleEducationExperienceDisplay();
     // resetInputField();
-    setIsSubmit(true);
+    setIsSubmitForPractical(true);
     handleValueDisplay();
-    handleTitleDisplay()
+    handleTitleDisplay();
     // handleEditButton();
   }
 
   function handleEditBtn() {
-    setIsSubmit(false);
-    setValueDisplay(false);
+    setIsSubmitForPractical(false);
+    setValueDisplayForPractical(false);
   }
 
   function handleValueDisplay() {
-    setValueDisplay(true);
+    setValueDisplayForPractical(true);
   }
 
   function handlePracticalExperienceDisplayForEdit() {
@@ -222,16 +214,11 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
     handleEditBtn();
   }
 
- 
-
   return (
     <>
-
       <section className="practicalExperience">
         <form onSubmit={(e) => e.preventDefault()}>
-
-          
-          {valueDisplay ? (
+          {valueDisplayForPractical ? (
             <DisplayPracticalExperience
               practicalExperience={practicalExperience}
               className="practicalExperienceEl"
@@ -262,8 +249,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobPositon}
                 id="PosInJob"
               />
-                            <span className="jobPositionError"> {jobPositionError} </span>
-
+              <span className="jobPositionError"> {jobPositionError} </span>
             </div>
 
             <div className="JobResponsibilitiesContainer">
@@ -278,8 +264,10 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobResponsibility}
                 id="Job_responsibilities"
               />
-                            <span className="jobResponsibilitiesError"> {jobResponsibilitiesError} </span>
-
+              <span className="jobResponsibilitiesError">
+                {" "}
+                {jobResponsibilitiesError}{" "}
+              </span>
             </div>
 
             <div className="jobEntryDateContainer">
@@ -291,8 +279,7 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobEntryDate}
                 id="jobEntryDate"
               />
-                            <span className="jobEntryDateError"> {jobEntryDateError} </span>
-
+              <span className="jobEntryDateError"> {jobEntryDateError} </span>
             </div>
 
             <div className="jobExitDateContainer">
@@ -304,12 +291,11 @@ export function PracticalExperienceForm({handleTitleDisplay, schoolName, studies
                 onChange={handleJobExitDate}
                 id="jobExitDate"
               />
-                            <span className="jobExitDateError"> {jobExitDateError} </span>
-
+              <span className="jobExitDateError"> {jobExitDateError} </span>
             </div>
           </div>
 
-          {!isSubmit ? (
+          {!isSubmitForPractical ? (
             <Submit
               type="submit"
               className="submit"

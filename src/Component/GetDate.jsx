@@ -11,7 +11,6 @@ export function GetDate({
   } else {
     date = new Date(updateJobExitDate);
   }
-  console.log(date);
 
   const options = {
     weekday: "long",
@@ -21,6 +20,5 @@ export function GetDate({
   };
 
   const dayOfWeek = date.toLocaleDateString("en-Us", options);
-  console.log(dayOfWeek);
   return dayOfWeek;
 }
