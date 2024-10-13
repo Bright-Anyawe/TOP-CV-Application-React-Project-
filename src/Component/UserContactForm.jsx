@@ -17,7 +17,7 @@ export function useUserContactForm() {
     MobileNumber: mobileNumber,
   });
   const [isSubmitContact, setIsSubmitContact] = useState(false);
-  const [valueDisplayContact, setValueDisplayContact] = useState(false);
+  const [displayPersonalContact, setDisplayPersonalContact] = useState(false);
 
   //  useEffect(() => {
   // This function will run when the component is first loaded
@@ -50,7 +50,7 @@ export function useUserContactForm() {
       Email: updateEmail,
       MobileNumber: updateMobileNumber,
     };
-    console.log(personContact)
+    console.log(personContact);
     localStorage.setItem("userContact", JSON.stringify(personContact));
 
     setUserContact(personContact);
@@ -58,7 +58,7 @@ export function useUserContactForm() {
 
   function hideInputContactContainer(e) {
     const inputElContainer = document.querySelector(".inputContainer");
-    inputElContainer.style.display = "none";
+    // inputElContainer.style.display = "none";
     setIsSubmitContact(true);
 
     DisplayValueOnPage();
@@ -86,7 +86,6 @@ export function useUserContactForm() {
     inputElContainer.style.display = "block";
     // handleUserContactDisplay()
     handleEditBtn();
-
   }
 
   function handleFormValidation(e) {
@@ -123,13 +122,19 @@ export function useUserContactForm() {
     hideInputContactContainer();
   }
 
+  function showPersonalContactForm() {
+    displayPersonalContact === false
+      ? setDisplayPersonalContact(true)
+      : setDisplayPersonalContact(false);
+  }
+
   return {
     userName,
     email,
     mobileNumber,
     setIsSubmitContact,
-    setValueDisplayContact,
-    hideInputContactContainer,
+    // setValueDisplayContact,
+    // hideInputContactContainer,
     contactFormRender: (
       <>
         <section className="userContact">
@@ -137,69 +142,78 @@ export function useUserContactForm() {
             onSubmit={(e) => e.preventDefault()}
             className="userContactInputEl"
           >
-            {valueDisplayContact ? (
+            {/* {valueDisplayContact ? (
               <DisplayUserContact
                 userContact={userContact}
-                className="userContactDisplay"
+                
               />
-            ) : null}
-            <div className="inputContainer">
-              <div className="fullNameContainer">
-                <label htmlFor="userName" className="userNameLabel">
-                  Full Name<span className="asterisk"> *</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your fullName"
-                  className="userNameInputEl"
-                  id="userName"
-                  value={userName}
-                  onChange={handleUserName}
-                  required
-                />
-                <span className="userNameError">{error}</span>
-              </div>
-
-              <div className="emailContainer">
-                <label htmlFor="email" className="emailLabel">
-                  Email<span className="asterisk"> *</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="Enter your Email"
-                  className="emailInputEl"
-                  id="email"
-                  value={email}
-                  onChange={handleEmail}
-                  pattern="[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+(\.[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+)*@[a-zA-Z0-9_][\-a-zA-Z0-9_]*(\.[\-a-zA-Z0-9_]+)*\.[cC][oO][mM](:[0-9]{1,5})?"
-                  required
-                />
-                <span className="emailError">{emailError}</span>
-              </div>
-
-              <div className="mobileNumberContainer">
-                <label htmlFor="mobileNumber" className="mobileNumberLabel">
-                  Mobile Number<span className="asterisk"> *</span>
-                </label>
-                <input
-                  type="number"
-                  placeholder="Enter your mobile number"
-                  className="mobileNumberInputEl"
-                  id="mobileNumber"
-                  value={mobileNumber}
-                  onChange={handleMobileNumber}
-                  required
-                />
-                <span className="phoneNumberError">{phoneNumberError}</span>
-              </div>
+            ) : null} */}
+            <div
+              className="personalContactHeader"
+              onClick={showPersonalContactForm}
+            >
+              <p>Personal Contacts</p>
+              <p>a Down logo must be here</p>
             </div>
+            {displayPersonalContact ? (
+              <div className="inputContainer">
+                <div className="fullNameContainer">
+                  <label htmlFor="userName" className="userNameLabel">
+                    Full Name<span className="asterisk"> *</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your fullName"
+                    className="userNameInputEl"
+                    id="userName"
+                    value={userName}
+                    onChange={handleUserName}
+                    required
+                  />
+                  <span className="userNameError">{error}</span>
+                </div>
 
-            {!isSubmitContact ? (
-              <Submit
-                type="submit"
-                className="userContactSubmit"
-                hideInputContainer={handleFormValidation}
-              />
+                <div className="emailContainer">
+                  <label htmlFor="email" className="emailLabel">
+                    Email<span className="asterisk"> *</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Enter your Email"
+                    className="emailInputEl"
+                    id="email"
+                    value={email}
+                    onChange={handleEmail}
+                    pattern="[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+(\.[\-a-zA-Z0-9~!$%^&amp;*_=+\}\{'?]+)*@[a-zA-Z0-9_][\-a-zA-Z0-9_]*(\.[\-a-zA-Z0-9_]+)*\.[cC][oO][mM](:[0-9]{1,5})?"
+                    required
+                  />
+                  <span className="emailError">{emailError}</span>
+                </div>
+
+                <div className="mobileNumberContainer">
+                  <label htmlFor="mobileNumber" className="mobileNumberLabel">
+                    Mobile Number<span className="asterisk"> *</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Enter your mobile number"
+                    className="mobileNumberInputEl"
+                    id="mobileNumber"
+                    value={mobileNumber}
+                    onChange={handleMobileNumber}
+                    required
+                  />
+                  <span className="phoneNumberError">{phoneNumberError}</span>
+                </div>
+              </div>
+            ) : null}
+
+<Submit
+  type="submit"
+  className="userContactSubmit"
+  hideInputContainer={handleFormValidation}
+/>
+            {/* {!isSubmitContact ? (
             ) : (
               <Edit
                 className="userContactEditComponent"
@@ -208,7 +222,7 @@ export function useUserContactForm() {
                 }
                 // handleEditBtn={handleEditBtn}
               />
-            )}
+            )} */}
           </form>
         </section>
       </>

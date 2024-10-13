@@ -6,9 +6,12 @@ import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
 export function PracticalExperienceForm({
   handleTitleDisplay,
-  schoolName,
   studiesTitle,
-  studiesDate,
+  studiesMajor,
+  schoolName,
+
+  studiesStartDate,
+  studiesEndDate,
   userName,
   email,
   mobileNumber,

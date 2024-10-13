@@ -5,7 +5,8 @@ function DisplayEducationExperience({ className }) {
   );
 
   return (
-    <div className={className}>
+    <div className="educationExperienceEl">
+      <p className="eduTitle">Education </p>
       <p>
         {" "}
         <span>School Name:</span> {personEducationExperience.SchoolName}{" "}
