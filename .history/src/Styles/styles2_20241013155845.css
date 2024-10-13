@@ -1,0 +1,14 @@
+.personalContactHeader,
+.educationDetailsHeader,
+.professionalDetailsHeader {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+
+.downArrow {
+       transform: rotate(180deg);
+an
+}
+
+

@@ -123,9 +123,20 @@ export function useUserContactForm() {
   }
 
   function showPersonalContactForm() {
-    displayPersonalContact === false
-      ? setDisplayPersonalContact(true)
-      : setDisplayPersonalContact(false);
+    const arrowDown = document.querySelector(".downArrow");
+
+    if (displayPersonalContact === false) {
+      arrowDown.style.transform = "rotate(180deg)";
+      arrowDown.style.animation = "rotateArrowIcon 0.8s";
+
+      setDisplayPersonalContact(true);
+    } else {
+      arrowDown.style.animation = "rotateArrowIcon 0.8s";
+
+      arrowDown.style.transform = "rotate(0deg)";
+
+      setDisplayPersonalContact(false);
+    }
   }
 
   return {
@@ -152,8 +163,23 @@ export function useUserContactForm() {
               className="personalContactHeader"
               onClick={showPersonalContactForm}
             >
-              <p>Personal Contacts</p>
-              <p>a Down logo must be here</p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>account</title>
+                  <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                </svg>
+                Personal Contacts
+              </p>
+              <p>
+                <svg
+                  className="downArrow"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <title>chevron-down</title>
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
+              </p>
             </div>
             {displayPersonalContact ? (
               <div className="inputContainer">
@@ -205,14 +231,14 @@ export function useUserContactForm() {
                   />
                   <span className="phoneNumberError">{phoneNumberError}</span>
                 </div>
+                <Submit
+                  type="submit"
+                  className="userContactSubmit"
+                  hideInputContainer={handleFormValidation}
+                />
               </div>
             ) : null}
 
-<Submit
-  type="submit"
-  className="userContactSubmit"
-  hideInputContainer={handleFormValidation}
-/>
             {/* {!isSubmitContact ? (
             ) : (
               <Edit

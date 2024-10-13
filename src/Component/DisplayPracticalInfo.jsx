@@ -1,4 +1,5 @@
 import { GetDate } from "./GetDate";
+import { Edit } from "./EditButton";
 
 function DisplayPracticalExperience({ className }) {
 let practicalExperience = JSON.parse(
@@ -20,13 +21,16 @@ let practicalExperience = JSON.parse(
       </p>
       <p>
         {" "}
-        <span>Job Entry Date</span>: {<GetDate updateJobEntrytDate={practicalExperience.JobEntryDate} />}{" "}
+        <span>Job Entry Date</span>:{" "}
+        {<GetDate updateJobEntrytDate={practicalExperience.JobEntryDate} />}{" "}
       </p>
       <p>
         {" "}
         <span>Job Exit Date</span>:
         {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
       </p>
+
+      <Edit />
     </div>
   );
 }

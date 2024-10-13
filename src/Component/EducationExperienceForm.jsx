@@ -20,7 +20,7 @@ export function useEducationExperienceForm() {
   });
 
   const [isSubmitForEdu, setIsSubmitForEdu] = useState(false);
-  const [eduValueDisplay, setEduValueDisplay] = useState(false);
+  const [displayEducationDetails, setDisplayEducationDetails] = useState(false);
 
   function handleStudiesTitle(e) {
     const updateStudiesTitle = e.target.value;
@@ -133,7 +133,22 @@ export function useEducationExperienceForm() {
 
     handleEditBtn();
   }
+  function showEducationDetailsForm() {
+    const arrowDown = document.querySelector(".downArrowForEdu");
 
+    if (displayEducationDetails === false) {
+      arrowDown.style.transform = "rotate(180deg)";
+      arrowDown.style.animation = " 0.8s";
+
+      setDisplayEducationDetails(true);
+    } else {
+      arrowDown.style.animation = " 0.8s";
+
+      arrowDown.style.transform = "rotate(0deg)";
+
+      setDisplayEducationDetails(false);
+    }
+  }
   return {
     studiesTitle,
     studiesMajor,
@@ -142,77 +157,106 @@ export function useEducationExperienceForm() {
     studiesEndDate,
 
     setIsSubmitForEdu,
-    setEduValueDisplay,
-    hideInputContainerForEdu,
+    // setEduValueDisplay,
+    // hideInputContainerForEdu,
     renderEducationExperience: (
       <>
         <section className="educationExperience">
           <form onSubmit={(e) => e.preventDefault()}>
-            {eduValueDisplay ? (
+            {/* {eduValueDisplay ? (
               <DisplayEducationExperience
                 educationExperience={educationExperience}
               />
-            ) : null}
-            <div className="educationExperienceInputContainer">
-              <div className="studiesTitleContainer">
-                {" "}
-                <label htmlFor="studiesTitle">Degree</label>
-                <input
-                  type="text"
-                  placeholder="Enter studies title"
-                  value={studiesTitle}
-                  onChange={handleStudiesTitle}
-                  className="studiesTitle"
-                  id="studiesTitle"
-                />
-              </div>
-              <div className="studiesMajor">
-                {" "}
-                <label htmlFor="studiesTitle">Major</label>
-                <input
-                  type="text"
-                  placeholder="Computer engineering"
-                  value={studiesMajor}
-                  onChange={handleStudiesMajor}
-                  className="studiesMajor"
-                />
-              </div>
-              <div className="schoolNameContainer">
-                <label htmlFor="schoolName">School</label>
-                <input
-                  type="text"
-                  placeholder="University of Ghana"
-                  value={schoolName}
-                  className="SchoolName"
-                  id="schoolName"
-                  onChange={handleSchoolName}
-                />
-              </div>
-
-              <div className="startDate">
-                <label htmlFor="date">Start Date</label>
-                <input
-                  type="date"
-                  value={studiesStartDate}
-                  onChange={handleStudiesStartDate}
-                  className="date"
-                  id="date"
-                />
-              </div>
-
-              <div className="EndDate">
-                <label htmlFor="date">End Date</label>
-                <input
-                  type="date"
-                  value={studiesEndDate}
-                  onChange={handleStudiesEndDate}
-                  className="date"
-                  id="date"
-                />
-              </div>
+            ) : null} */}
+            <div
+              className="educationDetailsHeader"
+              onClick={showEducationDetailsForm}
+            >
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>school</title>
+                  <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                </svg>
+                Education Detail
+              </p>
+              <p>
+                <svg
+                  className="downArrowForEdu"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <title>chevron-down</title>
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
+              </p>
             </div>
+            {displayEducationDetails ? (
+              <div className="educationExperienceInputContainer">
+                <div className="studiesTitleContainer">
+                  {" "}
+                  <label htmlFor="studiesTitle">Degree</label>
+                  <input
+                    type="text"
+                    placeholder="Enter studies title"
+                    value={studiesTitle}
+                    onChange={handleStudiesTitle}
+                    className="studiesTitle"
+                    id="studiesTitle"
+                  />
+                </div>
+                <div className="studiesMajor">
+                  {" "}
+                  <label htmlFor="studiesTitle">Major</label>
+                  <input
+                    type="text"
+                    placeholder="Computer engineering"
+                    value={studiesMajor}
+                    onChange={handleStudiesMajor}
+                    className="studiesMajor"
+                  />
+                </div>
+                <div className="schoolNameContainer">
+                  <label htmlFor="schoolName">School</label>
+                  <input
+                    type="text"
+                    placeholder="University of Ghana"
+                    value={schoolName}
+                    className="SchoolName"
+                    id="schoolName"
+                    onChange={handleSchoolName}
+                  />
+                </div>
 
-            {!isSubmitForEdu ? (
+                <div className="startDate">
+                  <label htmlFor="date">Start Date</label>
+                  <input
+                    type="date"
+                    value={studiesStartDate}
+                    onChange={handleStudiesStartDate}
+                    className="date"
+                    id="date"
+                  />
+                </div>
+
+                <div className="EndDate">
+                  <label htmlFor="date">End Date</label>
+                  <input
+                    type="date"
+                    value={studiesEndDate}
+                    onChange={handleStudiesEndDate}
+                    className="date"
+                    id="date"
+                  />
+                </div>
+                <Submit
+                  type="submit"
+                  className="submit"
+                  hideInputContainer={hideInputContainerForEdu}
+                />
+              </div>
+            ) : null}
+
+            {/* {!isSubmitForEdu ? (
               <Submit
                 type="submit"
                 className="submit"
@@ -225,7 +269,7 @@ export function useEducationExperienceForm() {
                   handleEducationExperienceDisplayForEdit
                 }
               />
-            )}
+            )} */}
           </form>
         </section>
       </>

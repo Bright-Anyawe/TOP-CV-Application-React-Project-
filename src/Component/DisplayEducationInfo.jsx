@@ -1,4 +1,5 @@
 import { GetDate } from "./GetDate";
+import { Edit } from "./EditButton";
 function DisplayEducationExperience({ className }) {
   let personEducationExperience = JSON.parse(
     localStorage.getItem("educationExperience")
@@ -8,17 +9,34 @@ function DisplayEducationExperience({ className }) {
     <div className="educationExperienceEl">
       <p className="eduTitle">Education </p>
       <p>
-        {" "}
-        <span>School Name:</span> {personEducationExperience.SchoolName}{" "}
-      </p>
-      <p>
-        <span>Studies Title:</span> {personEducationExperience.StudiesTitle}{" "}
+        {personEducationExperience.StudiesTitle}{" "}
+        {`${personEducationExperience.StudiesMajor}`}{" "}
       </p>
       <p>
         {" "}
-        <span>Studies Date:</span>{" "}
-        {<GetDate updateStudiesDate={personEducationExperience.StudiesDate} />}{" "}
+        <span>School/ Colleage:</span> {personEducationExperience.SchoolName}{" "}
       </p>
+      <p>
+        {" "}
+        <span>Studies Start:</span>{" "}
+        {
+          <GetDate
+            updateStudiesDate={personEducationExperience.StudiesStartDate}
+          />
+        }{" "}
+      </p>
+
+      <p>
+        {" "}
+        <span>Studies End:</span>{" "}
+        {
+          <GetDate
+            updateStudiesDate={personEducationExperience.StudiesEndDate}
+          />
+        }{" "}
+      </p>
+
+      < Edit/>
     </div>
   );
 }

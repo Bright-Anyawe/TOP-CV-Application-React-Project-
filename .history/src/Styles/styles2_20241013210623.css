@@ -1,0 +1,45 @@
+.personalContactHeader,
+.educationDetailsHeader,
+.professionalDetailsHeader {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+
+.downArrow {
+     width: 30px;
+
+animation: rotateArrowIcon 0.8s;
+transition: background-color 1s ease-out 0.25s;
+           transform: rotate(0deg);
+
+}
+
+.downArrowForEdu {
+     width: 30px;
+
+animation: rotateArrowIcon 0.8s;
+transition: background-color 1s ease-out 0.25s;
+           /* transform: rotate(0deg); */
+
+}
+
+.downArrowForPractical {
+       width: 30px;
+
+animation: rotateArrowIcon 0.8s;
+transition: background-color 1s ease-out 0.25s;
+}
+
+/* @keyframes rotateArrowIcon {
+  from {
+           transform: rotate(0deg);
+
+  }
+
+  to {
+           transform: rotate(180deg);
+
+  }
+
+} */

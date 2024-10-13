@@ -40,6 +40,10 @@ export function PracticalExperienceForm({
   const [jobEntryDateError, setJobEntryDateError] = useState("");
   const [jobExitDateError, setJobExitDateError] = useState("");
 
+    const [displayProfessionalDetails, setDisplayProfessionalDetails] =
+      useState(false);
+
+
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
     setCompanyNameError("");
@@ -217,93 +221,137 @@ export function PracticalExperienceForm({
     handleEditBtn();
   }
 
+   function showProfessionalDetailsForm() {
+
+     const arrowDown = document.querySelector(".downArrowForPractical");
+
+     if (displayProfessionalDetails === false) {
+       arrowDown.style.transform = "rotate(180deg)";
+       arrowDown.style.animation = " 0.8s";
+
+       setDisplayProfessionalDetails(true);
+     } else {
+       arrowDown.style.animation = " 0.8s";
+
+       arrowDown.style.transform = "rotate(0deg)";
+
+       setDisplayProfessionalDetails(false);
+     }
+
+    
+    
+    
+   }
+
   return (
     <>
       <section className="practicalExperience">
         <form onSubmit={(e) => e.preventDefault()}>
-          {valueDisplayForPractical ? (
+          {/* {valueDisplayForPractical ? (
             <DisplayPracticalExperience
               practicalExperience={practicalExperience}
               className="practicalExperienceEl"
             />
-          ) : null}
-          <div className="practicalExperienceInputContainer">
-            <div className="NameOfCompanyContainer">
-              <label htmlFor="NameOfCompany">
-                Enter The Company&apos;s Name
-              </label>
-              <input
-                type="text"
-                placeholder="Enter your Company Name"
-                value={companyName}
-                className="companyName"
-                onChange={handleCompanyName}
-                id="NameOfCompany"
-              />
-              <span className="companyNameError"> {companyNameError} </span>
-            </div>
-
-            <div className="PosInJobContainer">
-              <label htmlFor="PosInJob"> Position Title</label>
-              <input
-                type="text"
-                placeholder="Enter Position Title"
-                value={jobPosition}
-                onChange={handleJobPositon}
-                id="PosInJob"
-              />
-              <span className="jobPositionError"> {jobPositionError} </span>
-            </div>
-
-            <div className="JobResponsibilitiesContainer">
-              {" "}
-              <label htmlFor="Job_responsibilities">
-                Main responsibilities at work
-              </label>
-              <textarea
-                type="text"
-                placeholder="Enter your main responsibilities in the job"
-                value={jobResponsibilities}
-                onChange={handleJobResponsibility}
-                id="Job_responsibilities"
-              />
-              <span className="jobResponsibilitiesError">
-                {" "}
-                {jobResponsibilitiesError}{" "}
-              </span>
-            </div>
-
-            <div className="jobEntryDateContainer">
-              <label htmlFor="jobEntryDate">Date for job commercement</label>
-              <input
-                type="date"
-                placeholder="Enter the date you started work with the company"
-                value={jobEntryDate}
-                onChange={handleJobEntryDate}
-                id="jobEntryDate"
-              />
-              <span className="jobEntryDateError"> {jobEntryDateError} </span>
-            </div>
-
-            <div className="jobExitDateContainer">
-              <label htmlFor="jobExitDate">Date for job exit</label>
-              <input
-                type="date"
-                placeholder="Enter the date you started work with the company"
-                value={jobExitDate}
-                onChange={handleJobExitDate}
-                id="jobExitDate"
-              />
-              <span className="jobExitDateError"> {jobExitDateError} </span>
-            </div>
+          ) : null} */}
+          <div
+            className="professionalDetailsHeader"
+            onClick={showProfessionalDetailsForm}
+          >
+            <p>
+              <img class="professioImg" src="https://rmathr.github.io/cv-project/b5791876cc5188ae758a.png"/>
+              
+              Professional Experience</p>
+            <p>
+              <svg
+                className="downArrowForPractical"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <title>chevron-down</title>
+                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+              </svg>
+            </p>
           </div>
+          {displayProfessionalDetails ? (
+            <div className="practicalExperienceInputContainer">
+              <div className="NameOfCompanyContainer">
+                <label htmlFor="NameOfCompany">
+                  Enter The Company&apos;s Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your Company Name"
+                  value={companyName}
+                  className="companyName"
+                  onChange={handleCompanyName}
+                  id="NameOfCompany"
+                />
+                <span className="companyNameError"> {companyNameError} </span>
+              </div>
 
-          {!isSubmitForPractical ? (
-            <Submit
-              type="submit"
-              className="submit"
-              hideInputContainer={hideInputContainer}
-            />
+              <div className="PosInJobContainer">
+                <label htmlFor="PosInJob"> Position Title</label>
+                <input
+                  type="text"
+                  placeholder="Enter Position Title"
+                  value={jobPosition}
+                  onChange={handleJobPositon}
+                  id="PosInJob"
+                />
+                <span className="jobPositionError"> {jobPositionError} </span>
+              </div>
+
+              <div className="JobResponsibilitiesContainer">
+                {" "}
+                <label htmlFor="Job_responsibilities">
+                  Main responsibilities at work
+                </label>
+                <textarea
+                  type="text"
+                  placeholder="Enter your main responsibilities in the job"
+                  value={jobResponsibilities}
+                  onChange={handleJobResponsibility}
+                  id="Job_responsibilities"
+                />
+                <span className="jobResponsibilitiesError">
+                  {" "}
+                  {jobResponsibilitiesError}{" "}
+                </span>
+              </div>
+
+              <div className="jobEntryDateContainer">
+                <label htmlFor="jobEntryDate">Date for job commercement</label>
+                <input
+                  type="date"
+                  placeholder="Enter the date you started work with the company"
+                  value={jobEntryDate}
+                  onChange={handleJobEntryDate}
+                  id="jobEntryDate"
+                />
+                <span className="jobEntryDateError"> {jobEntryDateError} </span>
+              </div>
+
+              <div className="jobExitDateContainer">
+                <label htmlFor="jobExitDate">Date for job exit</label>
+                <input
+                  type="date"
+                  placeholder="Enter the date you started work with the company"
+                  value={jobExitDate}
+                  onChange={handleJobExitDate}
+                  id="jobExitDate"
+                />
+                <span className="jobExitDateError"> {jobExitDateError} </span>
+              </div>
+
+              <Submit
+                type="submit"
+                className="submit"
+                hideInputContainer={hideInputContainer}
+              />
+            </div>
+          ) : null}
+
+          {/* {!isSubmitForPractical ? (
           ) : (
             <Edit
               className="practicalExperienceDisplay"
@@ -311,7 +359,7 @@ export function PracticalExperienceForm({
                 handlePracticalExperienceDisplayForEdit
               }
             />
-          )}
+          )} */}
         </form>
       </section>
     </>

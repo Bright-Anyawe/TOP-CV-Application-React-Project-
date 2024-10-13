@@ -1,0 +1,23 @@
+.personalContactHeader,
+.educationDetailsHeader,
+.professionalDetailsHeader {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+
+.downArrow {
+animation: rotateArrowIcon 2ms;
+}
+
+@keyframes rotateArrowIcon {
+  from {
+    
+  }
+
+  to {
+           transform: rotate(180deg);
+
+  }
+
+}

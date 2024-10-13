@@ -1,0 +1,9 @@
+
+
+
+.personalContactHeader, .educationDetailsHeader {
+     display: flex !important;
+     gap: 10px;
+
+}
+
