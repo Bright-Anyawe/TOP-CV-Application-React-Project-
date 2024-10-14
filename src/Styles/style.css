@@ -351,8 +351,8 @@ body {
 #cvForm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 2rem;
+  margin-top: 30px;
 }
 
 header {
@@ -389,6 +389,7 @@ header {
   font-size: 0.8rem;
   border-radius: 9px;
   box-shadow: 1px 2px 10px 1px black;
+  margin-top: 30px;
 }
 
 /* 
@@ -421,7 +422,7 @@ grid-area: 2 / 2 / 3 / 3;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 23px;
+  padding-top: 23px;
 }
 
 .userNameContainer {
@@ -434,9 +435,30 @@ grid-area: 2 / 2 / 3 / 3;
 
 .phoneNumberContainer {
   font-size: 1.1rem;
+  display: flex;
+
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+f .phoneNumberContainer span {
+  display: flex;
 }
 
 .emailPhoneContainer {
+  display: flex;
+  /* justify-content: center; */
+  /* align-self: center */
+  gap: 20px;
+}
+
+.userEmailContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userEmailContainer span {
   display: flex;
 }
 
@@ -465,12 +487,13 @@ grid-area: 2 / 2 / 3 / 3;
   box-shadow: 1px 2px 10px 1px black;
   padding: 15px;
   color: black;
+      width: 500px;
 }
 
 .userContact form,
 .educationExperience form {
   color: black;
-  padding-bottom: 25px;
+  /* padding-bottom: 25px; */
 
   animation: grow-and-shrink 2000ms ease-in-out;
 }
@@ -524,12 +547,14 @@ input:focus-visible {
 
 .educationExperienceEl {
   color: black;
+  padding: 20px;
 }
 
 button {
-    display: inline-flex;    justify-content: end;
-    align-items: center;
-    gap: 15px;
+  display: inline-flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
   margin: 15px 0;
   border-radius: 8px;
   /* border: 1px solid transparent; */
@@ -542,23 +567,14 @@ button {
   transition: border-color 0.25s;
 }
 
-.userContactDisplay span,
-.practicalExperienceEl span {
-  font-weight: 700;
-}
-
 .asterisk {
   color: red;
 }
 
-.eduTitle {
-  background-color: whitesmoke;
-  color: black;
-  padding-left: 70px;
-}
+
 
 p {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   text-align: center;
   display: flex;
   justify-content: start;

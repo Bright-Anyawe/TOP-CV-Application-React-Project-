@@ -5,20 +5,8 @@ import { Submit } from "./SubmitBtn.jsx";
 import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
 export function PracticalExperienceForm({
-  handleTitleDisplay,
-  studiesTitle,
-  studiesMajor,
-  schoolName,
-
-  studiesStartDate,
-  studiesEndDate,
-  userName,
-  email,
-  mobileNumber,
-  isSubmitForPractical,
-  valueDisplayForPractical,
-  setIsSubmitForPractical,
-  setValueDisplayForPractical,
+  practicalExperience,
+  setPracticalExperience,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -26,27 +14,20 @@ export function PracticalExperienceForm({
   const [jobEntryDate, setJobEntryDate] = useState("");
   const [jobExitDate, setJobExitDate] = useState("");
 
-  const [practicalExperience, setPracticalExperience] = useState({
-    CompanyName: companyName,
-    JobPosition: jobPosition,
-    JobResponsibilities: jobResponsibilities,
-    JobEntryDate: jobEntryDate,
-    JobExitDate: jobExitDate,
-  });
-
   const [companyNameError, setCompanyNameError] = useState("");
   const [jobPositionError, setJobPositionError] = useState("");
   const [jobResponsibilitiesError, setJobResponsibilitiesError] = useState("");
   const [jobEntryDateError, setJobEntryDateError] = useState("");
   const [jobExitDateError, setJobExitDateError] = useState("");
 
-    const [displayProfessionalDetails, setDisplayProfessionalDetails] =
-      useState(false);
-
+  const [displayProfessionalDetails, setDisplayProfessionalDetails] =
+    useState(false);
 
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
-    setCompanyNameError("");
+    // setCompanyNameError("");
+        setCompanyName(updateCompanyName);
+
     handlePracticalExperience(
       updateCompanyName,
       jobPosition,
@@ -54,29 +35,12 @@ export function PracticalExperienceForm({
       jobEntryDate,
       jobExitDate
     );
-    // if (!schoolName || !studiesTitle || !studiesDate) {
-    //   setCompanyNameError(
-    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
-    //   );
-    // } else if (schoolName || studiesTitle || studiesDate) {
-    //   setCompanyNameError("");
-    // }
-    console.log(userName, email, mobileNumber);
 
-    setCompanyName(updateCompanyName);
   }
 
   function handleJobPositon(e) {
     const updateJobPosition = e.target.value;
-
-    // if (!schoolName || !studiesTitle || !studiesDate) {
-    //   setJobResponsibilitiesError(
-    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
-    //   );
-    // } else if (schoolName || studiesTitle || studiesDate) {
-    //   setJobEntryDateError("");
-    // }
-    // console.log(userName, email);
+    setJobPosition(updateJobPosition);
 
     handlePracticalExperience(
       companyName,
@@ -85,19 +49,12 @@ export function PracticalExperienceForm({
       jobEntryDate,
       jobExitDate
     );
-    setJobPosition(updateJobPosition);
+    
   }
 
   function handleJobResponsibility(e) {
     const updateJobResponsibilities = e.target.value;
-
-    // if (!schoolName || !studiesTitle || !studiesDate) {
-    //   setJobPositionError(
-    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
-    //   );
-    // } else if (schoolName || studiesTitle || studiesDate) {
-    //   setJobResponsibilitiesError("");
-    // }
+        setJobResponsibilities(updateJobResponsibilities);
 
     handlePracticalExperience(
       companyName,
@@ -106,20 +63,10 @@ export function PracticalExperienceForm({
       jobEntryDate,
       jobExitDate
     );
-    setJobResponsibilities(updateJobResponsibilities);
   }
 
   function handleJobEntryDate(e) {
     const updateJobEntryDate = e.target.value;
-
-    // if (!schoolName || !studiesTitle || !studiesDate) {
-    //   setJobEntryDateError(
-    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
-    //   );
-    // } else if (schoolName || studiesTitle || studiesDate) {
-    //   setJobEntryDateError("");
-    // }
-
     setJobEntryDate(updateJobEntryDate);
     handlePracticalExperience(
       companyName,
@@ -174,24 +121,11 @@ export function PracticalExperienceForm({
   }
 
   function hideInputContainer() {
-    // if (!schoolName || !studiesTitle || !studiesDate) {
-    //   return setJobExitDateError(
-    //     `Please finish filling the  previous input before you continue😒🤦‍♂️`
-    //   );
-    // } else if (schoolName || studiesTitle || studiesDate) {
-    //   return setJobExitDateError("");
-    // }
-    const inputElContainer = document.querySelector(
-      ".practicalExperienceInputContainer"
-    );
-    inputElContainer.style.display = "none";
+    // const inputElContainer = document.querySelector(
+    //   ".practicalExperienceInputContainer"
+    // );
+    // inputElContainer.style.display = "none";
 
-    // handleEducationExperienceDisplay();
-    // resetInputField();
-    setIsSubmitForPractical(true);
-    handleValueDisplay();
-    handleTitleDisplay();
-    // handleEditButton();
   }
 
   function handleEditBtn() {
@@ -221,27 +155,22 @@ export function PracticalExperienceForm({
     handleEditBtn();
   }
 
-   function showProfessionalDetailsForm() {
+  function showProfessionalDetailsForm() {
+    const arrowDown = document.querySelector(".downArrowForPractical");
 
-     const arrowDown = document.querySelector(".downArrowForPractical");
+    if (displayProfessionalDetails === false) {
+      arrowDown.style.transform = "rotate(180deg)";
+      arrowDown.style.animation = " 0.8s";
 
-     if (displayProfessionalDetails === false) {
-       arrowDown.style.transform = "rotate(180deg)";
-       arrowDown.style.animation = " 0.8s";
+      setDisplayProfessionalDetails(true);
+    } else {
+      arrowDown.style.animation = " 0.8s";
 
-       setDisplayProfessionalDetails(true);
-     } else {
-       arrowDown.style.animation = " 0.8s";
+      arrowDown.style.transform = "rotate(0deg)";
 
-       arrowDown.style.transform = "rotate(0deg)";
-
-       setDisplayProfessionalDetails(false);
-     }
-
-    
-    
-    
-   }
+      setDisplayProfessionalDetails(false);
+    }
+  }
 
   return (
     <>
@@ -258,9 +187,12 @@ export function PracticalExperienceForm({
             onClick={showProfessionalDetailsForm}
           >
             <p>
-              <img class="professioImg" src="https://rmathr.github.io/cv-project/b5791876cc5188ae758a.png"/>
-              
-              Professional Experience</p>
+              <img
+                className="professioImg"
+                src="https://rmathr.github.io/cv-project/b5791876cc5188ae758a.png"
+              />
+              Professional Experience
+            </p>
             <p>
               <svg
                 className="downArrowForPractical"

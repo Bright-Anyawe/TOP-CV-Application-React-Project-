@@ -1,42 +1,40 @@
 import { GetDate } from "./GetDate";
 import { Edit } from "./EditButton";
-function DisplayEducationExperience({ className }) {
-  let personEducationExperience = JSON.parse(
+function DisplayEducationExperience({ hideEdit, setHideEdit }) {
+  let educationExperience = JSON.parse(
     localStorage.getItem("educationExperience")
   );
 
   return (
     <div className="educationExperienceEl">
       <p className="eduTitle">Education </p>
-      <p>
-        {personEducationExperience.StudiesTitle}{" "}
-        {`${personEducationExperience.StudiesMajor}`}{" "}
-      </p>
-      <p>
-        {" "}
-        <span>School/ Colleage:</span> {personEducationExperience.SchoolName}{" "}
-      </p>
-      <p>
-        {" "}
-        <span>Studies Start:</span>{" "}
-        {
-          <GetDate
-            updateStudiesDate={personEducationExperience.StudiesStartDate}
-          />
-        }{" "}
-      </p>
+      <div className="subEducationContainer">
+        <div>
+          <p>
+            {educationExperience.StudiesTitle}{" "}
+            {`(${educationExperience.StudiesMajor})`}{" "}
+          </p>
+          <p> {educationExperience.SchoolName} </p>
+        </div>{" "}
+        <div>
+          <p>
+            {" "}
+            {
+              <GetDate
+                updateStudiesDate={educationExperience.StudiesStartDate}
+              />
+            }{" "}
+          </p>
+          <p>
+            {" "}
+            {
+              <GetDate updateStudiesDate={educationExperience.StudiesEndDate} />
+            }{" "}
+          </p>
+        </div>
+      </div>
 
-      <p>
-        {" "}
-        <span>Studies End:</span>{" "}
-        {
-          <GetDate
-            updateStudiesDate={personEducationExperience.StudiesEndDate}
-          />
-        }{" "}
-      </p>
-
-      < Edit/>
+      {hideEdit ? null : <Edit />}
     </div>
   );
 }
