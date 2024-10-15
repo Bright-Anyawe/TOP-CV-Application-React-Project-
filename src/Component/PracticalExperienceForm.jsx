@@ -7,6 +7,10 @@ import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 export function PracticalExperienceForm({
   practicalExperience,
   setPracticalExperience,
+  displayProfessionalDetails,
+  setDisplayProfessionalDetails,
+  hideEdit,
+  setHideEdit,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -20,13 +24,16 @@ export function PracticalExperienceForm({
   const [jobEntryDateError, setJobEntryDateError] = useState("");
   const [jobExitDateError, setJobExitDateError] = useState("");
 
-  const [displayProfessionalDetails, setDisplayProfessionalDetails] =
-    useState(false);
+  const isFormComplete =
+    practicalExperience.CompanyName &&
+    practicalExperience.JobPosition &&
+    practicalExperience.JobEntryDate &&
+    practicalExperience.JobExitDate;
 
   function handleCompanyName(e) {
     const updateCompanyName = e.target.value;
     // setCompanyNameError("");
-        setCompanyName(updateCompanyName);
+    setCompanyName(updateCompanyName);
 
     handlePracticalExperience(
       updateCompanyName,
@@ -35,7 +42,6 @@ export function PracticalExperienceForm({
       jobEntryDate,
       jobExitDate
     );
-
   }
 
   function handleJobPositon(e) {
@@ -49,12 +55,11 @@ export function PracticalExperienceForm({
       jobEntryDate,
       jobExitDate
     );
-    
   }
 
   function handleJobResponsibility(e) {
     const updateJobResponsibilities = e.target.value;
-        setJobResponsibilities(updateJobResponsibilities);
+    setJobResponsibilities(updateJobResponsibilities);
 
     handlePracticalExperience(
       companyName,
@@ -124,13 +129,13 @@ export function PracticalExperienceForm({
     // const inputElContainer = document.querySelector(
     //   ".practicalExperienceInputContainer"
     // );
-    // inputElContainer.style.display = "none";
-
+    // inputElContainer.style.display = "none";handleEditBtn
+    handleEditBtn();
+    showProfessionalDetailsForm();
   }
 
   function handleEditBtn() {
-    setIsSubmitForPractical(false);
-    setValueDisplayForPractical(false);
+    setHideEdit(false);
   }
 
   function handleValueDisplay() {
@@ -279,6 +284,7 @@ export function PracticalExperienceForm({
                 type="submit"
                 className="submit"
                 hideInputContainer={hideInputContainer}
+                isFormComplete={isFormComplete}
               />
             </div>
           ) : null}

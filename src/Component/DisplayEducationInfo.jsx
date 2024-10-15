@@ -1,6 +1,6 @@
 import { GetDate } from "./GetDate";
 import { Edit } from "./EditButton";
-function DisplayEducationExperience({ hideEdit, setHideEdit }) {
+function DisplayEducationExperience({displayEducationDetails, setDisplayEducationDetails ,hideEdit, setHideEdit }) {
   let educationExperience = JSON.parse(
     localStorage.getItem("educationExperience")
   );
@@ -34,7 +34,7 @@ function DisplayEducationExperience({ hideEdit, setHideEdit }) {
         </div>
       </div>
 
-      {hideEdit ? null : <Edit />}
+      {hideEdit ? null : <Edit setHideEdit={setHideEdit} setDisplayEducationDetails={setDisplayEducationDetails} />}
     </div>
   );
 }

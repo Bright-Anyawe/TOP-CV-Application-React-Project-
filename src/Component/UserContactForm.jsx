@@ -8,6 +8,10 @@ export default function UserContactForm({
   userContact,
   displayPersonalContact,
   setDisplayPersonalContact,
+  setControlEmailSvgDisplay,
+  setControlPhoneSvgDisplay,
+  setHideEdit,
+  hideEdit,
 }) {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,11 +20,11 @@ export default function UserContactForm({
   const [emailError, SetEmailError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
 
-  const [isSubmitContact, setIsSubmitContact] = useState(false);
   // const [displayPersonalContact, setDisplayPersonalContact] = useState(false);
 
   //  useEffect(() => {
   // This function will run when the component is first loaded
+  const isFormComplete = userContact.PersonName && userContact.Email && userContact.MobileNumber
 
   function handleUserName(e) {
     const updateUserName = e.target.value;
@@ -33,6 +37,12 @@ export default function UserContactForm({
     const updateEmail = e.target.value;
     setEmail(updateEmail);
     SetEmailError("");
+
+    if (updateEmail === "") {
+      setControlEmailSvgDisplay(false);
+    } else {
+      setControlEmailSvgDisplay(true);
+    }
     handleUserContact(userName, updateEmail, mobileNumber);
   }
 
@@ -40,6 +50,12 @@ export default function UserContactForm({
     const updateMobileNumber = e.target.value;
     setmobileNumber(updateMobileNumber);
     setPhoneNumberError("");
+
+    if (updateMobileNumber === "") {
+      setControlPhoneSvgDisplay(false);
+    } else {
+      setControlPhoneSvgDisplay(true);
+    }
     handleUserContact(userName, email, updateMobileNumber);
   }
 
@@ -76,11 +92,7 @@ export default function UserContactForm({
   }
 
   function handleEditBtn() {
-    const edit = document.querySelector(".edit");
-    console.log(edit);
-
-    edit.style.display = "block";
-
+    setHideEdit(false);
     // setIsSubmitContact(false);
     // setValueDisplayContact(false);
   }
@@ -230,6 +242,7 @@ export default function UserContactForm({
                 type="submit"
                 className="userContactSubmit"
                 hideInputContainer={handleFormValidation}
+                isFormComplete={isFormComplete}
               />
             </div>
           ) : null}

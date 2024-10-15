@@ -6,6 +6,8 @@ import { Submit } from "./SubmitBtn.jsx";
 export function EducationExperienceForm({
   educationExperience,
   setEducationExperience,
+  displayEducationDetails,
+  setDisplayEducationDetails,
   setHideEdit,
 }) {
   const [studiesTitle, setStudiesTitle] = useState("");
@@ -16,7 +18,13 @@ export function EducationExperienceForm({
   const [studiesEndDate, setStudiesEndDate] = useState("");
 
   const [isSubmitForEdu, setIsSubmitForEdu] = useState(false);
-  const [displayEducationDetails, setDisplayEducationDetails] = useState(false);
+
+  const isFormComplete =
+    educationExperience.StudiesTitle &&
+    educationExperience.StudiesMajor &&
+    educationExperience.SchoolName &&
+    educationExperience.StudiesStartDate &&
+    educationExperience.StudiesEndDate;
 
   function handleStudiesTitle(e) {
     const updateStudiesTitle = e.target.value;
@@ -110,6 +118,7 @@ export function EducationExperienceForm({
 
     handleEditBtn();
     setIsSubmitForEdu(true);
+    showEducationDetailsForm();
     handleValueDisplay();
   }
 
@@ -129,7 +138,6 @@ export function EducationExperienceForm({
     handleEditBtn();
   }
 
-  
   function showEducationDetailsForm() {
     const arrowDown = document.querySelector(".downArrowForEdu");
 
@@ -239,6 +247,7 @@ export function EducationExperienceForm({
                 type="submit"
                 className="submit"
                 hideInputContainer={hideInputContainerForEdu}
+                isFormComplete={isFormComplete}
               />
             </div>
           ) : null}

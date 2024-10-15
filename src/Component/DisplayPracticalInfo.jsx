@@ -1,7 +1,11 @@
 import { GetDate } from "./GetDate";
 import { Edit } from "./EditButton";
 
-function DisplayPracticalExperience() {
+function DisplayPracticalExperience({
+  hideEdit,
+  setHideEdit,
+  setDisplayProfessionalDetails,
+}) {
   let practicalExperience = JSON.parse(
     localStorage.getItem("practicalExperience")
   );
@@ -26,8 +30,14 @@ function DisplayPracticalExperience() {
           {" "}
           {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
         </p>
-
-        <Edit />
+        {hideEdit ? (
+          ""
+        ) : (
+          <Edit
+            setHideEdit={setHideEdit}
+            setDisplayProfessionalDetails={setDisplayProfessionalDetails}
+          />
+        )}
       </div>
     </div>
   );
