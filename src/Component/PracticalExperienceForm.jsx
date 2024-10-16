@@ -9,8 +9,8 @@ export function PracticalExperienceForm({
   setPracticalExperience,
   displayProfessionalDetails,
   setDisplayProfessionalDetails,
-  hideEdit,
-  setHideEdit,
+  hideForEducationEdit,
+  setHideProfessionalEdit,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -130,17 +130,17 @@ export function PracticalExperienceForm({
     //   ".practicalExperienceInputContainer"
     // );
     // inputElContainer.style.display = "none";handleEditBtn
-    handleEditBtn();
     showProfessionalDetailsForm();
+    setHideProfessionalEdit(false);
+    // handleEditBtnForPractical();
   }
 
-  function handleEditBtn() {
-    setHideEdit(false);
-  }
+  // function handleEditBtn() {
+  // }
 
-  function handleValueDisplay() {
-    setValueDisplayForPractical(true);
-  }
+  // function handleValueDisplay() {
+  //   setValueDisplayForPractical(true);
+  // }
 
   function handlePracticalExperienceDisplayForEdit() {
     const inputElContainer = document.querySelector(
@@ -196,7 +196,7 @@ export function PracticalExperienceForm({
                 className="professioImg"
                 src="https://rmathr.github.io/cv-project/b5791876cc5188ae758a.png"
               />
-              Professional Experience
+               Experience
             </p>
             <p>
               <svg

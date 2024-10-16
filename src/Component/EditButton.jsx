@@ -2,7 +2,12 @@
 
 export function Edit({
   setDisplayPersonalContact,
-  setHideEdit,
+  hideContactEdit,
+  hideForEducationEdit,
+  hideProfessionalEdit,
+  setHideContactEdit,
+  setHideForEducationEdit,
+  setHideProfessionalEdit,
   setDisplayEducationDetails,
   setDisplayProfessionalDetails,
 }) {
@@ -10,18 +15,15 @@ export function Edit({
     const edit = document.querySelector(".edit");
     console.log(edit);
     edit.style.display = "none";
-    if (setDisplayPersonalContact) {
+    if (hideContactEdit === false) {
       setDisplayPersonalContact(true);
-      setHideEdit(true);
-    }
-
-    if (setDisplayEducationDetails) {
+      setHideContactEdit(true);
+    } else if (hideForEducationEdit === false) {
       setDisplayEducationDetails(true);
-      setHideEdit(true);
-    }
-    if (setDisplayProfessionalDetails) {
+      setHideForEducationEdit(true);
+    } else if (hideProfessionalEdit === false) {
       setDisplayProfessionalDetails(true);
-      setHideEdit(true);
+      setHideProfessionalEdit(true);
     }
   }
 

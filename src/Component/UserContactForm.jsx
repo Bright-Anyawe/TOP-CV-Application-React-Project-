@@ -10,8 +10,7 @@ export default function UserContactForm({
   setDisplayPersonalContact,
   setControlEmailSvgDisplay,
   setControlPhoneSvgDisplay,
-  setHideEdit,
-  hideEdit,
+  setHideContactEdit,
 }) {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +23,8 @@ export default function UserContactForm({
 
   //  useEffect(() => {
   // This function will run when the component is first loaded
-  const isFormComplete = userContact.PersonName && userContact.Email && userContact.MobileNumber
+  const isFormComplete =
+    userContact.PersonName && userContact.Email && userContact.MobileNumber;
 
   function handleUserName(e) {
     const updateUserName = e.target.value;
@@ -75,7 +75,7 @@ export default function UserContactForm({
   function hideInputContactContainer(e) {
     const edit = document.querySelector(".edit");
     // inputElContainer.style.display = "none";
-    setIsSubmitContact(true);
+    // setIsSubmitContact(true);
     // displayUserContactOnPage()
 
     // DisplayValueOnPage();
@@ -92,7 +92,7 @@ export default function UserContactForm({
   }
 
   function handleEditBtn() {
-    setHideEdit(false);
+    setHideContactEdit(false);
     // setIsSubmitContact(false);
     // setValueDisplayContact(false);
   }

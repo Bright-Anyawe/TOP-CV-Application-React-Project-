@@ -2,8 +2,8 @@ import { GetDate } from "./GetDate";
 import { Edit } from "./EditButton";
 
 function DisplayPracticalExperience({
-  hideEdit,
-  setHideEdit,
+  hideProfessionalEdit,
+  setHideProfessionalEdit,
   setDisplayProfessionalDetails,
 }) {
   let practicalExperience = JSON.parse(
@@ -30,12 +30,13 @@ function DisplayPracticalExperience({
           {" "}
           {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
         </p>
-        {hideEdit ? (
+        {hideProfessionalEdit ? (
           ""
         ) : (
           <Edit
-            setHideEdit={setHideEdit}
+            setHideProfessionalEdit={setHideProfessionalEdit}
             setDisplayProfessionalDetails={setDisplayProfessionalDetails}
+            hideProfessionalEdit={hideProfessionalEdit}
           />
         )}
       </div>

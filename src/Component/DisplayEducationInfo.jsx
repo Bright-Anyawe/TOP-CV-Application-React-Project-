@@ -1,6 +1,11 @@
 import { GetDate } from "./GetDate";
 import { Edit } from "./EditButton";
-function DisplayEducationExperience({displayEducationDetails, setDisplayEducationDetails ,hideEdit, setHideEdit }) {
+function DisplayEducationExperience({
+  displayEducationDetails,
+  setDisplayEducationDetails,
+  hideForEducationEdit,
+  setHideForEducationEdit,
+}) {
   let educationExperience = JSON.parse(
     localStorage.getItem("educationExperience")
   );
@@ -9,13 +14,6 @@ function DisplayEducationExperience({displayEducationDetails, setDisplayEducatio
     <div className="educationExperienceEl">
       <p className="eduTitle">Education </p>
       <div className="subEducationContainer">
-        <div>
-          <p>
-            {educationExperience.StudiesTitle}{" "}
-            {`(${educationExperience.StudiesMajor})`}{" "}
-          </p>
-          <p> {educationExperience.SchoolName} </p>
-        </div>{" "}
         <div>
           <p>
             {" "}
@@ -32,9 +30,22 @@ function DisplayEducationExperience({displayEducationDetails, setDisplayEducatio
             }{" "}
           </p>
         </div>
+        <div>
+          <p>
+            {educationExperience.StudiesTitle}{" "}
+            {`(${educationExperience.StudiesMajor})`}{" "}
+          </p>
+          <p> {educationExperience.SchoolName} </p>
+        </div>{" "}
       </div>
 
-      {hideEdit ? null : <Edit setHideEdit={setHideEdit} setDisplayEducationDetails={setDisplayEducationDetails} />}
+      {hideForEducationEdit ? null : (
+        <Edit
+          setHideForEducationEdit={setHideForEducationEdit}
+          setDisplayEducationDetails={setDisplayEducationDetails}
+          hideForEducationEdit={hideForEducationEdit}
+        />
+      )}
     </div>
   );
 }

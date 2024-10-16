@@ -6,15 +6,15 @@ function DisplayUserContact({
   controlPhoneSvgDisplay,
   setControlEmailSvgDisplay,
   setControlPhoneSvgDisplay,
-  hideEdit,
-  setHideEdit,
+  hideContactEdit,
+  setHideContactEdit,
 }) {
   let userContact = JSON.parse(localStorage.getItem("userContact"));
 
-if(userContact) {
-  setControlEmailSvgDisplay(true)
-  setControlPhoneSvgDisplay(true)
-}
+  // if (userContact) {
+  //   setControlEmailSvgDisplay(true);
+  //   setControlPhoneSvgDisplay(true);
+  // }
 
   return (
     <div id="userContactDisplayContainer">
@@ -66,13 +66,13 @@ if(userContact) {
             {userContact.MobileNumber}{" "}
           </p>
         </div>
-        {hideEdit ? (
-          ""
+        {hideContactEdit ? (
+          null
         ) : (
           <Edit
             setDisplayPersonalContact={setDisplayPersonalContact}
-            setHideEdit={setHideEdit}
-            hideEdit={hideEdit}
+            setHideContactEdit={setHideContactEdit}
+            hideContactEdit={hideContactEdit}
           />
         )}
       </div>
