@@ -129,16 +129,14 @@
     font-size: 1.3rem;
   }
 
-  div.personalContactHeader :first-child,
-  div.educationDetailsHeader :first-child,
-  div.professionalDetailsHeader :first-child {
+  p.personalContactHeader :first-child, p.educationDetailsHeader :first-child, .professionalDetailsHeader :first-child {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-  }
+}
 
   .subEducationContainer div p {
     font-size: 1.2rem;
@@ -308,13 +306,13 @@
 
   div.subEducationContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    align-self: center;
-    gap: 4px;
-    /* flex-wrap: wrap; */
-    margin: 41px 0 20px -1px;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        align-self: center;
+        gap: 4px;
+        /* flex-wrap: wrap; */
+        margin: 41px 0 20px -1px;
   }
 
   div.emailPhoneContainer {

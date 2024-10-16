@@ -98,17 +98,18 @@
 
   #cvFormContainer {
     max-width: 222px;
+
   }
 
   div.subEducationContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    align-self: center;
-    gap: 4px;
-    /* flex-wrap: wrap; */
-    margin: 41px 0 20px 0px;
+display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        align-self: center;
+        gap: 4px;
+        /* flex-wrap: wrap; */
+        margin: 41px 0 20px -1px;
   }
 
   div.emailPhoneContainer {
@@ -127,17 +128,6 @@
     margin: 20px 0;
     font-weight: 600;
     font-size: 1.3rem;
-  }
-
-  div.personalContactHeader :first-child,
-  div.educationDetailsHeader :first-child,
-  div.professionalDetailsHeader :first-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-size: 1.1rem;
-    font-weight: 600;
   }
 
   .subEducationContainer div p {
@@ -308,13 +298,13 @@
 
   div.subEducationContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
     align-self: center;
     gap: 4px;
     /* flex-wrap: wrap; */
-    margin: 41px 0 20px -1px;
+    margin: 24px;
   }
 
   div.emailPhoneContainer {
@@ -336,23 +326,24 @@
     font-size: 0.5rem;
   }
 
-  div.personalContactHeader :first-child,
-  div.educationDetailsHeader :first-child,
-  div.professionalDetailsHeader :first-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-size: 1rem;
-
-    font-weight: 600;
-  }
+  
+div.personalContactHeader :first-child,
+div.educationDetailsHeader :first-child,
+div.professionalDetailsHeader :first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  
+  font-weight: 600;
+}
 
   div input,
   div textarea {
     min-width: 100px;
     height: 40px;
-    font-size: 0.8rem;
+        font-size: 0.8rem;
     padding: 0 10px;
     border-radius: 8px;
     border: none;
@@ -424,13 +415,13 @@
 
   div.subEducationContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
     align-self: center;
     gap: 4px;
     /* flex-wrap: wrap; */
-    margin: 41px 0 20px -1px;
+    margin-top: 71px;
   }
 
   div.emailPhoneContainer {
@@ -480,6 +471,9 @@
     margin: 50px 0 0 0;
     padding-left: 30px;
   }
+
+  
+
 
   button svg {
     width: 25px;
@@ -553,13 +547,11 @@ svg {
 
 .subEducationContainer {
   display: flex;
-  flex-direction: column;
   justify-content: start;
-  align-items: start;
-  align-self: center;
-  gap: 4px;
+  justify-self: flex-start;
+  gap: 15px;
   /* flex-wrap: wrap; */
-  margin: 41px 0 20px -1px;
+  margin-top: 50px;
 }
 
 .subEducationContainer p {

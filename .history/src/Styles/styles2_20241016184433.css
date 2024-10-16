@@ -130,13 +130,13 @@
   }
 
   div.personalContactHeader :first-child,
-  div.educationDetailsHeader :first-child,
-  div.professionalDetailsHeader :first-child {
+  p.educationDetailsHeader :first-child,
+  p.professionalDetailsHeader :first-child {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
   }
 
