@@ -42,9 +42,7 @@ export default function App() {
   const [hideContactEdit, setHideContactEdit] = useState(true);
   const [hideForEducationEdit, setHideForEducationEdit] = useState(true);
   const [hideProfessionalEdit, setHideProfessionalEdit] = useState(true);
-  const [hideDate, setHideDate] = useState(true);
-
-
+  
 
 
   return (
@@ -70,7 +68,6 @@ export default function App() {
             setHideForEducationEdit={setHideForEducationEdit}
             hideProfessionalEdit={hideProfessionalEdit}
             setHideProfessionalEdit={setHideProfessionalEdit}
-            setHideDate={setHideDate}
           />
         </section>
 
@@ -93,7 +90,6 @@ export default function App() {
               setDisplayEducationDetails={setDisplayEducationDetails}
               setHideForEducationEdit={setHideForEducationEdit}
               hideForEducationEdit={hideForEducationEdit}
-              hideDate={hideDate}
             />
             <DisplayPracticalExperience
               practicalExperience={practicalExperience}

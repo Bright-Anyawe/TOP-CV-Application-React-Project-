@@ -70,7 +70,7 @@ export default function App() {
             setHideForEducationEdit={setHideForEducationEdit}
             hideProfessionalEdit={hideProfessionalEdit}
             setHideProfessionalEdit={setHideProfessionalEdit}
-            setHideDate={setHideDate}
+            
           />
         </section>
 

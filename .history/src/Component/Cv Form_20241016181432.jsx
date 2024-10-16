@@ -49,7 +49,7 @@ function CvForm({
         displayEducationDetails={displayEducationDetails}
         setDisplayEducationDetails={setDisplayEducationDetails}
         setHideForEducationEdit={setHideForEducationEdit}
-        setHideDate={setHideDate}
+        
       />
 
       <PracticalExperienceForm

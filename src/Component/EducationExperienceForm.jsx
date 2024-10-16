@@ -9,6 +9,7 @@ export function EducationExperienceForm({
   displayEducationDetails,
   setDisplayEducationDetails,
   setHideForEducationEdit,
+  setHideDate,
 }) {
   const [studiesTitle, setStudiesTitle] = useState("");
   const [studiesMajor, setStudiesMajor] = useState("");
@@ -64,6 +65,7 @@ export function EducationExperienceForm({
   function handleStudiesStartDate(e) {
     const updateStudiesStartDate = e.target.value;
     setStudiesStartDate(updateStudiesStartDate);
+    setHideDate(false)
     handleEducationExperience(
       studiesTitle,
       studiesMajor,

@@ -5,6 +5,7 @@ function DisplayEducationExperience({
   setDisplayEducationDetails,
   hideForEducationEdit,
   setHideForEducationEdit,
+  hideDate,
 }) {
   let educationExperience = JSON.parse(
     localStorage.getItem("educationExperience")
@@ -14,22 +15,26 @@ function DisplayEducationExperience({
     <div className="educationExperienceEl">
       <p className="eduTitle">Education </p>
       <div className="subEducationContainer">
-        <div>
-          <p>
-            {" "}
-            {
-              <GetDate
-                updateStudiesDate={educationExperience.StudiesStartDate}
-              />
-            }{" "}
-          </p>
-          <p>
-            {" "}
-            {
-              <GetDate updateStudiesDate={educationExperience.StudiesEndDate} />
-            }{" "}
-          </p>
-        </div>
+        {hideDate ? null : (
+          <div>
+            <p>
+              {" "}
+              {
+                <GetDate
+                  updateStudiesDate={educationExperience.StudiesStartDate}
+                />
+              }{" "}
+            </p>
+            <p>
+              {" "}
+              {
+                <GetDate
+                  updateStudiesDate={educationExperience.StudiesEndDate}
+                />
+              }{" "}
+            </p>
+          </div>
+        )}
         <div>
           <p>
             {educationExperience.StudiesTitle}{" "}
