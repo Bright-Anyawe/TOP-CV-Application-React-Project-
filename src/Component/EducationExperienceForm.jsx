@@ -5,6 +5,7 @@ import { Submit } from "./SubmitBtn.jsx";
 
 export function EducationExperienceForm({
   educationExperience,
+  
   setEducationExperience,
   displayEducationDetails,
   setDisplayEducationDetails,
@@ -111,13 +112,7 @@ export function EducationExperienceForm({
   }
 
   function hideInputContainerForEdu() {
-    // const inputElContainer = document.querySelector(
-    //   ".educationExperienceInputContainer"
-    // );
-    // console.log(inputElContainer);
-
-    // inputElContainer.style.display = "none";
-
+   
     handleEditBtn();
     setIsSubmitForEdu(true);
     showEducationDetailsForm();
@@ -155,6 +150,10 @@ export function EducationExperienceForm({
 
       setDisplayEducationDetails(false);
     }
+  }
+  
+  function handleAdditionalEducation() {
+    console.log("I want to add additional education")
   }
   return (
     <>
@@ -252,7 +251,12 @@ export function EducationExperienceForm({
                 isFormComplete={isFormComplete}
               />
             </div>
-          ) : null}
+          ) : 
+          <button  
+          onClick={handleAdditionalEducation}
+          >Add additional education info if any</button>
+          
+          }
 
           {/* {!isSubmitForEdu ? (
               <Submit

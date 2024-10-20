@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
-import DisplayUserContact from "./DisplayUserInfo.jsx";
-import { Edit } from "./EditButton.jsx";
+import { useState } from "react";
 import { Submit } from "./SubmitBtn.jsx";
 
-export default function UserContactForm({
+export function UserContactForm({
   setUserContact,
   userContact,
   displayPersonalContact,
@@ -12,23 +10,19 @@ export default function UserContactForm({
   setControlPhoneSvgDisplay,
   setHideContactEdit,
 }) {
-  const [userName, setuserName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [mobileNumber, setmobileNumber] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
   const [error, setError] = useState("");
   const [emailError, SetEmailError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
 
-  // const [displayPersonalContact, setDisplayPersonalContact] = useState(false);
-
-  //  useEffect(() => {
-  // This function will run when the component is first loaded
   const isFormComplete =
     userContact.PersonName && userContact.Email && userContact.MobileNumber;
 
   function handleUserName(e) {
     const updateUserName = e.target.value;
-    setuserName(updateUserName);
+    setUserName(updateUserName);
     setError("");
     handleUserContact(updateUserName, email, mobileNumber);
   }
@@ -48,7 +42,7 @@ export default function UserContactForm({
 
   function handleMobileNumber(e) {
     const updateMobileNumber = e.target.value;
-    setmobileNumber(updateMobileNumber);
+    setMobileNumber(updateMobileNumber);
     setPhoneNumberError("");
 
     if (updateMobileNumber === "") {
@@ -66,46 +60,43 @@ export default function UserContactForm({
       Email: updateEmail,
       MobileNumber: updateMobileNumber,
     };
-    console.log(personContact);
     localStorage.setItem("userContact", JSON.stringify(personContact));
 
     setUserContact(personContact);
   }
 
-  function hideInputContactContainer(e) {
-    const edit = document.querySelector(".edit");
-    // inputElContainer.style.display = "none";
-    // setIsSubmitContact(true);
-    // displayUserContactOnPage()
+  // function hideInputContactContainer(e) {
+  //   const edit = document.querySelector(".edit");
+  //   // inputElContainer.style.display = "none";
+  //   // setIsSubmitContact(true);
+  //   // displayUserContactOnPage()
 
-    // DisplayValueOnPage();
-    // displayUserContactOnPage();
-  }
+  //   // DisplayValueOnPage();
+  //   // displayUserContactOnPage();
+  // }
 
-  function displayUserContactOnPage() {
-    const userContactDisplayer = document.querySelector(
-      ".userContactDisplayContainer"
-    );
-    console.log(userContactDisplayer);
+  // function displayUserContactOnPage() {
+  //   const userContactDisplayer = document.querySelector(
+  //     ".userContactDisplayContainer"
+  //   );
+  //   console.log(userContactDisplayer);
 
-    userContactDisplayer.style.display = "block";
-  }
+  //   userContactDisplayer.style.display = "block";
+  // }
 
   function handleEditBtn() {
     setHideContactEdit(false);
-    // setIsSubmitContact(false);
-    // setValueDisplayContact(false);
   }
 
-  function DisplayValueOnPage() {
-    setValueDisplayContact(true);
-  }
+  // function DisplayValueOnPage() {
+  //   setValueDisplayContact(true);
+  // }
 
-  function handleUserContactDisplayForEdit() {
-    const inputElContainer = document.querySelector(".inputContainer");
-    inputElContainer.style.display = "block";
-    // handleUserContactDisplay()
-  }
+  // function handleUserContactDisplayForEdit() {
+  //   const inputElContainer = document.querySelector(".inputContainer");
+  //   inputElContainer.style.display = "block";
+  //   // handleUserContactDisplay()
+  // }
 
   function handleFormValidation(e) {
     // const userNameInput = document.querySelector(".userNameInputEl");
@@ -139,7 +130,7 @@ export default function UserContactForm({
     }
     handleEditBtn();
     showPersonalContactForm();
-    hideInputContactContainer();
+    // hideInputContactContainer();
   }
 
   function showPersonalContactForm() {
@@ -160,7 +151,6 @@ export default function UserContactForm({
   }
 
   return (
-    <>
       <section className="userContact">
         <form
           onSubmit={(e) => e.preventDefault()}
@@ -259,6 +249,5 @@ export default function UserContactForm({
             )} */}
         </form>
       </section>
-    </>
   );
 }

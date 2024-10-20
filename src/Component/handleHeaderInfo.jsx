@@ -2,7 +2,11 @@ import { useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export function HandleHeaderInfo(props) {
+export function HandleHeaderInfo({
+  setHideContactEdit,
+  setHideForEducationEdit,
+  setHideProfessionalEdit,
+}) {
   const [loader, setLoader] = useState(false);
 
   const downloadPDF = () => {
@@ -18,6 +22,9 @@ export function HandleHeaderInfo(props) {
       doc.addImage(imgData, "PNG", 0, 0, docWidth, docHeight);
       doc.save("Cv application");
     });
+    setHideContactEdit(true);
+    setHideForEducationEdit(true);
+    setHideProfessionalEdit(true)
   };
 
   return (
