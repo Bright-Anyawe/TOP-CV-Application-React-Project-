@@ -245,10 +245,6 @@
     display: flex;
     flex-direction: column;
   }
-
-  div .alertUserContainer {
-    display: block;
-  }
 }
 
 @media (min-width: 501px) and (max-width: 699px) {
@@ -290,12 +286,6 @@
         padding: 20px;
     }
 
-
-  .alertUser:hover {
-    background-color: yellow;
-    color: black;
-  }
-
   h1.headText {
     /* padding-top: 15px; */
     text-decoration: none;
@@ -332,7 +322,6 @@
 
   #cvFormContainer {
     /* max-width: 250px; */
-            margin: 30px 0 50px 30px;
   }
 
   div.userContactDisplay {
@@ -344,7 +333,6 @@
     padding-top: 23px;
     /* max-height: 192px; */
     color: white;
-    max-height: 100%;
     padding-inline: 8px;
   }
 
@@ -395,7 +383,7 @@
   div textarea {
     min-width: 100px;
     height: 40px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 0 10px;
     border-radius: 8px;
     border: none;
@@ -439,9 +427,7 @@
     flex-direction: column;
     margin-bottom: 20px;
   }
-div.alertUserContainer {
-  display: block;
-}
+
   div.startDate,
   div.EndDate {
     display: flex;
@@ -465,10 +451,6 @@ div.alertUserContainer {
 
   #cvFormContainer {
     max-width: 500px;
-  }
-
-  .alertUserContainer {
-    display: none;
   }
 
   div.subEducationContainer {
@@ -560,10 +542,6 @@ div.alertUserContainer {
 .phoneNumberContainer span {
   display: flex;
 }
-
-.alertUserContainer {
-    display: none;
-  }
 
 .personalContactHeader,
 .educationDetailsHeader,

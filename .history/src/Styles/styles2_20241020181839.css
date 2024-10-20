@@ -246,7 +246,7 @@
     flex-direction: column;
   }
 
-  div .alertUserContainer {
+  div alertUserContainer {
     display: block;
   }
 }

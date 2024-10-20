@@ -246,9 +246,7 @@
     flex-direction: column;
   }
 
-  div .alertUserContainer {
-    display: block;
-  }
+  
 }
 
 @media (min-width: 501px) and (max-width: 699px) {
