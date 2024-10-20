@@ -11,13 +11,11 @@ function DisplayUserContact({
 }) {
   let userContact = JSON.parse(localStorage.getItem("userContact"));
 
-  // if (userContact) {
-  //   setControlEmailSvgDisplay(true);
-  //   setControlPhoneSvgDisplay(true);
-  // }
-
   return (
     <div id="userContactDisplayContainer">
+      <div className="alertUserContainer">
+        <h2 className="alertUser">Scroll up to fill in your form!</h2>
+      </div>
       <div className="userContactDisplay">
         <p className="userNameContainer"> {userContact.PersonName} </p>
         <div className="emailPhoneContainer">

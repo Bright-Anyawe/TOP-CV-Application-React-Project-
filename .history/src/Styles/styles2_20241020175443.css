@@ -99,19 +99,13 @@
 
   #cvFormContainer {
     max-width: 402px;
+    padding: 20px;
   }
 
   .alertUser {
     background-color: red;
     color: black;
     font-weight: 600;
-        padding: 20px;
-
-  }
-
-  .alertUser:hover {
-        background-color: yellow;
-    color: black;
   }
 
   div.subEducationContainer {

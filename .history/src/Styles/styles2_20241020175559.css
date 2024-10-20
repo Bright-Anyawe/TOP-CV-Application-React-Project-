@@ -109,7 +109,7 @@
 
   }
 
-  .alertUser:hover {
+  .alertUser :hover {
         background-color: yellow;
     color: black;
   }

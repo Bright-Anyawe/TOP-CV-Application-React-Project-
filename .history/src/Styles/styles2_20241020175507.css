@@ -109,11 +109,6 @@
 
   }
 
-  .alertUser:hover {
-        background-color: yellow;
-    color: black;
-  }
-
   div.subEducationContainer {
     display: flex;
     flex-direction: column;

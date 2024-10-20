@@ -102,15 +102,7 @@
   }
 
   .alertUser {
-    background-color: red;
-    color: black;
-    font-weight: 600;
-        padding: 20px;
-
-  }
-
-  .alertUser:hover {
-        background-color: yellow;
+        background-color: red;
     color: black;
   }
 
@@ -223,6 +215,7 @@
 
   div.practicalExperienceContainer p {
     font-size: 1.7rem;
+
   }
 
   button svg {
@@ -347,7 +340,7 @@
   #displayMainContainer {
     max-width: 480px;
   }
-  /* 
+/* 
   div.displaySubContainer {
   } */
 

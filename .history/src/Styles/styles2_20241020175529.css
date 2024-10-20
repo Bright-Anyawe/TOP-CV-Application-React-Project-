@@ -109,10 +109,7 @@
 
   }
 
-  .alertUser:hover {
-        background-color: yellow;
-    color: black;
-  }
+  .alertUser
 
   div.subEducationContainer {
     display: flex;
