@@ -12,9 +12,9 @@ export function Edit({
   setDisplayProfessionalDetails,
 }) {
   function handleUserContactDisplayForEdit() {
-    const edit = document.querySelector(".edit");
-    console.log(edit);
-    edit.style.display = "none";
+    // const edit = document.querySelector(".edit");
+    // console.log(edit);
+    // edit.style.display = "block";
     if (hideContactEdit === false) {
       setDisplayPersonalContact(true);
       setHideContactEdit(true);

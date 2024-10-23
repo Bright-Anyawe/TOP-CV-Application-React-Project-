@@ -8,8 +8,9 @@ function DisplayUserContact({
   setControlPhoneSvgDisplay,
   hideContactEdit,
   setHideContactEdit,
+  userContact
 }) {
-  let userContact = JSON.parse(localStorage.getItem("userContact"));
+  // let userContact = JSON.parse(localStorage.getItem("userContact"));
 
   return (
     <div id="userContactDisplayContainer">

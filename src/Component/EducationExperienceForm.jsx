@@ -2,16 +2,22 @@ import { useState } from "react";
 import DisplayEducationExperience from "./DisplayEducationInfo.jsx";
 import { Edit } from "./EditButton.jsx";
 import { Submit } from "./SubmitBtn.jsx";
+import { useContext } from "react";
+import { EducationContext } from "./App.jsx";
 
 export function EducationExperienceForm({
-  educationExperience,
-  
-  setEducationExperience,
+  // educationExperience,
+
+  // setEducationExperience,
+  educationArray,
+  setEducationArray,
   displayEducationDetails,
   setDisplayEducationDetails,
   setHideForEducationEdit,
   setHideDate,
 }) {
+  // const {educationArray, setEducationArray,  } = useContext(EducationContext)
+
   const [studiesTitle, setStudiesTitle] = useState("");
   const [studiesMajor, setStudiesMajor] = useState("");
 
@@ -20,6 +26,16 @@ export function EducationExperienceForm({
   const [studiesEndDate, setStudiesEndDate] = useState("");
 
   const [isSubmitForEdu, setIsSubmitForEdu] = useState(false);
+
+  const [educationExperience, setEducationExperience] = useState({
+    StudiesTitle: "",
+    StudiesMajor: "",
+    SchoolName: "",
+    StudiesStartDate: "",
+    StudiesEndDate: "",
+  });
+
+  const [displayAdditionalBtn, setDisplayAdditionalBtn] = useState(false)
 
   const isFormComplete =
     educationExperience.StudiesTitle &&
@@ -66,7 +82,7 @@ export function EducationExperienceForm({
   function handleStudiesStartDate(e) {
     const updateStudiesStartDate = e.target.value;
     setStudiesStartDate(updateStudiesStartDate);
-    setHideDate(false)
+    setHideDate(false);
     handleEducationExperience(
       studiesTitle,
       studiesMajor,
@@ -104,18 +120,26 @@ export function EducationExperienceForm({
       StudiesEndDate: updateStudiesEndDate,
     };
 
-    localStorage.setItem(
-      "educationExperience",
-      JSON.stringify(educationExperienceDetail)
-    );
+    // localStorage.setItem(
+    //   "educationExperience",
+    //   JSON.stringify(educationExperienceDetail)
+    // );
     setEducationExperience(educationExperienceDetail);
   }
 
   function hideInputContainerForEdu() {
-   
+    // console.log(educationExperience);
+    // console.log(educationArray)
+    setEducationArray((prevState) => {
+      return [...prevState, educationExperience];
+    });
     handleEditBtn();
     setIsSubmitForEdu(true);
     showEducationDetailsForm();
+    handleEducationExperienceDisplayForEdit();
+    setDisplayAdditionalBtn(true)
+    clearForm();
+
     // handleValueDisplay();
   }
 
@@ -149,21 +173,28 @@ export function EducationExperienceForm({
       arrowDown.style.transform = "rotate(0deg)";
 
       setDisplayEducationDetails(false);
+      setHideForEducationEdit(false);
     }
+    setDisplayAdditionalBtn(false)
   }
-  
+
   function handleAdditionalEducation() {
-    console.log("I want to add additional education")
+    console.log("I want to add additional education");
+    showEducationDetailsForm();
+  }
+
+  
+  function clearForm() {
+    setStudiesTitle("");
+    setStudiesMajor("");
+    setSchoolName("");
+    setStudiesStartDate("");
+    setStudiesEndDate("");
   }
   return (
     <>
       <section className="educationExperience">
         <form onSubmit={(e) => e.preventDefault()}>
-          {/* {eduValueDisplay ? (
-              <DisplayEducationExperience
-                educationExperience={educationExperience}
-              />
-            ) : null} */}
           <div
             className="educationDetailsHeader"
             onClick={showEducationDetailsForm}
@@ -251,27 +282,13 @@ export function EducationExperienceForm({
                 isFormComplete={isFormComplete}
               />
             </div>
-          ) : 
-          <button  
-          onClick={handleAdditionalEducation}
-          >Add additional education info if any</button>
-          
-          }
+          ) : null}
 
-          {/* {!isSubmitForEdu ? (
-              <Submit
-                type="submit"
-                className="submit"
-                hideInputContainer={hideInputContainerForEdu}
-              />
-            ) : (
-              <Edit
-                className="contactDisplay"
-                handleUserContactDisplayForEdit={
-                  handleEducationExperienceDisplayForEdit
-                }
-              />
-            )} */}
+          {displayAdditionalBtn ? (
+            <button onClick={handleAdditionalEducation}>
+              Add additional education
+            </button>
+          ) : null}
         </form>
       </section>
     </>

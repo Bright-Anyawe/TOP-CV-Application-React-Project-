@@ -5,12 +5,15 @@ import { Submit } from "./SubmitBtn.jsx";
 import { HandleHeaderInfo } from "./handleHeaderInfo.jsx";
 
 export function PracticalExperienceForm({
+  experienceArray,
+  setExperienceArray,
   practicalExperience,
   setPracticalExperience,
   displayProfessionalDetails,
   setDisplayProfessionalDetails,
   hideForEducationEdit,
   setHideProfessionalEdit,
+  setHideDate,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -23,6 +26,7 @@ export function PracticalExperienceForm({
   const [jobResponsibilitiesError, setJobResponsibilitiesError] = useState("");
   const [jobEntryDateError, setJobEntryDateError] = useState("");
   const [jobExitDateError, setJobExitDateError] = useState("");
+  const [displayAdditionalBtn, setDisplayAdditionalBtn] = useState(false)
 
   const isFormComplete =
     practicalExperience.CompanyName &&
@@ -72,7 +76,9 @@ export function PracticalExperienceForm({
 
   function handleJobEntryDate(e) {
     const updateJobEntryDate = e.target.value;
+    setHideDate(false);
     setJobEntryDate(updateJobEntryDate);
+
     handlePracticalExperience(
       companyName,
       jobPosition,
@@ -118,10 +124,6 @@ export function PracticalExperienceForm({
       JobExitDate: updateJobExitDate,
     };
 
-    localStorage.setItem(
-      "practicalExperience",
-      JSON.stringify(practicalExperienceDetail)
-    );
     setPracticalExperience(practicalExperienceDetail);
   }
 
@@ -130,8 +132,13 @@ export function PracticalExperienceForm({
     //   ".practicalExperienceInputContainer"
     // );
     // inputElContainer.style.display = "none";handleEditBtn
+    setExperienceArray((prevState) => {
+      return [...prevState, practicalExperience];
+    });
     showProfessionalDetailsForm();
     setHideProfessionalEdit(false);
+    clearForm()
+    setDisplayAdditionalBtn(true)
     // handleEditBtnForPractical();
   }
 
@@ -177,6 +184,20 @@ export function PracticalExperienceForm({
     }
   }
 
+  function handleAdditionalExperienceBtn() {
+    showProfessionalDetailsForm()
+    setDisplayAdditionalBtn(false)
+  }
+
+  
+  function clearForm() {
+    setCompanyName("");
+    setJobPosition("");
+    setJobResponsibilities("");
+    setJobEntryDate("");
+    setJobExitDate("");
+  }
+
   return (
     <>
       <section className="practicalExperience">
@@ -196,7 +217,7 @@ export function PracticalExperienceForm({
                 className="professioImg"
                 src="https://rmathr.github.io/cv-project/b5791876cc5188ae758a.png"
               />
-               Experience
+              Experience
             </p>
             <p>
               <svg
@@ -287,6 +308,12 @@ export function PracticalExperienceForm({
                 isFormComplete={isFormComplete}
               />
             </div>
+          ) : null}
+
+          {displayAdditionalBtn ? (
+            <button onClick={handleAdditionalExperienceBtn}>
+              Add additional experience
+            </button>
           ) : null}
 
           {/* {!isSubmitForPractical ? (

@@ -2,44 +2,60 @@ import { GetDate } from "./GetDate";
 import { Edit } from "./EditButton";
 
 function DisplayPracticalExperience({
+  experienceArray,
+  hideDate,
+  practicalExperience,
   hideProfessionalEdit,
   setHideProfessionalEdit,
   setDisplayProfessionalDetails,
 }) {
-  let practicalExperience = JSON.parse(
-    localStorage.getItem("practicalExperience")
-  );
+  // let practicalExperience = JSON.parse(
+  //   localStorage.getItem("practicalExperience")
+  // );
 
   return (
     <div className="practicalExperienceContainer">
       <p className="practicalTitle">Professional Experience </p>
 
-      <div className="subPracticalExperienceContainer">
-        <p>
-          {practicalExperience.CompanyName}({practicalExperience.JobPosition}){" "}
-        </p>
+      {experienceArray && Array.isArray(experienceArray)?
+      experienceArray.map((experience, index) => {
 
-        <p> {practicalExperience.JobResponsibilities} </p>
-        <p>
-          {" "}
-          {
-            <GetDate updateJobEntrytDate={practicalExperience.JobEntryDate} />
-          } -{" "}
-        </p>
-        <p>
-          {" "}
-          {<GetDate updateJobExitDate={practicalExperience.JobExitDate} />}{" "}
-        </p>
-        {hideProfessionalEdit ? (
-          ""
-        ) : (
-          <Edit
-            setHideProfessionalEdit={setHideProfessionalEdit}
-            setDisplayProfessionalDetails={setDisplayProfessionalDetails}
-            hideProfessionalEdit={hideProfessionalEdit}
-          />
-        )}
-      </div>
+        return (
+          <div className="subPracticalExperienceContainer" key={index}>
+            <p>
+              {experience.CompanyName}({experience.JobPosition}){" "}
+            </p>
+
+            <p> {experience.JobResponsibilities} </p>
+            {hideDate ? null : (
+              <div>
+                <p>
+                  {" "}
+                  {
+                    <GetDate updateJobEntryDate={experience.JobEntryDate} />
+                  } -{" "}
+                </p>
+                <p>
+                  {" "}
+                  {<GetDate updateJobExitDate={experience.JobExitDate} />}{" "}
+                </p>
+              </div>
+            )}
+            {hideProfessionalEdit ? (
+              ""
+            ) : (
+              <Edit
+                setHideProfessionalEdit={setHideProfessionalEdit}
+                setDisplayProfessionalDetails={setDisplayProfessionalDetails}
+                hideProfessionalEdit={hideProfessionalEdit}
+              />
+            )}
+          </div>
+        );
+      })
+    : null
+    }
+
     </div>
   );
 }

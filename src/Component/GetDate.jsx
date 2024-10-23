@@ -1,13 +1,13 @@
 export function GetDate({
   updateStudiesDate,
-  updateJobEntrytDate,
+  updateJobEntryDate,
   updateJobExitDate,
 }) {
   let date;
   if (updateStudiesDate) {
     date = new Date(updateStudiesDate);
-  } else if (updateJobEntrytDate) {
-    date = new Date(updateJobEntrytDate);
+  } else if (updateJobEntryDate) {
+    date = new Date(updateJobEntryDate);
   } else {
     date = new Date(updateJobExitDate);
   }
