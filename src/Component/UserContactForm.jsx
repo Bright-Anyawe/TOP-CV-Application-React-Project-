@@ -65,38 +65,9 @@ export function UserContactForm({
     setUserContact(personContact);
   }
 
-  // function hideInputContactContainer(e) {
-  //   const edit = document.querySelector(".edit");
-  //   // inputElContainer.style.display = "none";
-  //   // setIsSubmitContact(true);
-  //   // displayUserContactOnPage()
-
-  //   // DisplayValueOnPage();
-  //   // displayUserContactOnPage();
-  // }
-
-  // function displayUserContactOnPage() {
-  //   const userContactDisplayer = document.querySelector(
-  //     ".userContactDisplayContainer"
-  //   );
-  //   console.log(userContactDisplayer);
-
-  //   userContactDisplayer.style.display = "block";
-  // }
-
   function handleEditBtn() {
     setHideContactEdit(false);
   }
-
-  // function DisplayValueOnPage() {
-  //   setValueDisplayContact(true);
-  // }
-
-  // function handleUserContactDisplayForEdit() {
-  //   const inputElContainer = document.querySelector(".inputContainer");
-  //   inputElContainer.style.display = "block";
-  //   // handleUserContactDisplay()
-  // }
 
   function handleFormValidation(e) {
     // const userNameInput = document.querySelector(".userNameInputEl");

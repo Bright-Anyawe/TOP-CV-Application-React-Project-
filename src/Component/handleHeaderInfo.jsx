@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -7,27 +7,37 @@ export function HandleHeaderInfo({
   setHideForEducationEdit,
   setHideProfessionalEdit,
 }) {
+  const [loader, setLoader] = useState(false);
+  
+    function downloadPDF() {
       setHideContactEdit(true);
       setHideForEducationEdit(true);
       setHideProfessionalEdit(true);
-      
-  const [loader, setLoader] = useState(false);
 
-  const downloadPDF = () => {
-    setLoader(true);
+      setLoader(true);
 
-    const capture = document.querySelector("#displayMainContainer");
-    console.log(capture);
-    html2canvas(capture).then((canvas) => {
-      const imgData = canvas.toDataURL("img/png");
-      const doc = new jsPDF("p", "mm", "a4");
-      const docWidth = doc.internal.pageSize.getWidth();
-      const docHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, "PNG", 0, 0, docWidth, docHeight);
-      doc.save("Cv application");
-    });
+     
+    };
 
-  };
+
+    useEffect(() => {
+      if(loader) {
+         const capture = document.querySelector("#displayMainContainer");
+         console.log(capture);
+
+         html2canvas(capture).then((canvas) => {
+           const imgData = canvas.toDataURL("img/png");
+           const doc = new jsPDF("p", "mm", "a4");
+           const docWidth = doc.internal.pageSize.getWidth();
+           const docHeight = doc.internal.pageSize.getHeight();
+           doc.addImage(imgData, "PNG", 0, 0, docWidth, docHeight);
+           doc.save("Cv application");
+         });
+      }
+
+      setLoader(false);
+
+    }, [loader])
 
   return (
     <>
