@@ -1,24 +1,35 @@
 import { useState } from "react";
 import { Submit } from "./SubmitBtn.jsx";
+import { UserContactContext } from "./App.jsx";
+import { useContext } from "react";
 
 export function UserContactForm({
-  setUserContact,
-  userContact,
+
   displayPersonalContact,
   setDisplayPersonalContact,
   setControlEmailSvgDisplay,
   setControlPhoneSvgDisplay,
   setHideContactEdit,
 }) {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+
+const {
+  userContact,
+  setUserContact,
+  userName,
+  setUserName,
+  email,
+  setEmail,
+  mobileNumber,
+  setMobileNumber,
+} = useContext(UserContactContext);
+
+
   const [error, setError] = useState("");
   const [emailError, SetEmailError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
 
   const isFormComplete =
-    userContact.PersonName && userContact.Email && userContact.MobileNumber;
+    userContact.personName && userContact.email && userContact.mobileNumber;
 
   function handleUserName(e) {
     const updateUserName = e.target.value;
@@ -56,11 +67,11 @@ export function UserContactForm({
   function handleUserContact(updateUserName, updateEmail, updateMobileNumber) {
     const personContact = {
       ...userContact,
-      PersonName: updateUserName,
-      Email: updateEmail,
-      MobileNumber: updateMobileNumber,
+      personName: updateUserName,
+      email: updateEmail,
+      mobileNumber: updateMobileNumber,
     };
-    localStorage.setItem("userContact", JSON.stringify(personContact));
+    // localStorage.setItem("userContact", JSON.stringify(personContact));
 
     setUserContact(personContact);
   }
@@ -101,6 +112,7 @@ export function UserContactForm({
     }
     handleEditBtn();
     showPersonalContactForm();
+    clearForm();
     // hideInputContactContainer();
   }
 
@@ -119,6 +131,13 @@ export function UserContactForm({
 
       setDisplayPersonalContact(false);
     }
+  }
+
+  function clearForm() {
+    setUserName("");
+    setEmail("");
+    setMobileNumber("");
+    
   }
 
   return (

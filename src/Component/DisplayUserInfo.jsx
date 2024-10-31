@@ -1,4 +1,7 @@
 import { Edit } from "./EditButton";
+import { UserContactContext } from "./App";
+import { useContext } from "react";
+
 
 function DisplayUserContact({
   setDisplayPersonalContact,
@@ -8,9 +11,10 @@ function DisplayUserContact({
   setControlPhoneSvgDisplay,
   hideContactEdit,
   setHideContactEdit,
-  userContact
+  // userContact
 }) {
   // let userContact = JSON.parse(localStorage.getItem("userContact"));
+const { userContact, setUserContact } = useContext(UserContactContext);
 
   return (
     <div id="userContactDisplayContainer">
@@ -18,7 +22,7 @@ function DisplayUserContact({
         <h2 className="alertUser">Scroll up to fill in your form!</h2>
       </div>
       <div className="userContactDisplay">
-        <p className="userNameContainer"> {userContact.PersonName} </p>
+        <p className="userNameContainer"> {userContact.personName} </p>
         <div className="emailPhoneContainer">
           <p className="userEmailContainer">
             <span>
@@ -40,7 +44,7 @@ function DisplayUserContact({
                 </svg>
               ) : null}
             </span>{" "}
-            {userContact.Email}{" "}
+            {userContact.email}{" "}
           </p>
           <p className="phoneNumberContainer">
             {" "}
@@ -62,7 +66,7 @@ function DisplayUserContact({
                 </svg>
               ) : null}
             </span>{" "}
-            {userContact.MobileNumber}{" "}
+            {userContact.mobileNumber}{" "}
           </p>
         </div>
         {hideContactEdit ? (
