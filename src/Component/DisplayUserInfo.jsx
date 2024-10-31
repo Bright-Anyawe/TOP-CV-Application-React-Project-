@@ -2,7 +2,6 @@ import { Edit } from "./EditButton";
 import { UserContactContext } from "./App";
 import { useContext } from "react";
 
-
 function DisplayUserContact({
   setDisplayPersonalContact,
   controlEmailSvgDisplay,
@@ -13,8 +12,8 @@ function DisplayUserContact({
   setHideContactEdit,
   // userContact
 }) {
-  // let userContact = JSON.parse(localStorage.getItem("userContact"));
-const { userContact, setUserContact } = useContext(UserContactContext);
+  // const { userContact } = useContext(UserContactContext);
+ let userContact = JSON.parse(localStorage.getItem("userContact")) || {};
 
   return (
     <div id="userContactDisplayContainer">
@@ -22,7 +21,7 @@ const { userContact, setUserContact } = useContext(UserContactContext);
         <h2 className="alertUser">Scroll up to fill in your form!</h2>
       </div>
       <div className="userContactDisplay">
-        <p className="userNameContainer"> {userContact.personName} </p>
+        <p className="userNameContainer"> {userContact.userName} </p>
         <div className="emailPhoneContainer">
           <p className="userEmailContainer">
             <span>
@@ -44,7 +43,7 @@ const { userContact, setUserContact } = useContext(UserContactContext);
                 </svg>
               ) : null}
             </span>{" "}
-            {userContact.email}{" "}
+            {userContact.userEmail}{" "}
           </p>
           <p className="phoneNumberContainer">
             {" "}
@@ -69,9 +68,7 @@ const { userContact, setUserContact } = useContext(UserContactContext);
             {userContact.mobileNumber}{" "}
           </p>
         </div>
-        {hideContactEdit ? (
-          null
-        ) : (
+        {hideContactEdit ? null : (
           <Edit
             setDisplayPersonalContact={setDisplayPersonalContact}
             setHideContactEdit={setHideContactEdit}
