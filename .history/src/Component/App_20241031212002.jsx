@@ -89,7 +89,9 @@ export default function App() {
 
             <section id="displayMainContainer">
               <div className="displaySubContainer">
-                <DisplayUserContact />
+                <DisplayUserContact
+                  
+                />
                 <DisplayEducationExperience
                   // educationExperience={educationExperience}
                   educationArray={educationArray}

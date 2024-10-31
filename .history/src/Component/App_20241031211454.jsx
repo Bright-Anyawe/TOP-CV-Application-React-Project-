@@ -48,10 +48,6 @@ export default function App() {
             displayPersonalContact,
             setDisplayPersonalContact,
             controlEmailSvgDisplay,
-            setControlEmailSvgDisplay,
-            controlPhoneSvgDisplay,
-            setControlPhoneSvgDisplay,
-            setHideContactEdit,
             state,
             userContact,
             setUserContact,
@@ -89,7 +85,17 @@ export default function App() {
 
             <section id="displayMainContainer">
               <div className="displaySubContainer">
-                <DisplayUserContact />
+                <DisplayUserContact
+                  userContact={userContact}
+                  displayPersonalContact={displayPersonalContact}
+                  setDisplayPersonalContact={setDisplayPersonalContact}
+                  controlEmailSvgDisplay={controlEmailSvgDisplay}
+                  setControlEmailSvgDisplay={setControlEmailSvgDisplay}
+                  controlPhoneSvgDisplay={controlPhoneSvgDisplay}
+                  setControlPhoneSvgDisplay={setControlPhoneSvgDisplay}
+                  hideContactEdit={hideContactEdit}
+                  setHideContactEdit={setHideContactEdit}
+                />
                 <DisplayEducationExperience
                   // educationExperience={educationExperience}
                   educationArray={educationArray}

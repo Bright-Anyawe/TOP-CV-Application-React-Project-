@@ -1,10 +1,10 @@
 import { useState, createContext, useReducer } from "react";
 
-import CvForm from "./Form Components/Cv Form";
-import DisplayUserContact from "./Display Components/DisplayUserInfo";
-import DisplayEducationExperience from "./Display Components/DisplayEducationInfo";
-import DisplayPracticalExperience from "./Display Components/DisplayPracticalInfo";
-import { initialState, userContactReducer } from "./Other components/Reducer";
+import CvForm from "./Cv Form";
+import DisplayUserContact from "./DisplayUserInfo";
+import DisplayEducationExperience from "./DisplayEducationInfo";
+import DisplayPracticalExperience from "./DisplayPracticalInfo";
+import { initialState, userContactReducer } from "./Reducer";
 
 export const UserContactContext = createContext(null);
 
@@ -13,7 +13,12 @@ export const EducationContext = createContext(null);
 export default function App() {
   const [state, dispatch] = useReducer(userContactReducer, initialState);
 
-  const [userContact, setUserContact] = useState(null);
+  const [userContact, setUserContact] = useState({});
+
+  // const [email, setEmail] = useState("");
+  // const [mobileNumber, setMobileNumber] = useState("");
+
+  const [educationExperience, setEducationExperience] = useState({});
 
   const [educationArray, setEducationArray] = useState([]);
   const [experienceArray, setExperienceArray] = useState([]);
@@ -44,23 +49,16 @@ export default function App() {
     <>
       <div id="main-app">
         <UserContactContext.Provider
-          value={{
-            displayPersonalContact,
-            setDisplayPersonalContact,
-            controlEmailSvgDisplay,
-            setControlEmailSvgDisplay,
-            controlPhoneSvgDisplay,
-            setControlPhoneSvgDisplay,
-            setHideContactEdit,
-            state,
-            userContact,
-            setUserContact,
-            dispatch,
-          }}
+          value={{ state, userContact, setUserContact, dispatch }}
         >
           {" "}
           <EducationContext.Provider
-            value={{ educationArray: [], setEducationArray }}
+            value={{
+              educationExperience,
+              setEducationExperience,
+              state,
+              dispatch,
+            }}
           >
             <section id="cvFormContainer">
               <CvForm
@@ -89,7 +87,17 @@ export default function App() {
 
             <section id="displayMainContainer">
               <div className="displaySubContainer">
-                <DisplayUserContact />
+                <DisplayUserContact
+                  userContact={userContact}
+                  displayPersonalContact={displayPersonalContact}
+                  setDisplayPersonalContact={setDisplayPersonalContact}
+                  controlEmailSvgDisplay={controlEmailSvgDisplay}
+                  setControlEmailSvgDisplay={setControlEmailSvgDisplay}
+                  controlPhoneSvgDisplay={controlPhoneSvgDisplay}
+                  setControlPhoneSvgDisplay={setControlPhoneSvgDisplay}
+                  hideContactEdit={hideContactEdit}
+                  setHideContactEdit={setHideContactEdit}
+                />
                 <DisplayEducationExperience
                   // educationExperience={educationExperience}
                   educationArray={educationArray}

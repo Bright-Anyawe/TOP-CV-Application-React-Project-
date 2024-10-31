@@ -1,10 +1,10 @@
 import { useState, createContext, useReducer } from "react";
 
-import CvForm from "./Form Components/Cv Form";
-import DisplayUserContact from "./Display Components/DisplayUserInfo";
-import DisplayEducationExperience from "./Display Components/DisplayEducationInfo";
-import DisplayPracticalExperience from "./Display Components/DisplayPracticalInfo";
-import { initialState, userContactReducer } from "./Other components/Reducer";
+import CvForm from "./Form Component/Cv Form";
+import DisplayUserContact from "./DisplayUserInfo";
+import DisplayEducationExperience from "./DisplayEducationInfo";
+import DisplayPracticalExperience from "./DisplayPracticalInfo";
+import { initialState, userContactReducer } from "./Reducer";
 
 export const UserContactContext = createContext(null);
 
@@ -47,11 +47,6 @@ export default function App() {
           value={{
             displayPersonalContact,
             setDisplayPersonalContact,
-            controlEmailSvgDisplay,
-            setControlEmailSvgDisplay,
-            controlPhoneSvgDisplay,
-            setControlPhoneSvgDisplay,
-            setHideContactEdit,
             state,
             userContact,
             setUserContact,
@@ -89,7 +84,17 @@ export default function App() {
 
             <section id="displayMainContainer">
               <div className="displaySubContainer">
-                <DisplayUserContact />
+                <DisplayUserContact
+                  userContact={userContact}
+                  displayPersonalContact={displayPersonalContact}
+                  setDisplayPersonalContact={setDisplayPersonalContact}
+                  controlEmailSvgDisplay={controlEmailSvgDisplay}
+                  setControlEmailSvgDisplay={setControlEmailSvgDisplay}
+                  controlPhoneSvgDisplay={controlPhoneSvgDisplay}
+                  setControlPhoneSvgDisplay={setControlPhoneSvgDisplay}
+                  hideContactEdit={hideContactEdit}
+                  setHideContactEdit={setHideContactEdit}
+                />
                 <DisplayEducationExperience
                   // educationExperience={educationExperience}
                   educationArray={educationArray}
