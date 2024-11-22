@@ -1,9 +1,0 @@
-
-
-
-.personalContactHeader, .educationDetailsHeader, .professionalDetailsHeader {
-       display: flex !important;
-    justify-content: space-between;
-
-}
-
