@@ -12,7 +12,6 @@ function DisplayUserContact({
     controlPhoneSvgDisplay,
     hideContactEdit,
     setHideContactEdit,
-    whiteColor,
   } = useContext(UserContactContext);
   let userContact = JSON.parse(localStorage.getItem("userContact")) || {};
 
@@ -21,7 +20,7 @@ function DisplayUserContact({
       <div className="alertUserContainer">
         <h2 className="alertUser">Scroll up to fill in your form!</h2>
       </div>
-      <div className="userContactDisplay" style={{color: whiteColor? "white": "inherit"}}>
+      <div className="userContactDisplay" style={{color: whiteColor? "white"}}>
         <p className="userNameContainer"> {userContact.userName} </p>
         <div className="emailPhoneContainer">
           <p className="userEmailContainer">

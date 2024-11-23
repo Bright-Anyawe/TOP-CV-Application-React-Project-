@@ -21,7 +21,7 @@ const {
  useEffect(() => {
    const storedEducation = JSON.parse(localStorage.getItem("education")) || [];
    setEducationArray(storedEducation);
-setHideDateEducation(false);
+setHideDate(false)
  }, []);
   return (
     <div className="educationExperienceEl">
@@ -37,7 +37,7 @@ setHideDateEducation(false);
                   </p>
                   <p> {data.schoolName} </p>
                 </div>{" "}
-                {hideDateEducation ? null : (
+                {hideDate ? null : (
                   <div>
                     <p>
                       {" "}

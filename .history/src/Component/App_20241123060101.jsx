@@ -80,8 +80,6 @@ export default function App() {
             userContact,
             setUserContact,
             dispatch,
-            whiteColor,
-            setWhiteColor,
           }}
         >
           {" "}

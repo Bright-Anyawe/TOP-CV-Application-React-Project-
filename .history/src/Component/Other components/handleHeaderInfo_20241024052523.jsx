@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { UserContactContext } from "../App";
-import { useContext } from "react";
 
 export function HandleHeaderInfo({
   setHideContactEdit,
@@ -10,34 +8,36 @@ export function HandleHeaderInfo({
   setHideProfessionalEdit,
 }) {
   const [loader, setLoader] = useState(false);
-  const { whiteColor, setWhiteColor } = useContext(UserContactContext);
+  
+    function downloadPDF() {
+      setHideContactEdit(true);
+      setHideForEducationEdit(true);
+      setHideProfessionalEdit(true);
 
-  function downloadPDF() {
-    setHideContactEdit(true);
-    setHideForEducationEdit(true);
-    setHideProfessionalEdit(true);
+      setLoader(true);
 
-    setLoader(true);
-    setWhiteColor(true);
-  }
+     
+    };
 
-  useEffect(() => {
-    if (loader) {
-      const capture = document.querySelector("#displayMainContainer");
-      console.log(capture);
 
-      html2canvas(capture).then((canvas) => {
-        const imgData = canvas.toDataURL("img/png");
-        const doc = new jsPDF("p", "mm", "a4");
-        const docWidth = doc.internal.pageSize.getWidth();
-        const docHeight = doc.internal.pageSize.getHeight();
-        doc.addImage(imgData, "PNG", 0, 0, docWidth, docHeight);
-        doc.save("Cv application");
-      });
-    }
+    useEffect(() => {
+      if(loader) {
+         const capture = document.querySelector("#displayMainContainer");
+         console.log(capture);
 
-    setLoader(false);
-  }, [loader]);
+         html2canvas(capture).then((canvas) => {
+           const imgData = canvas.toDataURL("img/png");
+           const doc = new jsPDF("p", "mm", "a4");
+           const docWidth = doc.internal.pageSize.getWidth();
+           const docHeight = doc.internal.pageSize.getHeight();
+           doc.addImage(imgData, "PNG", 0, 0, docWidth, docHeight);
+           doc.save("Cv application");
+         });
+      }
+
+      setLoader(false);
+
+    }, [loader])
 
   return (
     <>

@@ -6,22 +6,20 @@ import { useState,useEffect } from "react";
 
 function DisplayEducationExperience({
 
+  educationExperience,
+  displayEducationDetails,
   setDisplayEducationDetails,
   hideForEducationEdit,
   setHideForEducationEdit,
 
+  hideDate,
 }) {
-const {
-  educationArray,
-  setEducationArray,
-  hideDateEducation,
-  setHideDateEducation,
-} = useContext(EducationContext);
+const {educationArray, setEducationArray } =
+  useContext(EducationContext);
 
  useEffect(() => {
    const storedEducation = JSON.parse(localStorage.getItem("education")) || [];
    setEducationArray(storedEducation);
-setHideDateEducation(false);
  }, []);
   return (
     <div className="educationExperienceEl">
@@ -37,7 +35,7 @@ setHideDateEducation(false);
                   </p>
                   <p> {data.schoolName} </p>
                 </div>{" "}
-                {hideDateEducation ? null : (
+                {hideDate ? null : (
                   <div>
                     <p>
                       {" "}

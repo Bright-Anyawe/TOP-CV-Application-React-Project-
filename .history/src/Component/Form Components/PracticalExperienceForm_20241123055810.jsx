@@ -11,7 +11,7 @@ export default function PracticalExperienceForm({
   setDisplayProfessionalDetails,
   hideForEducationEdit,
   setHideProfessionalEdit,
-  
+  ,
 }) {
   const {
     experienceState,

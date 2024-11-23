@@ -10,7 +10,7 @@ export function HandleHeaderInfo({
   setHideProfessionalEdit,
 }) {
   const [loader, setLoader] = useState(false);
-  const { whiteColor, setWhiteColor } = useContext(UserContactContext);
+  const { setWhiteColor } = useContext(UserContactContext);
 
   function downloadPDF() {
     setHideContactEdit(true);
@@ -18,7 +18,7 @@ export function HandleHeaderInfo({
     setHideProfessionalEdit(true);
 
     setLoader(true);
-    setWhiteColor(true);
+    setWhiteColor(false);
   }
 
   useEffect(() => {

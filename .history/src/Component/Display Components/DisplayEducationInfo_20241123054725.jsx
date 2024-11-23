@@ -37,7 +37,7 @@ setHideDateEducation(false);
                   </p>
                   <p> {data.schoolName} </p>
                 </div>{" "}
-                {hideDateEducation ? null : (
+                {hideDate ? null : (
                   <div>
                     <p>
                       {" "}

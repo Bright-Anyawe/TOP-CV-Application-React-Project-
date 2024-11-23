@@ -5,23 +5,19 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 
 function DisplayPracticalExperience({
-  
+  // experienceArray,
+  hideDate,
+  practicalExperience,
   hideProfessionalEdit,
   setHideProfessionalEdit,
   setDisplayProfessionalDetails,
 }) {
-  const {
-    experienceArray,
-    setExperienceArray,
-    hideDateExperience,
-    setHideDateExperience,
-  } = useContext(ExperienceContext);
+  const {experienceArray, setExperienceArray } = useContext(ExperienceContext);
 
 
  useEffect(() => {
    const storedExperience = JSON.parse(localStorage.getItem("experience")) || [];
    setExperienceArray(storedExperience);
-   setHideDateExperience(false)
  }, []);
 
   return (
@@ -39,7 +35,7 @@ function DisplayPracticalExperience({
             </p>
 
             <p> {experience.jobResponsibilities} </p>
-            {hideDateExperience ? null : (
+            {hideDate ? null : (
               <div>
                 <p>
                   {" "}
@@ -57,7 +53,7 @@ function DisplayPracticalExperience({
               ""
             ) : (
               <Edit
-                experienceIndex={index}
+              experienceIndex={index}
                 setHideProfessionalEdit={setHideProfessionalEdit}
                 setDisplayProfessionalDetails={setDisplayProfessionalDetails}
                 hideProfessionalEdit={hideProfessionalEdit}

@@ -61,7 +61,6 @@ export default function App() {
 
   const [editIndex, setEditIndex] = useState(null);
   const [experienceEditIndex, setExperienceEditIndex] = useState(null);
-  const [whiteColor, setWhiteColor] = useState(false)
 
   return (
     <>
@@ -80,8 +79,6 @@ export default function App() {
             userContact,
             setUserContact,
             dispatch,
-            whiteColor,
-            setWhiteColor,
           }}
         >
           {" "}
@@ -148,6 +145,7 @@ export default function App() {
                     setDisplayEducationDetails={setDisplayEducationDetails}
                     setHideForEducationEdit={setHideForEducationEdit}
                     hideForEducationEdit={hideForEducationEdit}
+                    hideDate={hideDate}
                   />
                   <DisplayPracticalExperience
                     practicalExperience={practicalExperience}
@@ -156,6 +154,7 @@ export default function App() {
                     }
                     hideProfessionalEdit={hideProfessionalEdit}
                     setHideProfessionalEdit={setHideProfessionalEdit}
+                    hideDate={hideDate}
                   />
                 </div>
               </section>

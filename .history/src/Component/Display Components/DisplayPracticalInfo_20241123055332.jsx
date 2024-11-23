@@ -21,7 +21,6 @@ function DisplayPracticalExperience({
  useEffect(() => {
    const storedExperience = JSON.parse(localStorage.getItem("experience")) || [];
    setExperienceArray(storedExperience);
-   setHideDateExperience(false)
  }, []);
 
   return (
@@ -30,7 +29,7 @@ function DisplayPracticalExperience({
 
       {experienceArray && Array.isArray(experienceArray)?
 
-      experienceArray.map((experience, index) => {
+      hideDateExperience.map((experience, index) => {
 
         return (
           <div className="subPracticalExperienceContainer" key={index}>
@@ -39,7 +38,7 @@ function DisplayPracticalExperience({
             </p>
 
             <p> {experience.jobResponsibilities} </p>
-            {hideDateExperience ? null : (
+            {hideDate ? null : (
               <div>
                 <p>
                   {" "}
@@ -57,7 +56,7 @@ function DisplayPracticalExperience({
               ""
             ) : (
               <Edit
-                experienceIndex={index}
+              experienceIndex={index}
                 setHideProfessionalEdit={setHideProfessionalEdit}
                 setDisplayProfessionalDetails={setDisplayProfessionalDetails}
                 hideProfessionalEdit={hideProfessionalEdit}

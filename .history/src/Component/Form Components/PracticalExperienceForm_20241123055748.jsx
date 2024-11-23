@@ -11,7 +11,7 @@ export default function PracticalExperienceForm({
   setDisplayProfessionalDetails,
   hideForEducationEdit,
   setHideProfessionalEdit,
-  
+  ,
 }) {
   const {
     experienceState,
@@ -24,7 +24,7 @@ export default function PracticalExperienceForm({
     setExperienceEditIndex,
     displayExperienceAdditionalBtn,
     setDisplayExperienceAdditionalBtn,
-    setHideDateExperience,
+    
   } = useContext(ExperienceContext);
 
   console.log(experienceState);

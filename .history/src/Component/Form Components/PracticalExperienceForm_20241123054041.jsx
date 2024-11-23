@@ -11,7 +11,7 @@ export default function PracticalExperienceForm({
   setDisplayProfessionalDetails,
   hideForEducationEdit,
   setHideProfessionalEdit,
-  
+  setHideDate,
 }) {
   const {
     experienceState,
@@ -24,7 +24,6 @@ export default function PracticalExperienceForm({
     setExperienceEditIndex,
     displayExperienceAdditionalBtn,
     setDisplayExperienceAdditionalBtn,
-    setHideDateExperience,
   } = useContext(ExperienceContext);
 
   console.log(experienceState);
@@ -96,7 +95,7 @@ export default function PracticalExperienceForm({
     localStorage.setItem("experience", JSON.stringify(updatedExperienceArray));
 
     setExperienceEditIndex(null);
-    setHideDateExperience(false);
+    setHideDate(false);
     setHideProfessionalEdit(false);
 
     // localStorage.setItem("education", JSON.stringify(educationArray));

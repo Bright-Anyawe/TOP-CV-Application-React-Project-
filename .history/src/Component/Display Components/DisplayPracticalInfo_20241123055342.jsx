@@ -21,7 +21,6 @@ function DisplayPracticalExperience({
  useEffect(() => {
    const storedExperience = JSON.parse(localStorage.getItem("experience")) || [];
    setExperienceArray(storedExperience);
-   setHideDateExperience(false)
  }, []);
 
   return (

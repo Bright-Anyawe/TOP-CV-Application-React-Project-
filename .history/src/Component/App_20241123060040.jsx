@@ -61,7 +61,7 @@ export default function App() {
 
   const [editIndex, setEditIndex] = useState(null);
   const [experienceEditIndex, setExperienceEditIndex] = useState(null);
-  const [whiteColor, setWhiteColor] = useState(false)
+  const [whiteColor, setWhiteColor] = useState(null)
 
   return (
     <>
@@ -80,8 +80,6 @@ export default function App() {
             userContact,
             setUserContact,
             dispatch,
-            whiteColor,
-            setWhiteColor,
           }}
         >
           {" "}

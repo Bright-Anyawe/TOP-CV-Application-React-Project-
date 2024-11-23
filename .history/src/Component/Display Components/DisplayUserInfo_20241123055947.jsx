@@ -12,7 +12,6 @@ function DisplayUserContact({
     controlPhoneSvgDisplay,
     hideContactEdit,
     setHideContactEdit,
-    whiteColor,
   } = useContext(UserContactContext);
   let userContact = JSON.parse(localStorage.getItem("userContact")) || {};
 

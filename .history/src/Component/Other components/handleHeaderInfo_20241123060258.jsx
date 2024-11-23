@@ -18,7 +18,7 @@ export function HandleHeaderInfo({
     setHideProfessionalEdit(true);
 
     setLoader(true);
-    setWhiteColor(true);
+    setWhiteColor(false);
   }
 
   useEffect(() => {
