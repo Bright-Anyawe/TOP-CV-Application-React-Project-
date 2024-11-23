@@ -13,8 +13,7 @@
   div#main-app {
     display: flex;
     justify-content: normal;
-    flex-direction: column-reverse;
-    /* align-items: center; */
+    flex-direction: column;
     gap: 0rem;
   }
 
@@ -636,10 +635,11 @@ svg {
 .practicalExperienceContainer {
   padding: 20px;
   background-color: white;
-}
+} 
 
 .subPracticalExperienceContainer {
   color: black;
+  margin: 50px 0 0 0;
 }
 
 .eduTitle,
@@ -660,7 +660,7 @@ button svg {
 .startDate {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  margin: 0 0 20px 0;
 }
 
 .EndDate {
@@ -668,7 +668,10 @@ button svg {
   flex-direction: column;
 }
 
-.jobExitDa
+.jobExitDateContainer {
+  display: flex;
+  flex-direction: column;
+}
 
 /* .edit {
   display: none;

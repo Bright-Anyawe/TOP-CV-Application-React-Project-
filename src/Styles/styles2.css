@@ -13,13 +13,8 @@
   div#main-app {
     display: flex;
     justify-content: normal;
-    flex-direction: column-reverse;
-    /* align-items: center; */
+    flex-direction: column;
     gap: 0rem;
-  }
-
-  div.displaySubContainer {
-    /* width: 99%; */
   }
 
   @keyframes slide-in {
