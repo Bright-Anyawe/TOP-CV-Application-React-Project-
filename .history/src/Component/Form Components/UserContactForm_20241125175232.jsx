@@ -55,11 +55,6 @@ export function UserContactForm() {
     setHideContactEdit(false);
   }
 
-  useEffect(() => {
-    setUserContact(state);
-    validateForm();
-  }, [state]);
-
 
   function validateForm() {
     let valid = true;
@@ -105,13 +100,25 @@ export function UserContactForm() {
     });
         validateForm();
 
-    
+    // setUserNameError("");
+    // setEmailError("");
+    // setPhoneNumberError("");
+    // if (userEmail) {
+    //   handleEmailSvgVisibility();
+    // }
+    // handleMobileSvgVisibility();
+
+    // setUserContact(state);
   }
 
   function clearForm() {
     dispatch({
       type: "clearInput",
-      userContact: { fieldName: "", fieldValue: "" },
+      userContact: {
+        fieldName: userName,
+        fieldName: userEmail,
+        fieldName: mobileNumber,
+      },
     });
   }
 
@@ -123,7 +130,6 @@ export function UserContactForm() {
  setHideContactEdit(false);
  clearForm();
  showPersonalContactForm();
- handleEditBtn()
   }
 
   // function handleFormValidation(e) {

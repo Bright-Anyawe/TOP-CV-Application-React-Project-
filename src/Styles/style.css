@@ -74,30 +74,6 @@ header {
   margin-top: 30px;
 }
 
-/* 
-.inputContainer {
-        display: grid;
-    grid-template-columns: 300px 300px;
-    grid-template-rows: 70px 70px;
-}
-
-.fullNameContainer {
-    grid-area: 1 / 1 / 2 / 3;
-}
-
-.emailContainer {
-grid-area: 2 / 1 / 3 / 2;
-}
-
-.emailInputEl {
-    min-width: 10px;
-}
-
-.mobileNumberContainer {
-grid-area: 2 / 2 / 3 / 3;
-
-}
- */
 .userContactDisplay {
  background-color: #344b59;
     display: flex;
@@ -107,6 +83,7 @@ grid-area: 2 / 2 / 3 / 3;
     padding-top: 23px;
     max-height: 192px;color: white;
     padding-inline: 10px;
+    height: 190px;
 }
 
 .userNameContainer {

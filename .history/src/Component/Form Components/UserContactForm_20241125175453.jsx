@@ -123,7 +123,6 @@ export function UserContactForm() {
  setHideContactEdit(false);
  clearForm();
  showPersonalContactForm();
- handleEditBtn()
   }
 
   // function handleFormValidation(e) {

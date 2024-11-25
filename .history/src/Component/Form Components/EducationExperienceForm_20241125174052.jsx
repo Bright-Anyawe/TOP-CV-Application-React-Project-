@@ -82,7 +82,7 @@ export function EducationExperienceForm({
     localStorage.setItem("education", JSON.stringify(updatedEducationArray));
 
     setEditIndex(null);
-    // setHideDate(false);
+    setHideDate(false);
 
 
     handleEditBtn();
