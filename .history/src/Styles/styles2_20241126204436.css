@@ -527,7 +527,7 @@
   }
 }
 .headBtnContainer svg {
-  fill: black;
+  fill: block;
   width: 20px;
   cursor: pointer;
 }

@@ -527,7 +527,7 @@
   }
 }
 .headBtnContainer svg {
-  fill: black;
+  fill: white;
   width: 20px;
   cursor: pointer;
 }
@@ -632,7 +632,6 @@ svg {
 
 button svg {
   width: 25px;
-  fill: black;
 }
 
 .studiesMajor,

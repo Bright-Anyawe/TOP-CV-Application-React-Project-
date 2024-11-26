@@ -5,6 +5,7 @@
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    /* text-align: center; */
     justify-content: space-around;
     align-items: center;
   }
@@ -39,6 +40,7 @@
   }
 
   h1.headText {
+    /* padding-top: 15px; */
     text-decoration: none;
     text-underline-offset: 13px;
     animation: slide-in 1000ms linear;
@@ -115,12 +117,15 @@
     align-items: start;
     align-self: center;
     gap: 4px;
+    /* flex-wrap: wrap; */
     margin: 41px 0 20px 0px;
   }
 
   div.emailPhoneContainer {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    /* align-self: center; */
     gap: 0;
   }
 
@@ -195,6 +200,7 @@
   .userContact,
   .educationExperience,
   .practicalExperience {
+    /* border: 1px solid white; */
     border-radius: 9px;
     padding-bottom: 45px;
     display: flex;
@@ -249,6 +255,7 @@
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    /* text-align: center; */
     justify-content: space-around;
     align-items: center;
   }
@@ -256,6 +263,7 @@
   div#main-app {
     display: flex;
     justify-content: center;
+    /* align-items: center; */
     gap: 0rem;
     flex-direction: column;
   }
@@ -286,6 +294,7 @@
   }
 
   h1.headText {
+    /* padding-top: 15px; */
     text-decoration: none;
     text-underline-offset: 13px;
     animation: slide-in 1000ms linear;
@@ -329,6 +338,7 @@
     align-items: center;
     flex-direction: column;
     padding-top: 23px;
+    /* max-height: 192px; */
     color: white;
     max-height: 100%;
     padding-inline: 8px;
@@ -341,16 +351,20 @@
     align-items: start;
     align-self: center;
     gap: 4px;
+    /* flex-wrap: wrap; */
     margin: 41px 0 20px -1px;
   }
 
   div.emailPhoneContainer {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    /* align-self: center; */
     gap: 0;
   }
 
   #displayMainContainer {
+    /* max-width: 480px; */
     margin-top: 0px;
   }
 
@@ -392,6 +406,7 @@
   .userContact,
   .educationExperience,
   .practicalExperience {
+    /* border: 1px solid white; */
     border-radius: 9px;
     padding-bottom: 45px;
     display: flex;
@@ -456,12 +471,15 @@
     align-items: start;
     align-self: center;
     gap: 4px;
+    /* flex-wrap: wrap; */
     margin: 41px 0 20px -1px;
   }
 
   div.emailPhoneContainer {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    /* align-self: center; */
     gap: 0;
   }
 
@@ -488,6 +506,7 @@
   .userContact,
   .educationExperience,
   .practicalExperience {
+    /* border: 1px solid white; */
     border-radius: 9px;
     padding-bottom: 45px;
     display: flex;
@@ -527,7 +546,7 @@
   }
 }
 .headBtnContainer svg {
-  fill: black;
+  fill: white;
   width: 20px;
   cursor: pointer;
 }
@@ -586,6 +605,7 @@ svg {
   align-items: start;
   align-self: center;
   gap: 4px;
+  /* flex-wrap: wrap; */
   margin: 41px 0 20px -1px;
 }
 
@@ -632,7 +652,6 @@ svg {
 
 button svg {
   width: 25px;
-  fill: black;
 }
 
 .studiesMajor,
