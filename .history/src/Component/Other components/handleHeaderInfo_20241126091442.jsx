@@ -25,33 +25,18 @@ export function HandleHeaderInfo({
     if (loader) {
       const capture = document.querySelector("#displayMainContainer");
       console.log(capture);
-      html2canvas(capture, {
-        useCORS: true,
-        scale: 2,
-        dpi: 300,
-        letterRendering: true,
-      }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const doc = new jsPDF("p", "mm", "a4");
-
-        const pageWidth = doc.internal.pageSize.getWidth();
-        const pageHeight = doc.internal.pageSize.getHeight();
-        const imgWidth = pageWidth;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-        let heightLeft = imgHeight;
-        let position = 0;
-
-        while (heightLeft > 0) {
-          doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-          position -= pageHeight;
-
-          if (heightLeft > 0) doc.addPage();
-        }
-
-        doc.save("Cv application");
-      });
+html2canvas(capture, {
+  scale: 2, // Increase rendering scale
+  dpi: 300, // Set DPI for high-quality rendering
+  letterRendering: true, // Improves text rendering
+}).then((canvas) => {
+  const imgData = canvas.toDataURL("image/png");
+  const doc = new jsPDF("p", "mm", "a4");
+  const imgWidth = doc.internal.pageSize.getWidth();
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+  doc.save("Cv application");
+});
     }
 
     setLoader(false);
