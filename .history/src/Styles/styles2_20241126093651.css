@@ -624,6 +624,7 @@ svg {
   flex-direction: column;
   justify-content: start;
   align-items: self-start;
+  /* max-width: 300px; */
   padding: 0;
   margin: 0;
 }
@@ -640,7 +641,7 @@ svg {
     display: flex
 ;
     flex-direction: column;
-
+}
 }
 
 .eduTitle,
